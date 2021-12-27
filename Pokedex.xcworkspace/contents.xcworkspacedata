@@ -4,4 +4,7 @@
    <FileRef
       location = "group:Pokedex.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Infra">
+   </FileRef>
 </Workspace>
