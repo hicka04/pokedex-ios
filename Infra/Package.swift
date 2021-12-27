@@ -15,12 +15,14 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(name: "Domain", path: "../Domain/"),
         .package(name: "APIKit", url: "https://github.com/ishkawa/APIKit.git", .upToNextMajor(from: "5.2.0"))
     ],
     targets: [
         .target(
             name: "Infra",
             dependencies: [
+                .product(name: "Repository", package: "Domain"),
                 "APIKit"
             ]
         ),
