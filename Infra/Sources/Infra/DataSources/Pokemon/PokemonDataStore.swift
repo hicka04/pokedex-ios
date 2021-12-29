@@ -15,13 +15,13 @@ struct PokemonDataStore {
         self.session = session
     }
 
-    convenience init() {
+    init() {
         let adapter = URLSessionAdapter(configuration: .default)
         let session = Session(adapter: adapter, callbackQueue: .sessionQueue)
         self.init(session: session)
     }
 
     func getPokemonList() async throws -> PokemonListResponse {
-        session.send(PokemonListRequest())
+        try await session.send(PokemonListRequest())
     }
 }

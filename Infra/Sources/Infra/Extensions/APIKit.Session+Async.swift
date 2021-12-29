@@ -10,17 +10,16 @@ import APIKit
 
 extension Session {
     func send<Request: APIKit.Request>(_ request: Request, callbackQueue: CallbackQueue? = nil) async throws -> Request.Response {
-        var sessionTask: URLSessionTask?
+        var sessionTask: SessionTask?
+        let onCancel = { sessionTask?.cancel() }
         return try await withTaskCancellationHandler {
             try await withCheckedThrowingContinuation { continuation in
                 sessionTask = self.send(request, callbackQueue: callbackQueue) { result in
                     continuation.resume(with: result)
-                } as? URLSessionTask
+                }
             }
         } onCancel: {
-            sessionTask?.cancel()
+            onCancel()
         }
     }
 }
-
-extension URLSessionTask: @unchecked Sendable {}

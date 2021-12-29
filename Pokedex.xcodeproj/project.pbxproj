@@ -12,6 +12,10 @@
 		B86CE27E2778A81C00D0D1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86CE27D2778A81C00D0D1C4 /* Assets.xcassets */; };
 		B86CE2812778A81C00D0D1C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */; };
 		B86CE28B2778A81C00D0D1C4 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE28A2778A81C00D0D1C4 /* PokedexTests.swift */; };
+		B875F6B4277CA65600F9F6E0 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B875F6B3277CA65600F9F6E0 /* Infra */; };
+		B875F6B6277CA66B00F9F6E0 /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = B875F6B5277CA66B00F9F6E0 /* Entity */; };
+		B875F6B8277CA66B00F9F6E0 /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = B875F6B7277CA66B00F9F6E0 /* Repository */; };
+		B875F6BA277CA66B00F9F6E0 /* Usecase in Frameworks */ = {isa = PBXBuildFile; productRef = B875F6B9277CA66B00F9F6E0 /* Usecase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B875F6BA277CA66B00F9F6E0 /* Usecase in Frameworks */,
+				B875F6B4277CA65600F9F6E0 /* Infra in Frameworks */,
+				B875F6B6277CA66B00F9F6E0 /* Entity in Frameworks */,
+				B875F6B8277CA66B00F9F6E0 /* Repository in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +66,7 @@
 				B86CE2782778A81A00D0D1C4 /* Pokedex */,
 				B86CE2892778A81C00D0D1C4 /* PokedexTests */,
 				B86CE2772778A81A00D0D1C4 /* Products */,
+				B875F6B2277CA65600F9F6E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +106,13 @@
 			path = PokedexTests;
 			sourceTree = "<group>";
 		};
+		B875F6B2277CA65600F9F6E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,6 +129,12 @@
 			dependencies = (
 			);
 			name = Pokedex;
+			packageProductDependencies = (
+				B875F6B3277CA65600F9F6E0 /* Infra */,
+				B875F6B5277CA66B00F9F6E0 /* Entity */,
+				B875F6B7277CA66B00F9F6E0 /* Repository */,
+				B875F6B9277CA66B00F9F6E0 /* Usecase */,
+			);
 			productName = Pokedex;
 			productReference = B86CE2762778A81A00D0D1C4 /* Pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -353,6 +375,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,6 +405,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +490,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B875F6B3277CA65600F9F6E0 /* Infra */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Infra;
+		};
+		B875F6B5277CA66B00F9F6E0 /* Entity */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Entity;
+		};
+		B875F6B7277CA66B00F9F6E0 /* Repository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Repository;
+		};
+		B875F6B9277CA66B00F9F6E0 /* Usecase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Usecase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B86CE26E2778A81A00D0D1C4 /* Project object */;
 }
