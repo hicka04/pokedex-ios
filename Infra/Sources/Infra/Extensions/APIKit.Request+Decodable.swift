@@ -10,7 +10,7 @@ import APIKit
 
 extension Request where Response: Decodable {
     var dataParser: DataParser {
-        OriginalJsonDataParser
+        OriginalJsonDataParser()
     }
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
