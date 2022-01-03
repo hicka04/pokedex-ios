@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Usecase"
-               BuildableName = "Usecase"
-               BlueprintName = "Usecase"
+               BlueprintIdentifier = "UseCase"
+               BuildableName = "UseCase"
+               BlueprintName = "UseCase"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>

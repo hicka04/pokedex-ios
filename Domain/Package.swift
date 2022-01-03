@@ -29,6 +29,10 @@ let package = Package(
         ),
         .target(
             name: "UseCase",
+            dependencies: [
+                "Entity",
+                "Repository"
+            ],
             path: "Sources/UseCases"
         ),
         .target(
