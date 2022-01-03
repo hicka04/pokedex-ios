@@ -8,6 +8,7 @@
 import Foundation
 import APIKit
 import Entity
+import Repository
 
 struct PokemonDataStore {
     private let session: Session
@@ -21,7 +22,9 @@ struct PokemonDataStore {
         let session = Session(adapter: adapter, callbackQueue: .sessionQueue)
         self.init(session: session)
     }
+}
 
+extension PokemonDataStore: PokemonRepository {
     func getPokemonList() async throws -> [PokemonListElement] {
         let response = try await session.send(PokemonListRequest())
         return response.results
