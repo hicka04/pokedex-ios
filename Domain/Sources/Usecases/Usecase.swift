@@ -13,3 +13,9 @@ public protocol UseCase {
 
     func execute(_ input: Input) async throws -> Output
 }
+
+public extension UseCase where Input == Void {
+    func execute() async throws -> Output {
+        try await execute(())
+    }
+}
