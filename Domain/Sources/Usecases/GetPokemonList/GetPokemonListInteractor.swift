@@ -15,7 +15,7 @@ where Input == Void, Output == [PokemonListElement] {}
 public struct GetPokemonListInteractor: GetPokemonListUseCase {
     private let pokemonRepository: PokemonRepository
 
-    init(pokemonRepository: PokemonRepository) {
+    public init(pokemonRepository: PokemonRepository) {
         self.pokemonRepository = pokemonRepository
     }
 

@@ -10,14 +10,14 @@ import APIKit
 import Entity
 import Repository
 
-struct PokemonDataStore {
+public struct PokemonDataStore {
     private let session: Session
 
     init(session: Session) {
         self.session = session
     }
 
-    init() {
+    public init() {
         let adapter = URLSessionAdapter(configuration: .default)
         let session = Session(adapter: adapter, callbackQueue: .sessionQueue)
         self.init(session: session)
@@ -25,7 +25,7 @@ struct PokemonDataStore {
 }
 
 extension PokemonDataStore: PokemonRepository {
-    func getPokemonList() async throws -> [PokemonListElement] {
+    public func getPokemonList() async throws -> [PokemonListElement] {
         let response = try await session.send(PokemonListRequest())
         return response.results
     }

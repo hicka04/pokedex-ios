@@ -22,6 +22,7 @@ let package = Package(
         .target(
             name: "Infra",
             dependencies: [
+                .product(name: "Entity", package: "Domain"),
                 .product(name: "Repository", package: "Domain"),
                 "APIKit"
             ]
