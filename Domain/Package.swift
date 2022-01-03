@@ -14,8 +14,8 @@ let package = Package(
             targets: ["Entity"]
         ),
         .library(
-            name: "Usecase",
-            targets: ["Usecase"]
+            name: "UseCase",
+            targets: ["UseCase"]
         ),
         .library(
             name: "Repository",
@@ -28,8 +28,8 @@ let package = Package(
             path: "Sources/Entities"
         ),
         .target(
-            name: "Usecase",
-            path: "Sources/Usecases"
+            name: "UseCase",
+            path: "Sources/UseCases"
         ),
         .target(
             name: "Repository",
@@ -42,7 +42,7 @@ let package = Package(
             name: "DomainTests",
             dependencies: [
                 "Entity",
-                "Usecase",
+                "UseCase",
                 "Repository"
             ]
         )
