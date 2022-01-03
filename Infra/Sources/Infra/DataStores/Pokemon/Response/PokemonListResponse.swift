@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Entity
 
 struct PokemonListResponse: Decodable {
     let count: Int
