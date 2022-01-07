@@ -26,7 +26,7 @@ public struct PokemonDataStore {
 
 extension PokemonDataStore: PokemonRepository {
     public func getPokemonList() async throws -> [PokemonListElement] {
-        let response = try await session.send(PokemonListRequest())
+        let response = try await session.send(GetPokemonListRequest())
         return response.results
     }
 }
