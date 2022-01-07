@@ -10,4 +10,5 @@ import Entity
 
 public protocol PokemonRepository {
     func getPokemonList() async throws -> [PokemonListElement]
+    func getPokemon(name: String) async throws -> Pokemon
 }
