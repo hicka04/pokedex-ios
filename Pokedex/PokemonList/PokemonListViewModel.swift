@@ -11,7 +11,7 @@ import UseCase
 
 @MainActor
 final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase>: ObservableObject {
-    @Published private(set) var pokemonList: [PokemonListElement] = []
+    @Published private(set) var pokemonList: [Pokemon] = []
     @Published private(set) var getPokemonListError: Error?
 
     private let getPokemonListInteractor: GetPokemonListInteractor

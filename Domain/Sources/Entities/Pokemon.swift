@@ -7,15 +7,15 @@
 
 import Foundation
 
-public struct Pokemon: Decodable {
-    let id: ID
-    let name: String
-    let height: Int
-    let weight: Int
+public struct Pokemon: Decodable, Identifiable {
+    public let id: ID
+    public let name: String
+    public let height: Int
+    public let weight: Int
 }
 
 public extension Pokemon {
-    struct ID: RawRepresentable, Decodable {
+    struct ID: RawRepresentable, Decodable, Hashable {
         public let rawValue: Int
 
         public init(rawValue: Int) {

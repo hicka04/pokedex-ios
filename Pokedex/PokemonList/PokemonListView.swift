@@ -19,7 +19,7 @@ struct PokemonListView: View {
     )
 
     var body: some View {
-        List(viewModel.pokemonList, id: \.name) { pokemon in
+        List(viewModel.pokemonList) { pokemon in
             Text(pokemon.name)
         }.task {
             await viewModel.onAppear()

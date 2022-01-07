@@ -10,7 +10,7 @@ import Entity
 import Repository
 
 public protocol GetPokemonListUseCase: UseCase
-where Input == Void, Output == [PokemonListElement] {}
+where Input == Void, Output == [Pokemon] {}
 
 public struct GetPokemonListInteractor: GetPokemonListUseCase {
     private let pokemonRepository: PokemonRepository
@@ -20,6 +20,18 @@ public struct GetPokemonListInteractor: GetPokemonListUseCase {
     }
 
     public func execute(_ input: Input) async throws -> Output {
-        try await pokemonRepository.getPokemonList()
+        let pokemonListElements = try await pokemonRepository.getPokemonList()
+        return try await withThrowingTaskGroup(of: Pokemon.self) { taskGroup in
+            pokemonListElements.forEach { pokemonListElement in
+                taskGroup.addTask {
+                    try await pokemonRepository.getPokemon(name: pokemonListElement.name)
+                }
+            }
+
+            return try await taskGroup
+                .reduce(into: [Pokemon]()) { pokemonList, result in
+                    pokemonList.append(result)
+                }.sorted { $0.id.rawValue < $1.id.rawValue }
+        }
     }
 }
