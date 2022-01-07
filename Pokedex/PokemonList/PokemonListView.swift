@@ -12,18 +12,17 @@ import Infra
 
 @MainActor
 struct PokemonListView: View {
-    @State var pokemonList: [PokemonListElement] = []
+    @StateObject private var viewModel = PokemonListViewModel(
+        getPokemonListInteractor: GetPokemonListInteractor(
+            pokemonRepository: PokemonDataStore()
+        )
+    )
 
     var body: some View {
-        List(pokemonList, id: \.name) { pokemon in
+        List(viewModel.pokemonList, id: \.name) { pokemon in
             Text(pokemon.name)
         }.task {
-            let useCase = GetPokemonListInteractor(pokemonRepository: PokemonDataStore())
-            do {
-                self.pokemonList = try await useCase.execute()
-            } catch {
-                print(error)
-            }
+            await viewModel.onAppear()
         }
     }
 }
