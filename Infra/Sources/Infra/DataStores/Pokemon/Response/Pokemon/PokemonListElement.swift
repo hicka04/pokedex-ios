@@ -7,7 +7,4 @@
 
 import Foundation
 
-public struct PokemonListElement: Decodable {
-    public let name: String
-    public let url: URL
-}
+typealias PokemonListElement = NamedResponse
