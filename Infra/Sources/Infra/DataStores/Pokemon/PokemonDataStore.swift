@@ -25,9 +25,21 @@ public struct PokemonDataStore {
 }
 
 extension PokemonDataStore: PokemonRepository {
-    public func getPokemonList() async throws -> [PokemonListElement] {
+    public func getPokemonList() async throws -> [Pokemon] {
         let response = try await session.send(GetPokemonListRequest())
-        return response.results
+        let pokemonListElements = response.results
+        return try await withThrowingTaskGroup(of: Pokemon.self) { taskGroup in
+            pokemonListElements.forEach { pokemonListElement in
+                taskGroup.addTask {
+                    try await getPokemon(name: pokemonListElement.name)
+                }
+            }
+
+            return try await taskGroup
+                .reduce(into: [Pokemon]()) { pokemonList, result in
+                    pokemonList.append(result)
+                }.sorted { $0.id.rawValue < $1.id.rawValue }
+        }
     }
 
     public func getPokemon(name: String) async throws -> Pokemon {
