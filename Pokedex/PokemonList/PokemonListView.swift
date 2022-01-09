@@ -20,7 +20,9 @@ struct PokemonListView: View {
 
     var body: some View {
         List(viewModel.pokemonList) { pokemon in
-            Text(pokemon.name)
+            NavigationLink(pokemon.name) {
+                PokemonDetailView(pokemon: pokemon)
+            }
         }.task {
             await viewModel.onAppear()
         }

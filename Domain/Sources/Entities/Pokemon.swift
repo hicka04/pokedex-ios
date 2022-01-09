@@ -12,6 +12,13 @@ public struct Pokemon: Decodable, Identifiable {
     public let name: String
     public let height: Int
     public let weight: Int
+
+    public init(id: ID, name: String, height: Int, weight: Int) {
+        self.id = id
+        self.name = name
+        self.height = height
+        self.weight = weight
+    }
 }
 
 public extension Pokemon {
