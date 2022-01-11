@@ -22,6 +22,7 @@ extension Request where Response: Decodable {
         }
 
         let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         return try jsonDecoder.decode(Response.self, from: data)
     }
 }

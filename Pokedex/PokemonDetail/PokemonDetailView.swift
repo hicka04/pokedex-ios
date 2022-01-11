@@ -12,7 +12,10 @@ struct PokemonDetailView: View {
     let pokemon: Pokemon
 
     var body: some View {
-        Text(pokemon.name)
+        VStack {
+            AsyncImage(url: pokemon.sprites.frontDefault)
+            Text(pokemon.name)
+        }
     }
 }
 
@@ -23,7 +26,10 @@ struct PokemonDetailView_Previews: PreviewProvider {
                 id: .init(rawValue: 1),
                 name: "フシギダネ",
                 height: 10,
-                weight: 20
+                weight: 20,
+                sprites: .init(
+                    frontDefault: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")!
+                )
             )
         )
     }

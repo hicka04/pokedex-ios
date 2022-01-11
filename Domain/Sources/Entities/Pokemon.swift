@@ -12,12 +12,14 @@ public struct Pokemon: Decodable, Identifiable {
     public let name: String
     public let height: Int
     public let weight: Int
+    public let sprites: Sprites
 
-    public init(id: ID, name: String, height: Int, weight: Int) {
+    public init(id: ID, name: String, height: Int, weight: Int, sprites: Sprites) {
         self.id = id
         self.name = name
         self.height = height
         self.weight = weight
+        self.sprites = sprites
     }
 }
 

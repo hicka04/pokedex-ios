@@ -24,6 +24,7 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
         do {
             pokemonList = try await getPokemonListInteractor.execute()
         } catch {
+            print(error)
             getPokemonListError = error
         }
     }

@@ -20,8 +20,22 @@ struct PokemonListView: View {
 
     var body: some View {
         List(viewModel.pokemonList) { pokemon in
-            NavigationLink(pokemon.name) {
+            NavigationLink {
                 PokemonDetailView(pokemon: pokemon)
+            } label: {
+                HStack {
+                    AsyncImage(
+                        url: pokemon.sprites.frontDefault,
+                        content: { image in
+                            image.resizable()
+                        },
+                        placeholder: {
+                            ProgressView()
+                        }
+                    )
+                        .frame(width: 80, height: 80)
+                    Text(pokemon.name)
+                }
             }
         }.task {
             await viewModel.onAppear()
