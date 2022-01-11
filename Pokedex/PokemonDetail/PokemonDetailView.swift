@@ -13,7 +13,11 @@ struct PokemonDetailView: View {
 
     var body: some View {
         VStack {
-            AsyncImage(url: pokemon.sprites.frontDefault)
+            AsyncImage(
+                url: pokemon.sprites.other.officialArtwork.frontDefault,
+                content: { $0.resizable() },
+                placeholder: { ProgressView() }
+            ).scaledToFit()
             Text(pokemon.name)
         }
     }
@@ -28,7 +32,11 @@ struct PokemonDetailView_Previews: PreviewProvider {
                 height: 10,
                 weight: 20,
                 sprites: .init(
-                    frontDefault: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")!
+                    other: .init(
+                        officialArtwork: .init(
+                            frontDefault: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")!
+                        )
+                    )
                 )
             )
         )

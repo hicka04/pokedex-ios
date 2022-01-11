@@ -25,7 +25,7 @@ struct PokemonListView: View {
             } label: {
                 HStack {
                     AsyncImage(
-                        url: pokemon.sprites.frontDefault,
+                        url: pokemon.sprites.other.officialArtwork.frontDefault,
                         content: { image in
                             image.resizable()
                         },

@@ -17,6 +17,7 @@ extension Pokemon {
         public let backShiny: URL?
         public let backFemale: URL?
         public let backShinyFemale: URL?
+        public let other: Other
 
         public init(
             frontDefault: URL? = nil,
@@ -26,7 +27,8 @@ extension Pokemon {
             backDefault: URL? = nil,
             backShiny: URL? = nil,
             backFemale: URL? = nil,
-            backShinyFemale: URL? = nil
+            backShinyFemale: URL? = nil,
+            other: Other
         ) {
             self.frontDefault = frontDefault
             self.frontShiny = frontShiny
@@ -36,6 +38,31 @@ extension Pokemon {
             self.backShiny = backShiny
             self.backFemale = backFemale
             self.backShinyFemale = backShinyFemale
+            self.other = other
+        }
+    }
+}
+
+extension Pokemon.Sprites {
+    public struct Other: Decodable {
+        public let officialArtwork: OfficialArtwork
+
+        public init(officialArtwork: OfficialArtwork) {
+            self.officialArtwork = officialArtwork
+        }
+
+        public enum CodingKeys: String, CodingKey {
+            case officialArtwork = "official-artwork"
+        }
+    }
+}
+
+extension Pokemon.Sprites.Other {
+    public struct OfficialArtwork: Decodable {
+        public let frontDefault: URL
+
+        public init(frontDefault: URL) {
+            self.frontDefault = frontDefault
         }
     }
 }
