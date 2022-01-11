@@ -37,7 +37,8 @@ struct PokemonListView: View {
                     Text(pokemon.name)
                 }
             }
-        }.task {
+        }.navigationTitle("Pokedex")
+        .task {
             await viewModel.onAppear()
         }
     }
