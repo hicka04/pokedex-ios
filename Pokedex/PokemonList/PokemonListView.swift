@@ -19,25 +19,32 @@ struct PokemonListView: View {
     )
 
     var body: some View {
-        List(viewModel.pokemonList) { pokemon in
-            NavigationLink {
-                PokemonDetailView(pokemon: pokemon)
-            } label: {
-                HStack {
-                    AsyncImage(
-                        url: pokemon.sprites.other.officialArtwork.frontDefault,
-                        content: { image in
-                            image.resizable()
-                        },
-                        placeholder: {
-                            ProgressView()
+        ScrollView {
+            LazyVStack(alignment: .leading) {
+                ForEach(viewModel.pokemonList) { pokemon in
+                    NavigationLink {
+                        PokemonDetailView(pokemon: pokemon)
+                    } label: {
+                        HStack(spacing: 16) {
+                            AsyncImage(
+                                url: pokemon.sprites.other.officialArtwork.frontDefault,
+                                content: { image in
+                                    image.resizable()
+                                },
+                                placeholder: {
+                                    ProgressView()
+                                }
+                            )
+                                .frame(width: 80, height: 80)
+                            Text(pokemon.name)
                         }
-                    )
-                        .frame(width: 80, height: 80)
-                    Text(pokemon.name)
+                    }
                 }
-            }
-        }.navigationTitle("Pokedex")
+            }.padding(.leading, 16)
+
+            ProgressView() // TODO: Load next page
+        }
+        .navigationTitle("Pokedex")
         .task {
             await viewModel.onAppear()
         }
