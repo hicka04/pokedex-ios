@@ -15,7 +15,7 @@ struct PokemonCell: View {
     var body: some View {
         HStack(spacing: 16) {
             AsyncImage(
-                url: pokemon.sprites.other.officialArtwork.frontDefault,
+                url: pokemon.sprites.officialArtwork,
                 content: { image in
                     image.resizable()
                 },
@@ -41,11 +41,17 @@ struct PokemonCell_Previews: PreviewProvider {
                 height: 10,
                 weight: 20,
                 sprites: .init(
-                    other: .init(
-                        officialArtwork: .init(
-                            frontDefault: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")!
-                        )
-                    )
+                    default: .init(
+                        front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
+                        back: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png")
+                    )!,
+                    female: nil,
+                    shiny: .init(
+                        front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"),
+                        back: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png")
+                    )!,
+                    shinyFemale: nil,
+                    officialArtwork: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")!
                 )
             )
         )

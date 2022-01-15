@@ -2,19 +2,25 @@
 //  Pokemon.swift
 //  
 //
-//  Created by hicka04 on 2022/01/07.
+//  Created by hicka04 on 2022/01/15.
 //
 
 import Foundation
 
-public struct Pokemon: Decodable, Identifiable {
+public struct Pokemon: Identifiable {
     public let id: ID
     public let name: String
-    public let height: Int
-    public let weight: Int
+    public let height: Double
+    public let weight: Double
     public let sprites: Sprites
 
-    public init(id: ID, name: String, height: Int, weight: Int, sprites: Sprites) {
+    public init(
+        id: ID,
+        name: String,
+        height: Double,
+        weight: Double,
+        sprites: Sprites
+    ) {
         self.id = id
         self.name = name
         self.height = height
@@ -24,7 +30,7 @@ public struct Pokemon: Decodable, Identifiable {
 }
 
 public extension Pokemon {
-    struct ID: RawRepresentable, Decodable, Hashable {
+    struct ID: RawRepresentable, Hashable {
         public let rawValue: Int
 
         public init(rawValue: Int) {

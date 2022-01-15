@@ -43,6 +43,6 @@ extension PokemonDataStore: PokemonRepository {
     }
 
     public func getPokemon(name: String) async throws -> Pokemon {
-        try await session.send(GetPokemonRequest(name: name))
+        try await session.send(GetPokemonRequest(name: name)).translate()
     }
 }

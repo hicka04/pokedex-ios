@@ -10,7 +10,7 @@ import Entity
 import APIKit
 
 struct GetPokemonRequest: PokemonRequest {
-    typealias Response = Pokemon
+    typealias Response = PokemonResponse
 
     var path: String {
         "pokemon/\(name)"
