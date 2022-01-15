@@ -27,7 +27,6 @@ struct PokemonListView: View {
                     } label: {
                         PokemonCell(pokemon: pokemon)
                             .task {
-                                print(pokemon)
                                 await viewModel.onAppearCell(pokemon: pokemon)
                             }
                     }
