@@ -8,7 +8,7 @@
 import Foundation
 import Entity
 
-struct PokemonResponse: Decodable {
+struct PokemonResponse: Decodable, TranslatableToEntity {
     let id: Int
     let name: String
     let height: Int

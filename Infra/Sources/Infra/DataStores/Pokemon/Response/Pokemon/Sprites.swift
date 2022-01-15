@@ -9,7 +9,7 @@ import Foundation
 import Entity
 
 extension PokemonResponse {
-    struct Sprites: Decodable {
+    struct Sprites: Decodable, TranslatableToEntity {
         let frontDefault: URL
         let frontShiny: URL
         let frontFemale: URL?
