@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Pokemon: Identifiable {
+public struct Pokemon: Equatable, Identifiable, Sendable {
     public let id: ID
     public let name: String
     public let height: Double
@@ -30,7 +30,7 @@ public struct Pokemon: Identifiable {
 }
 
 public extension Pokemon {
-    struct ID: RawRepresentable, Hashable {
+    struct ID: RawRepresentable, Hashable, Sendable {
         public let rawValue: Int
 
         public init(rawValue: Int) {

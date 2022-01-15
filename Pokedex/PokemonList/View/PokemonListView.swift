@@ -26,6 +26,10 @@ struct PokemonListView: View {
                         PokemonDetailView(pokemon: pokemon)
                     } label: {
                         PokemonCell(pokemon: pokemon)
+                            .task {
+                                print(pokemon)
+                                await viewModel.onAppearCell(pokemon: pokemon)
+                            }
                     }
                     .buttonStyle(.plain)
                 }

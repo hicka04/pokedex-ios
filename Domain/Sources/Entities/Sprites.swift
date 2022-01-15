@@ -8,7 +8,7 @@
 import Foundation
 
 extension Pokemon {
-    public struct Sprites {
+    public struct Sprites: Equatable, Sendable {
         public let `default`: ViewPoint
         public let female: ViewPoint?
         public let shiny: ViewPoint
@@ -32,7 +32,7 @@ extension Pokemon {
 }
 
 extension Pokemon.Sprites {
-    public struct ViewPoint {
+    public struct ViewPoint: Equatable, Sendable {
         public let front: URL
         public let back: URL
 
@@ -51,3 +51,5 @@ extension Pokemon.Sprites {
         }
     }
 }
+
+extension URL: @unchecked Sendable {}

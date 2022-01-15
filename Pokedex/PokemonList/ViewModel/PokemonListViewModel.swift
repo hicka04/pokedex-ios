@@ -28,4 +28,17 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
             getPokemonListError = error
         }
     }
+
+    func onAppearCell(pokemon: Pokemon) async {
+        guard pokemonList.last == pokemon else {
+            return
+        }
+
+        do {
+            pokemonList += try await getPokemonListInteractor.execute(.next)
+        } catch {
+            print(error)
+            getPokemonListError = error
+        }
+    }
 }
