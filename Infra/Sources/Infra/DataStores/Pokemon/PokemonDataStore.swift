@@ -26,7 +26,11 @@ public class PokemonDataStore {
 }
 
 extension PokemonDataStore: PokemonRepository {
-    public func getPokemonList(reset: Bool) async throws -> [Pokemon] {
+    public func getPokemonList(reset: Bool) async throws -> [Pokemon]? {
+        if reset == false && pokemonListNextOffset == nil {
+            return nil
+        }
+        
         let response = try await session.send(GetPokemonListRequest(offset: pokemonListNextOffset))
         let pokemonListElements = response.results
         pokemonListNextOffset = {

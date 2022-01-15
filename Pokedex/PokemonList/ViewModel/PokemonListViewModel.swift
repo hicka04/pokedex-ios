@@ -11,8 +11,7 @@ import UseCase
 
 @MainActor
 final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase>: ObservableObject {
-    @Published private(set) var pokemonList: [Pokemon] = []
-    @Published private(set) var getPokemonListError: Error?
+    @Published private(set) var uiState: UiState<[Pokemon]> = .blank
 
     private let getPokemonListInteractor: GetPokemonListInteractor
 
@@ -22,23 +21,34 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
 
     func onAppear() async {
         do {
-            pokemonList = try await getPokemonListInteractor.execute(.first)
+            uiState.changeToLoading()
+            if let pokemonList = try await getPokemonListInteractor.execute(.first) {
+                uiState = .partial(pokemonList)
+            } else {
+                uiState = .ideal([])
+            }
         } catch {
-            print(error)
-            getPokemonListError = error
+            uiState.changeToError(error)
         }
     }
 
     func onAppearCell(pokemon: Pokemon) async {
-        guard pokemonList.last == pokemon else {
+        guard
+            let data = uiState.data,
+            data.last == pokemon
+        else {
             return
         }
 
         do {
-            pokemonList += try await getPokemonListInteractor.execute(.next)
+            uiState.changeToLoading()
+            if let pokemonList = try await getPokemonListInteractor.execute(.next) {
+                uiState = .partial(data + pokemonList)
+            } else {
+                uiState = .ideal(data)
+            }
         } catch {
-            print(error)
-            getPokemonListError = error
+            uiState.changeToError(error)
         }
     }
 }

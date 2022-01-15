@@ -15,7 +15,7 @@ public enum GetPokemonListPaginationParameter {
 }
 
 public protocol GetPokemonListUseCase: UseCase
-where Input == GetPokemonListPaginationParameter, Output == [Pokemon] {}
+where Input == GetPokemonListPaginationParameter, Output == [Pokemon]? {}
 
 public struct GetPokemonListInteractor: GetPokemonListUseCase {
     private let pokemonRepository: PokemonRepository

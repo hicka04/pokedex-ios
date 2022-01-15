@@ -9,6 +9,6 @@ import Foundation
 import Entity
 
 public protocol PokemonRepository {
-    func getPokemonList(reset: Bool) async throws -> [Pokemon]
+    func getPokemonList(reset: Bool) async throws -> [Pokemon]?
     func getPokemon(name: String) async throws -> Pokemon
 }

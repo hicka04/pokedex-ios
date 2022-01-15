@@ -21,7 +21,7 @@ struct PokemonListView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 16) {
-                ForEach(viewModel.pokemonList) { pokemon in
+                ForEach(viewModel.uiState.data ?? []) { pokemon in
                     NavigationLink {
                         PokemonDetailView(pokemon: pokemon)
                     } label: {
@@ -33,8 +33,9 @@ struct PokemonListView: View {
                     .buttonStyle(.plain)
                 }
             }
-
-            ProgressView() // TODO: Load next page
+            if viewModel.uiState.isLoading {
+                ProgressView()
+            }
         }
         .navigationTitle("Pokedex")
         .task {
