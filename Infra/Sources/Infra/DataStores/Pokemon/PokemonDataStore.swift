@@ -10,14 +10,15 @@ import APIKit
 import Entity
 import Repository
 
-public struct PokemonDataStore {
+public class PokemonDataStore {
     private let session: Session
+    private var pokemonListNextOffset: Int?
 
     init(session: Session) {
         self.session = session
     }
 
-    public init() {
+    public convenience init() {
         let adapter = URLSessionAdapter(configuration: .default)
         let session = Session(adapter: adapter, callbackQueue: .sessionQueue)
         self.init(session: session)
@@ -25,13 +26,25 @@ public struct PokemonDataStore {
 }
 
 extension PokemonDataStore: PokemonRepository {
-    public func getPokemonList() async throws -> [Pokemon] {
-        let response = try await session.send(GetPokemonListRequest())
+    public func getPokemonList(reset: Bool) async throws -> [Pokemon] {
+        let response = try await session.send(GetPokemonListRequest(offset: pokemonListNextOffset))
         let pokemonListElements = response.results
+        pokemonListNextOffset = {
+            guard
+                let url = response.next,
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                let offsetString = urlComponents.queryItems?.first(where: { $0.name == "offset" })?.value,
+                let offset = Int(offsetString)
+            else {
+                return nil
+            }
+
+            return offset
+        }()
         return try await withThrowingTaskGroup(of: Pokemon.self) { taskGroup in
             pokemonListElements.forEach { pokemonListElement in
                 taskGroup.addTask {
-                    try await getPokemon(name: pokemonListElement.name)
+                    try await self.getPokemon(name: pokemonListElement.name)
                 }
             }
 

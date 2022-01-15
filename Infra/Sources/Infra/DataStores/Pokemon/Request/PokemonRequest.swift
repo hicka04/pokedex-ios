@@ -15,3 +15,8 @@ extension PokemonRequest {
         URL(string: "https://pokeapi.co/api/v2/")!
     }
 }
+
+protocol PaginablePokemonRequest: PokemonRequest {
+    var limit: Int { get }
+    var offset: Int? { get }
+}

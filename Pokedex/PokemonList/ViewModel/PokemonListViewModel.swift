@@ -22,7 +22,7 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
 
     func onAppear() async {
         do {
-            pokemonList = try await getPokemonListInteractor.execute()
+            pokemonList = try await getPokemonListInteractor.execute(.first)
         } catch {
             print(error)
             getPokemonListError = error
