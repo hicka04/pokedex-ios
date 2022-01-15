@@ -20,27 +20,16 @@ struct PokemonListView: View {
 
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .leading) {
+            LazyVStack(alignment: .leading, spacing: 16) {
                 ForEach(viewModel.pokemonList) { pokemon in
                     NavigationLink {
                         PokemonDetailView(pokemon: pokemon)
                     } label: {
-                        HStack(spacing: 16) {
-                            AsyncImage(
-                                url: pokemon.sprites.other.officialArtwork.frontDefault,
-                                content: { image in
-                                    image.resizable()
-                                },
-                                placeholder: {
-                                    ProgressView()
-                                }
-                            )
-                                .frame(width: 80, height: 80)
-                            Text(pokemon.name)
-                        }
+                        PokemonCell(pokemon: pokemon)
                     }
+                    .buttonStyle(.plain)
                 }
-            }.padding(.leading, 16)
+            }
 
             ProgressView() // TODO: Load next page
         }
