@@ -21,6 +21,15 @@ struct PokemonDetailView: View {
                 ).scaledToFit()
 
                 HStack {
+                    Text("Types:")
+                        .fontWeight(.bold)
+                    Text(pokemon.types.first.rawValue)
+                    if let secondType = pokemon.types.second?.rawValue {
+                        Text(secondType)
+                    }
+                }
+
+                HStack {
                     HStack {
                         Text("Height:")
                             .fontWeight(.bold)
@@ -48,6 +57,10 @@ struct PokemonDetailView_Previews: PreviewProvider {
                     name: "フシギダネ",
                     height: 10,
                     weight: 20,
+                    types: .init(
+                        first: .grass,
+                        second: .poison
+                    ),
                     sprites: .init(
                         default: .init(
                             front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
