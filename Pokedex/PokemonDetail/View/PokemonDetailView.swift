@@ -12,12 +12,30 @@ struct PokemonDetailView: View {
     let pokemon: Pokemon
 
     var body: some View {
-        AsyncImage(
-            url: pokemon.sprites.officialArtwork,
-            content: { $0.resizable() },
-            placeholder: { ProgressView() }
-        ).scaledToFit()
-            .navigationTitle(pokemon.name)
+        ScrollView {
+            VStack(spacing: 16) {
+                AsyncImage(
+                    url: pokemon.sprites.officialArtwork,
+                    content: { $0.resizable() },
+                    placeholder: { ProgressView() }
+                ).scaledToFit()
+
+                HStack {
+                    HStack {
+                        Text("Height:")
+                            .fontWeight(.bold)
+                        Text(String(format: "%.1f m", pokemon.height))
+                    }.frame(maxWidth: .infinity)
+                    HStack {
+                        Text("Weight:")
+                            .fontWeight(.bold)
+                        Text(String(format: "%.1f kg", pokemon.weight))
+                    }.frame(maxWidth: .infinity)
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .navigationTitle("No.\(pokemon.id.rawValue) \(pokemon.name)")
     }
 }
 
