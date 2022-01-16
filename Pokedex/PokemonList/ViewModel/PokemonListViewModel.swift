@@ -20,6 +20,10 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
     }
 
     func onAppear() async {
+        guard uiState.isBlank else {
+            return
+        }
+
         do {
             uiState.changeToLoading()
             if let pokemonList = try await getPokemonListInteractor.execute(.first) {

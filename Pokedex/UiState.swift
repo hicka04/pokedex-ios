@@ -14,6 +14,13 @@ enum UiState<Data> {
     case ideal(Data)
     case error(Error, Data?)
 
+    var isBlank: Bool {
+        switch self {
+        case .blank: return true
+        default: return false
+        }
+    }
+
     var isLoading: Bool {
         switch self {
         case .loading: return true
