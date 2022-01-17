@@ -14,3 +14,18 @@ struct PokemonListResponse: Decodable {
     let previous: URL?
     let results: [PokemonListElement]
 }
+
+extension PokemonListResponse {
+    var nextOffset: Int? {
+        guard
+            let nextUrl = next,
+            let urlComponents = URLComponents(url: nextUrl, resolvingAgainstBaseURL: true),
+            let offsetString = urlComponents.queryItems?.first(where: { $0.name == "offset" })?.value,
+            let offset = Int(offsetString)
+        else {
+            return nil
+        }
+
+        return offset
+    }
+}

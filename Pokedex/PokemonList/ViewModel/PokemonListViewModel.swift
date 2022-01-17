@@ -11,7 +11,7 @@ import UseCase
 
 @MainActor
 final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase>: ObservableObject {
-    @Published private(set) var uiState: UiState<[Pokemon]> = .blank
+    @Published private(set) var uiState: UiState<[Pokemon], Int> = .blank
 
     private let getPokemonListInteractor: GetPokemonListInteractor
 
@@ -26,10 +26,11 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
 
         do {
             uiState.changeToLoading()
-            if let pokemonList = try await getPokemonListInteractor.execute(.first) {
-                uiState = .partial(pokemonList)
+            let page = try await getPokemonListInteractor.execute()
+            if let nextOffset = page.nextOffset {
+                uiState = .partial(page.items, progress: nextOffset)
             } else {
-                uiState = .ideal([])
+                uiState = .ideal(page.items)
             }
         } catch {
             uiState.changeToError(error)
@@ -39,17 +40,20 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
     func onAppearCell(pokemon: Pokemon) async {
         guard
             let data = uiState.data,
-            data.last == pokemon
+            data.last == pokemon,
+            let nextOffset = uiState.progress
         else {
             return
         }
 
         do {
             uiState.changeToLoading()
-            if let pokemonList = try await getPokemonListInteractor.execute(.next) {
-                uiState = .partial(data + pokemonList)
+            let page = try await getPokemonListInteractor.execute(nextOffset)
+            let pokemonList = data + page.items
+            if let nextOffset = page.nextOffset {
+                uiState = .partial(pokemonList, progress: nextOffset)
             } else {
-                uiState = .ideal(data)
+                uiState = .ideal(pokemonList)
             }
         } catch {
             uiState.changeToError(error)

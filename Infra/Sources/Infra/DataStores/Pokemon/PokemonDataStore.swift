@@ -10,15 +10,14 @@ import APIKit
 import Entity
 import Repository
 
-public class PokemonDataStore {
+public struct PokemonDataStore {
     private let session: Session
-    private var pokemonListNextOffset: Int?
 
     init(session: Session) {
         self.session = session
     }
 
-    public convenience init() {
+    public init() {
         let adapter = URLSessionAdapter(configuration: .default)
         let session = Session(adapter: adapter, callbackQueue: .sessionQueue)
         self.init(session: session)
@@ -26,27 +25,10 @@ public class PokemonDataStore {
 }
 
 extension PokemonDataStore: PokemonRepository {
-    public func getPokemonList(reset: Bool) async throws -> [Pokemon]? {
-        if reset == false && pokemonListNextOffset == nil {
-            return nil
-        }
-        
-        let response = try await session.send(GetPokemonListRequest(offset: pokemonListNextOffset))
-        let pokemonListElements = response.results
-        pokemonListNextOffset = {
-            guard
-                let url = response.next,
-                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                let offsetString = urlComponents.queryItems?.first(where: { $0.name == "offset" })?.value,
-                let offset = Int(offsetString)
-            else {
-                return nil
-            }
-
-            return offset
-        }()
-        return try await withThrowingTaskGroup(of: Pokemon.self) { taskGroup in
-            pokemonListElements.forEach { pokemonListElement in
+    public func getPokemonList(offset: Int) async throws -> PokemonListPage {
+        let response = try await session.send(GetPokemonListRequest(offset: offset))
+        let pokemonList: [Pokemon] = try await withThrowingTaskGroup(of: Pokemon.self) { taskGroup in
+            response.results.forEach { pokemonListElement in
                 taskGroup.addTask {
                     try await self.getPokemon(name: pokemonListElement.name)
                 }
@@ -57,6 +39,7 @@ extension PokemonDataStore: PokemonRepository {
                     pokemonList.append(result)
                 }.sorted { $0.id.rawValue < $1.id.rawValue }
         }
+        return PokemonListPage(nextOffset: response.nextOffset, items: pokemonList)
     }
 
     public func getPokemon(name: String) async throws -> Pokemon {

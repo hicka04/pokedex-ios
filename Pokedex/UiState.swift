@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum UiState<Data> {
+enum UiState<Data, Progress> {
     case blank
     case loading(Data?)
-    case partial(Data)
+    case partial(Data, progress: Progress)
     case ideal(Data)
     case error(Error, Data?)
 
@@ -40,7 +40,7 @@ enum UiState<Data> {
         switch self {
         case
             let .loading(data?),
-            let .partial(data),
+            let .partial(data, _),
             let .ideal(data),
             let .error(_, data?):
             return data
@@ -50,13 +50,17 @@ enum UiState<Data> {
         }
     }
 
+    var progress: Progress? {
+        switch self {
+        case let .partial(_, progress): return progress
+        default: return nil
+        }
+    }
+
     var error: Error? {
         switch self {
-        case let .error(error, _):
-            return error
-
-        default:
-            return nil
+        case let .error(error, _): return error
+        default: return nil
         }
     }
 }

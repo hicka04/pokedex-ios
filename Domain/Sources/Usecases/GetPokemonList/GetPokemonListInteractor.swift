@@ -9,13 +9,10 @@ import Foundation
 import Entity
 import Repository
 
-public enum GetPokemonListPaginationParameter {
-    case first
-    case next
-}
+public typealias GetPokemonListOffset = Int
 
 public protocol GetPokemonListUseCase: UseCase
-where Input == GetPokemonListPaginationParameter, Output == [Pokemon]? {}
+where Input == GetPokemonListOffset, Output == PokemonListPage {}
 
 public struct GetPokemonListInteractor: GetPokemonListUseCase {
     private let pokemonRepository: PokemonRepository
@@ -25,6 +22,12 @@ public struct GetPokemonListInteractor: GetPokemonListUseCase {
     }
 
     public func execute(_ input: Input) async throws -> Output {
-        try await pokemonRepository.getPokemonList(reset: input == .first)
+        try await pokemonRepository.getPokemonList(offset: input)
+    }
+}
+
+extension GetPokemonListUseCase {
+    public func execute() async throws -> Output {
+        try await execute(0)
     }
 }
