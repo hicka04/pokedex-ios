@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "icon_type_12_off.svg",
       "idiom" : "universal"
     }
   ],

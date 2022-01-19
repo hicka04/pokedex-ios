@@ -20,25 +20,38 @@ struct PokemonDetailView: View {
                     placeholder: { ProgressView() }
                 ).scaledToFit()
 
-                HStack {
+                HStack(spacing: 16) {
                     Text("Types:")
                         .fontWeight(.bold)
-                    Text(pokemon.types.first.rawValue)
-                    if let secondType = pokemon.types.second?.rawValue {
-                        Text(secondType)
+                    VStack {
+                        Image(uiImage: pokemon.types.first.filledImage)
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Text(pokemon.types.first.rawValue)
                     }
+                    if let secondType = pokemon.types.second {
+                        VStack {
+                            Image(uiImage: secondType.filledImage)
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                            Text(secondType.rawValue)
+                        }
+                    }
+                    Spacer()
                 }
 
-                HStack {
-                    HStack {
+                HStack(spacing: 16) {
+                    HStack(spacing: 16) {
                         Text("Height:")
                             .fontWeight(.bold)
                         Text(String(format: "%.1f m", pokemon.height))
+                        Spacer()
                     }.frame(maxWidth: .infinity)
-                    HStack {
+                    HStack(spacing: 16) {
                         Text("Weight:")
                             .fontWeight(.bold)
                         Text(String(format: "%.1f kg", pokemon.weight))
+                        Spacer()
                     }.frame(maxWidth: .infinity)
                 }
             }
