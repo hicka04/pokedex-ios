@@ -11,7 +11,11 @@ import UseCase
 
 @MainActor
 final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase>: ObservableObject {
-    @Published private(set) var uiState: UiState<[Pokemon], Int> = .blank
+    @Published private(set) var uiState: UiState<[Pokemon], Int> = .blank {
+        didSet {
+            print(uiState)
+        }
+    }
 
     private let getPokemonListInteractor: GetPokemonListInteractor
 

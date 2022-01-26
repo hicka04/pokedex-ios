@@ -26,14 +26,14 @@ struct PokemonDetailView: View {
                     VStack {
                         Image(uiImage: pokemon.types.first.filledImage)
                             .resizable()
-                            .frame(width: 40, height: 40)
+                            .frame(width: 32, height: 32)
                         Text(pokemon.types.first.rawValue)
                     }
                     if let secondType = pokemon.types.second {
                         VStack {
                             Image(uiImage: secondType.filledImage)
                                 .resizable()
-                                .frame(width: 40, height: 40)
+                                .frame(width: 32, height: 32)
                             Text(secondType.rawValue)
                         }
                     }
@@ -54,6 +54,27 @@ struct PokemonDetailView: View {
                         Spacer()
                     }.frame(maxWidth: .infinity)
                 }
+
+                HStack(alignment: .top, spacing: 16) {
+                    Text("Abilities:")
+                        .fontWeight(.bold)
+
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text(pokemon.abilities.first.name)
+                        if let second = pokemon.abilities.second {
+                            Text(second.name)
+                        }
+                        if let hidden = pokemon.abilities.hidden {
+                            HStack(alignment: .lastTextBaseline) {
+                                Text(hidden.name)
+                                Text("(Hidden)")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                    Spacer()
+                }
             }
         }
         .padding(.horizontal, 16)
@@ -64,31 +85,7 @@ struct PokemonDetailView: View {
 struct PokemonDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PokemonDetailView(
-                pokemon: .init(
-                    id: .init(rawValue: 1),
-                    name: "フシギダネ",
-                    height: 10,
-                    weight: 20,
-                    types: .init(
-                        first: .grass,
-                        second: .poison
-                    ),
-                    sprites: .init(
-                        default: .init(
-                            front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
-                            back: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png")
-                        )!,
-                        female: nil,
-                        shiny: .init(
-                            front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"),
-                            back: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png")
-                        )!,
-                        shinyFemale: nil,
-                        officialArtwork: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")!
-                    )
-                )
-            )
+            PokemonDetailView(pokemon: .preview())
         }
     }
 }

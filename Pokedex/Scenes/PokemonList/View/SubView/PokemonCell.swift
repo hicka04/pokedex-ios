@@ -34,30 +34,6 @@ struct PokemonCell: View {
 
 struct PokemonCell_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCell(pokemon:
-            .init(
-                id: .init(rawValue: 1),
-                name: "フシギダネ",
-                height: 10,
-                weight: 20,
-                types: .init(
-                    first: .grass,
-                    second: .poison
-                ),
-                sprites: .init(
-                    default: .init(
-                        front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
-                        back: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png")
-                    )!,
-                    female: nil,
-                    shiny: .init(
-                        front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"),
-                        back: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png")
-                    )!,
-                    shinyFemale: nil,
-                    officialArtwork: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")!
-                )
-            )
-        )
+        PokemonCell(pokemon: .preview())
     }
 }

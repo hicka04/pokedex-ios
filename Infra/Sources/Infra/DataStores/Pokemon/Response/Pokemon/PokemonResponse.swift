@@ -14,6 +14,7 @@ struct PokemonResponse: Decodable, TranslatableToEntity {
     let height: Int
     let weight: Int
     let types: [`Type`]
+    let abilities: [Ability]
     let sprites: Sprites
 
     func translate() -> Pokemon {
@@ -23,7 +24,14 @@ struct PokemonResponse: Decodable, TranslatableToEntity {
             height: Double(height) / 10,
             weight: Double(weight) / 10,
             types: types.translate(),
+            abilities: abilities.translate(),
             sprites: sprites.translate()
         )
+    }
+}
+
+extension Array: TranslatableToEntity {
+    func translate() throws -> Never {
+        fatalError()
     }
 }

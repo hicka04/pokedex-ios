@@ -17,11 +17,13 @@ extension PokemonResponse {
             .init(rawValue: type.name)!
         }
     }
+
+    typealias TypeName = NamedResponse
+    typealias Types = Array<`Type`>
 }
 
-typealias TypeName = NamedResponse
 
-extension Array: TranslatableToEntity where Element == PokemonResponse.`Type` {
+extension Array where Element == PokemonResponse.`Type` {
     func translate() -> Pokemon.Types {
         let first: Pokemon.`Type` = self[0].translate()
         let second: Pokemon.`Type`? = {

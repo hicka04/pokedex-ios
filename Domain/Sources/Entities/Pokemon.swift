@@ -13,6 +13,7 @@ public struct Pokemon: Equatable, Identifiable, Sendable {
     public let height: Double
     public let weight: Double
     public let types: Types
+    public let abilities: Abilities
     public let sprites: Sprites
 
     public init(
@@ -21,6 +22,7 @@ public struct Pokemon: Equatable, Identifiable, Sendable {
         height: Double,
         weight: Double,
         types: Types,
+        abilities: Abilities,
         sprites: Sprites
     ) {
         self.id = id
@@ -28,6 +30,7 @@ public struct Pokemon: Equatable, Identifiable, Sendable {
         self.height = height
         self.weight = weight
         self.types = types
+        self.abilities = abilities
         self.sprites = sprites
     }
 }
