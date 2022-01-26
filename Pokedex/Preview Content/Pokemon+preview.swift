@@ -15,10 +15,7 @@ extension Pokemon {
             name: "フシギダネ",
             height: 10,
             weight: 20,
-            types: .init(
-                first: .grass,
-                second: .poison
-            ),
+            types: .preview(),
             abilities: .init(
                 first: .init(name: "overgrow"),
                 second: nil,

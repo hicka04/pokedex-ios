@@ -20,25 +20,7 @@ struct PokemonDetailView: View {
                     placeholder: { ProgressView() }
                 ).scaledToFit()
 
-                HStack(spacing: 16) {
-                    Text("Types:")
-                        .fontWeight(.bold)
-                    VStack {
-                        Image(uiImage: pokemon.types.first.filledImage)
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                        Text(pokemon.types.first.rawValue)
-                    }
-                    if let secondType = pokemon.types.second {
-                        VStack {
-                            Image(uiImage: secondType.filledImage)
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                            Text(secondType.rawValue)
-                        }
-                    }
-                    Spacer()
-                }
+                TypesView(types: pokemon.types)
 
                 HStack(spacing: 16) {
                     HStack(spacing: 16) {
