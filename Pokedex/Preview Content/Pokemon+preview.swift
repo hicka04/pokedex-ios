@@ -13,8 +13,8 @@ extension Pokemon {
         .init(
             id: .init(rawValue: 1),
             name: "フシギダネ",
-            height: 10,
-            weight: 20,
+            height: 0.7,
+            weight: 6.9,
             types: .preview(),
             abilities: .init(
                 first: .init(name: "overgrow"),

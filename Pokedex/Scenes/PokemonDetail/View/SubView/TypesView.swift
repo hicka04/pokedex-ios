@@ -43,5 +43,6 @@ private extension PokemonDetailView.TypesView {
 struct TypesView_Previews: PreviewProvider {
     static var previews: some View {
         PokemonDetailView.TypesView(types: .preview())
+            .previewLayout(.sizeThatFits)
     }
 }

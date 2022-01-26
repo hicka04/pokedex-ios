@@ -23,18 +23,10 @@ struct PokemonDetailView: View {
                 TypesView(types: pokemon.types)
 
                 HStack(spacing: 16) {
-                    HStack(spacing: 16) {
-                        Text("Height:")
-                            .fontWeight(.bold)
-                        Text(String(format: "%.1f m", pokemon.height))
-                        Spacer()
-                    }.frame(maxWidth: .infinity)
-                    HStack(spacing: 16) {
-                        Text("Weight:")
-                            .fontWeight(.bold)
-                        Text(String(format: "%.1f kg", pokemon.weight))
-                        Spacer()
-                    }.frame(maxWidth: .infinity)
+                    HeightView(height: pokemon.height)
+                        .frame(maxWidth: .infinity)
+                    WeightView(weight: pokemon.weight)
+                        .frame(maxWidth: .infinity)
                 }
 
                 HStack(alignment: .top, spacing: 16) {
