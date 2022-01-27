@@ -35,5 +35,6 @@ struct PokemonCell: View {
 struct PokemonCell_Previews: PreviewProvider {
     static var previews: some View {
         PokemonCell(pokemon: .preview())
+            .previewLayout(.sizeThatFits)
     }
 }

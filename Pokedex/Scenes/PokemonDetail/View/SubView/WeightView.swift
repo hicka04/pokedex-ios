@@ -25,5 +25,6 @@ extension PokemonDetailView {
 struct WeightView_Previews: PreviewProvider {
     static var previews: some View {
         PokemonDetailView.WeightView(weight: Pokemon.preview().weight)
+            .previewLayout(.sizeThatFits)
     }
 }
