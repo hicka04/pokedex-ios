@@ -1,5 +1,6 @@
 xcassets:
   inputs:
+    - Pokedex/Resources/Colors.xcassets
     - Pokedex/Resources/Images.xcassets
     - Pokedex/Preview Content/Preview Assets.xcassets
   outputs:
