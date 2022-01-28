@@ -13,41 +13,47 @@ struct PokemonDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
-                AsyncImage(
-                    url: pokemon.sprites.officialArtwork,
-                    content: { $0.resizable() },
-                    placeholder: { ProgressView() }
-                ).scaledToFit()
+            GeometryReader { proxy in
+                VStack {
+                    AsyncImage(
+                        url: pokemon.sprites.officialArtwork,
+                        content: { $0.resizable() },
+                        placeholder: { ProgressView() }
+                    )
+                        .frame(width: proxy.size.width * 0.8, height: proxy.size.width * 0.8)
+                        .scaledToFit()
 
-                TypesView(types: pokemon.types)
-
-                HStack(spacing: 16) {
-                    HeightView(height: pokemon.height)
-                        .frame(maxWidth: .infinity)
-                    WeightView(weight: pokemon.weight)
-                        .frame(maxWidth: .infinity)
-                }
-
-                HStack(alignment: .top, spacing: 16) {
-                    Text("Abilities:")
-                        .fontWeight(.bold)
-
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text(pokemon.abilities.first.name)
-                        if let second = pokemon.abilities.second {
-                            Text(second.name)
+                    VStack(spacing: 16) {
+                        TypesView(types: pokemon.types)
+                        
+                        HStack(spacing: 16) {
+                            HeightView(height: pokemon.height)
+                                .frame(maxWidth: .infinity)
+                            WeightView(weight: pokemon.weight)
+                                .frame(maxWidth: .infinity)
                         }
-                        if let hidden = pokemon.abilities.hidden {
-                            HStack(alignment: .lastTextBaseline) {
-                                Text(hidden.name)
-                                Text("(Hidden)")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+
+                        HStack(alignment: .top, spacing: 16) {
+                            Text("Abilities:")
+                                .fontWeight(.bold)
+
+                            VStack(alignment: .leading, spacing: 16) {
+                                Text(pokemon.abilities.first.name)
+                                if let second = pokemon.abilities.second {
+                                    Text(second.name)
+                                }
+                                if let hidden = pokemon.abilities.hidden {
+                                    HStack(alignment: .lastTextBaseline) {
+                                        Text(hidden.name)
+                                        Text("(Hidden)")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                }
                             }
+                            Spacer()
                         }
                     }
-                    Spacer()
                 }
             }
         }
