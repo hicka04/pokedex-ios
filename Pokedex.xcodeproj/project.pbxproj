@@ -250,6 +250,7 @@
 			buildConfigurationList = B86CE29A2778A81C00D0D1C4 /* Build configuration list for PBXNativeTarget "Pokedex" */;
 			buildPhases = (
 				B82D0E5227970295000A09DC /* Run SwiftGen */,
+				B8113C9527A6DA9E0038FEFB /* Run Sourcery */,
 				B86CE2722778A81A00D0D1C4 /* Sources */,
 				B86CE2732778A81A00D0D1C4 /* Frameworks */,
 				B86CE2742778A81A00D0D1C4 /* Resources */,
@@ -350,6 +351,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B8113C9527A6DA9E0038FEFB /* Run Sourcery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Sourcery";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nSDKROOT=$(xcrun --sdk macosx --show-sdk-path)\nmint run sourcery\n";
+		};
 		B82D0E5227970295000A09DC /* Run SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

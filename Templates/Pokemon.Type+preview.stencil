@@ -1,0 +1,14 @@
+{% for enum in types.enums %}
+// sourcery:inline:{{ enum.name }}.TemplateName
+{% if enum.name == "Pokemon.`Type`" %}
+{% for case in enum.cases %}
+struct TypeView_{{ case.name }}_Preview: PreviewProvider {
+    static var previews: some View {
+        PokemonDetailView.TypesView.TypeView(type: .{{ case.name }})
+            .previewLayout(.sizeThatFits)
+    }
+}
+{% endfor %}
+{% endif %}
+// sourcery:end
+{% endfor %}
