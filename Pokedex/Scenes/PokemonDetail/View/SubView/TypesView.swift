@@ -27,14 +27,24 @@ private extension PokemonDetailView.TypesView {
     struct TypeView: View {
         let type: Pokemon.`Type`
 
+        private let cornerRadius: CGFloat = 16
+        private var height: CGFloat { cornerRadius * 2 }
+
         var body: some View {
-            VStack {
+            HStack {
                 Image(uiImage: type.filledImage)
                     .resizable()
-                    .frame(width: 32, height: 32)
+                    .scaledToFit()
                 Text(type.rawValue)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .fontWeight(.medium)
+                    .foregroundColor(Color(uiColor: type.color))
+            }
+            .frame(height: height)
+            .padding(.trailing, cornerRadius)
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(Color(uiColor: type.color), lineWidth: 2)
             }
         }
     }
