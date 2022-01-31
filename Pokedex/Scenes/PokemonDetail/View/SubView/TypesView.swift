@@ -35,16 +35,18 @@ private extension PokemonDetailView.TypesView {
                 Image(uiImage: type.filledImage)
                     .resizable()
                     .scaledToFit()
+                Spacer()
                 Text(type.rawValue)
                     .font(.caption)
                     .fontWeight(.medium)
                     .foregroundColor(Color(uiColor: type.color))
+                Spacer()
             }
             .frame(height: height)
             .padding(.trailing, cornerRadius)
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(Color(uiColor: type.color), lineWidth: 2)
+                    .strokeBorder(Color(uiColor: type.color), lineWidth: 2, antialiased: true)
             }
         }
     }
@@ -53,6 +55,9 @@ private extension PokemonDetailView.TypesView {
 struct TypesView_Previews: PreviewProvider {
     static var previews: some View {
         PokemonDetailView.TypesView(types: .preview())
+            .previewLayout(.sizeThatFits)
+
+        PokemonDetailView.TypesView(types: .init(first: .grass, second: nil))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -57,7 +57,7 @@ struct PokemonDetailView: View {
                 }
             }
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 32)
         .navigationTitle("No.\(pokemon.id.rawValue) \(pokemon.name)")
     }
 }
