@@ -33,26 +33,7 @@ struct PokemonDetailView: View {
                                 .frame(maxWidth: .infinity)
                         }
 
-                        HStack(alignment: .top, spacing: 16) {
-                            Text("Abilities:")
-                                .fontWeight(.bold)
-
-                            VStack(alignment: .leading, spacing: 16) {
-                                Text(pokemon.abilities.first.name)
-                                if let second = pokemon.abilities.second {
-                                    Text(second.name)
-                                }
-                                if let hidden = pokemon.abilities.hidden {
-                                    HStack(alignment: .lastTextBaseline) {
-                                        Text(hidden.name)
-                                        Text("(Hidden)")
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
-                                }
-                            }
-                            Spacer()
-                        }
+                        AbilitiesView(abilities: pokemon.abilities)
                     }
                 }
             }

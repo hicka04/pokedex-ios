@@ -16,11 +16,7 @@ extension Pokemon {
             height: 0.7,
             weight: 6.9,
             types: .preview(),
-            abilities: .init(
-                first: .init(name: "overgrow"),
-                second: nil,
-                hidden: .init(name: "chlorophyll")
-            ),
+            abilities: .preview(),
             sprites: .init(
                 default: .init(
                     front: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
