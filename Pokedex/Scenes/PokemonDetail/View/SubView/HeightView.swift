@@ -16,8 +16,13 @@ extension PokemonDetailView {
         var body: some View {
             HStack {
                 Image(systemSymbol: .ruler)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
                     .rotationEffect(.degrees(90))
+                Spacer()
                 Text(String(format: "%.1f m", height))
+                Spacer()
             }
         }
     }

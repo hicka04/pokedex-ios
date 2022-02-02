@@ -16,7 +16,12 @@ extension PokemonDetailView {
         var body: some View {
             HStack {
                 Image(systemSymbol: .scalemass)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                Spacer()
                 Text(String(format: "%.1f kg", weight))
+                Spacer()
             }
         }
     }
