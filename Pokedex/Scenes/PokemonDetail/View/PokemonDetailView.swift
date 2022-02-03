@@ -13,28 +13,20 @@ struct PokemonDetailView: View {
 
     var body: some View {
         ScrollView {
-            GeometryReader { proxy in
-                VStack {
-                    AsyncImage(
-                        url: pokemon.sprites.officialArtwork,
-                        content: { $0.resizable() },
-                        placeholder: { ProgressView() }
-                    )
-                        .frame(width: proxy.size.width * 0.8, height: proxy.size.width * 0.8)
-                        .scaledToFit()
+            VStack {
+                OfficialArtworkView(url: pokemon.sprites.officialArtwork)
 
-                    VStack(spacing: 16) {
-                        TypesView(types: pokemon.types)
-                        
-                        HStack(spacing: 16) {
-                            HeightView(height: pokemon.height)
-                                .frame(maxWidth: .infinity)
-                            WeightView(weight: pokemon.weight)
-                                .frame(maxWidth: .infinity)
-                        }
+                VStack(spacing: 16) {
+                    TypesView(types: pokemon.types)
 
-                        AbilitiesView(abilities: pokemon.abilities)
+                    HStack(spacing: 16) {
+                        HeightView(height: pokemon.height)
+                            .frame(maxWidth: .infinity)
+                        WeightView(weight: pokemon.weight)
+                            .frame(maxWidth: .infinity)
                     }
+
+                    AbilitiesView(abilities: pokemon.abilities)
                 }
             }
         }
