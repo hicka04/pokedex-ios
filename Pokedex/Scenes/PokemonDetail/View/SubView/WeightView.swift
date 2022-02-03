@@ -22,7 +22,7 @@ extension PokemonDetailView {
                 Spacer()
                 Text(String(format: "%.1f kg", weight))
                 Spacer()
-            }
+            }.padding(.horizontal, 4)
         }
     }
 }

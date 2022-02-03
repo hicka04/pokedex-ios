@@ -23,7 +23,7 @@ extension PokemonDetailView {
                 Spacer()
                 Text(String(format: "%.1f m", height))
                 Spacer()
-            }
+            }.padding(.horizontal, 4)
         }
     }
 }

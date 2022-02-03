@@ -21,9 +21,7 @@ struct PokemonDetailView: View {
 
                     HStack(spacing: 16) {
                         HeightView(height: pokemon.height)
-                            .frame(maxWidth: .infinity)
                         WeightView(weight: pokemon.weight)
-                            .frame(maxWidth: .infinity)
                     }
 
                     AbilitiesView(abilities: pokemon.abilities)
