@@ -17,6 +17,7 @@ extension Pokemon {
             weight: 6.9,
             types: .preview(),
             abilities: .preview(),
+            baseStats: .preview(),
             sprites: .preview()
         )
     }

@@ -16,7 +16,7 @@ struct PokemonDetailView: View {
             VStack {
                 OfficialArtworkView(url: pokemon.sprites.officialArtwork)
 
-                VStack(spacing: 16) {
+                VStack(alignment: .leading, spacing: 32) {
                     TypesView(types: pokemon.types)
 
                     HStack(spacing: 16) {
@@ -25,10 +25,12 @@ struct PokemonDetailView: View {
                     }
 
                     AbilitiesView(abilities: pokemon.abilities)
+
+                    BaseStasView(baseStats: pokemon.baseStats)
                 }
             }
+            .padding(.horizontal, 32)
         }
-        .padding(.horizontal, 32)
         .navigationTitle("No.\(pokemon.id.rawValue) \(pokemon.name)")
     }
 }

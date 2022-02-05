@@ -44,7 +44,6 @@ private extension PokemonDetailView.AbilitiesView {
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                Spacer()
             }
         }
     }
