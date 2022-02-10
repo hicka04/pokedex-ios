@@ -26,3 +26,25 @@ extension Pokemon {
         }
     }
 }
+
+extension Pokemon.BaseStats {
+    public enum Category {
+        case hp
+        case attack
+        case defense
+        case specialAttack
+        case specialDefense
+        case speed
+    }
+
+    public subscript(_ category: Category) -> Int {
+        switch category {
+        case .hp: return hp
+        case .attack: return attack
+        case .defense: return defense
+        case .specialAttack: return specialAttack
+        case .specialDefense: return specialDefense
+        case .speed: return speed
+        }
+    }
+}
