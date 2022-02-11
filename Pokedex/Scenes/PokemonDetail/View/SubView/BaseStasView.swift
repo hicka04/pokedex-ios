@@ -18,7 +18,7 @@ extension PokemonDetailView {
                     .font(.headline)
 
                 GeometryReader { proxy in
-                    RaderChart(baseStats: baseStats)
+                    RadarChart(baseStats: baseStats)
                         .frame(
                             width: proxy.size.width,
                             height: proxy.size.width
@@ -30,24 +30,27 @@ extension PokemonDetailView {
 }
 
 private extension PokemonDetailView.BaseStasView {
-    struct RaderChart: View {
+    struct RadarChart: View {
         let baseStats: Pokemon.BaseStats
 
         var body: some View {
             ZStack {
-                AxisShape()
-                    .stroke(Color(uiColor: Asset.Colors.BaseStats.axis.color))
-                ValuesShape(baseStats: baseStats)
-                    .stroke(
-                        Color(uiColor: Asset.Colors.BaseStats.value.color),
-                        lineWidth: 4
-                    )
+                AxisLabelsView()
+                ZStack {
+                    AxisShape()
+                        .stroke(Color(uiColor: Asset.Colors.BaseStats.axis.color))
+                    ValuesShape(baseStats: baseStats)
+                        .stroke(
+                            Color(uiColor: Asset.Colors.BaseStats.value.color),
+                            lineWidth: 4
+                        )
+                }.padding(40)
             }
         }
     }
 }
 
-private extension PokemonDetailView.BaseStasView.RaderChart {
+private extension PokemonDetailView.BaseStasView.RadarChart {
     struct ValuesShape: Shape {
         let baseStats: Pokemon.BaseStats
 
@@ -78,6 +81,30 @@ private extension PokemonDetailView.BaseStasView.RaderChart {
             }
         }
     }
+
+    struct AxisLabelsView: View {
+        var body: some View {
+            AxisLabelView(category: .hp)
+            AxisLabelView(category: .attack)
+            AxisLabelView(category: .defense)
+            AxisLabelView(category: .specialAttack)
+            AxisLabelView(category: .specialDefense)
+            AxisLabelView(category: .speed)
+        }
+
+        private struct AxisLabelView: View {
+            let category: Pokemon.BaseStats.Category
+
+            var body: some View {
+                GeometryReader { proxy in
+                    Text(category.label)
+                        .font(.caption2)
+                        .foregroundColor(Color(uiColor: Asset.Colors.BaseStats.label.color))
+                        .position(category.labelPosition(size: proxy.size))
+                }
+            }
+        }
+    }
 }
 
 struct BaseStasView_Previews: PreviewProvider {
@@ -88,23 +115,41 @@ struct BaseStasView_Previews: PreviewProvider {
 }
 
 private extension Pokemon.BaseStats.Category {
-    var theta: Double {
+    var theta: CGFloat {
         switch self {
-        case .hp: return Double.pi * 3 / 2
-        case .attack: return Double.pi * 11 / 6
-        case .defense: return Double.pi / 6
-        case .specialAttack: return Double.pi * 7 / 6
-        case .specialDefense: return Double.pi * 5 / 6
-        case .speed: return Double.pi / 2
+        case .hp: return .pi * 3 / 2
+        case .attack: return .pi * 11 / 6
+        case .defense: return .pi / 6
+        case .specialAttack: return .pi * 7 / 6
+        case .specialDefense: return .pi * 5 / 6
+        case .speed: return .pi / 2
         }
+    }
+
+    var label: String {
+        switch self {
+        case .hp: return "HP"
+        case .attack: return "Attack"
+        case .defense: return "Defense"
+        case .specialAttack: return "SpecialAttack"
+        case .specialDefense: return "SpecialDefense"
+        case .speed: return "Speed"
+        }
+    }
+
+    func labelPosition(size: CGSize) -> CGPoint {
+        .init(
+            x: cos(theta) * (size.width / 2 - 24) + size.width / 2,
+            y: sin(theta) * (size.height / 2 - 24) + size.height / 2
+        )
     }
 }
 
 private extension Pokemon.BaseStats {
     private func coordinate(category: Category) -> CGPoint {
         .init(
-            x: cos(category.theta) * Double(self[category]),
-            y: sin(category.theta) * Double(self[category])
+            x: cos(category.theta) * CGFloat(self[category]),
+            y: sin(category.theta) * CGFloat(self[category])
         )
     }
 
@@ -118,8 +163,8 @@ private extension Pokemon.BaseStats {
 
     static func axisMaxPoint(category: Category, rect: CGRect) -> CGPoint {
         .init(
-            x: CGFloat(cos(category.theta)) * rect.width / 2 + rect.midX,
-            y: CGFloat(sin(category.theta)) * rect.height / 2 + rect.midY
+            x: cos(category.theta) * rect.width / 2 + rect.midX,
+            y: sin(category.theta) * rect.height / 2 + rect.midY
         )
     }
 }
