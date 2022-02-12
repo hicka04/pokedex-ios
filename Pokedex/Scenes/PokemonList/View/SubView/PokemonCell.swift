@@ -23,7 +23,11 @@ struct PokemonCell: View {
                     ProgressView()
                 }
             ).frame(width: 80, height: 80)
-            Text(pokemon.name)
+            VStack(alignment: .leading) {
+                Text("No.\(pokemon.id.rawValue)")
+                    .font(.caption)
+                Text(pokemon.name)
+            }
             Spacer()
             Image(systemSymbol: .chevronRight)
         }
