@@ -9,9 +9,9 @@ import Foundation
 
 public struct PokemonSpecies {
     public let id: ID
-    public let evolutionChainId: Int // FIXME
+    public let evolutionChainId: EvolutionChain.ID
 
-    public init(id: PokemonSpecies.ID, evolutionChainId: Int) {
+    public init(id: PokemonSpecies.ID, evolutionChainId: EvolutionChain.ID) {
         self.id = id
         self.evolutionChainId = evolutionChainId
     }
@@ -19,7 +19,7 @@ public struct PokemonSpecies {
 
 extension PokemonSpecies {
     public struct ID: RawRepresentable {
-        public var rawValue: Int
+        public let rawValue: Int
 
         public init(rawValue: Int) {
             self.rawValue = rawValue

@@ -10,7 +10,7 @@ import Entity
 import APIKit
 
 struct GetPokemonSpeciesRequest: PokemonRequest {
-    typealias Response = PokemonSpecies
+    typealias Response = PokemonSpeciesResponse
 
     var path: String {
         "pokemon-species/\(pokemonId.rawValue)"

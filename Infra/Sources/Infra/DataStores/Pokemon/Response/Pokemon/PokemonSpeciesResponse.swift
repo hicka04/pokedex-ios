@@ -1,5 +1,5 @@
 //
-//  PokemonSpecies.swift
+//  PokemonSpeciesResponse.swift
 //  
 //
 //  Created by hicka04 on 2022/02/12.
@@ -8,7 +8,7 @@
 import Foundation
 import Entity
 
-struct PokemonSpecies: Decodable {
+struct PokemonSpeciesResponse: Decodable {
     let id: Int
     let evolutionChain: EvolutionChainResource
 
@@ -17,12 +17,12 @@ struct PokemonSpecies: Decodable {
     }
 }
 
-extension PokemonSpecies: TranslatableToEntity {
-    func translate() throws -> Entity.PokemonSpecies {
+extension PokemonSpeciesResponse: TranslatableToEntity {
+    func translate() throws -> PokemonSpecies {
         let evolutionChainId = Int(evolutionChain.url.pathComponents.last!)!
         return .init(
             id: .init(rawValue: id),
-            evolutionChainId: evolutionChainId
+            evolutionChainId: .init(rawValue: evolutionChainId)
         )
     }
 }

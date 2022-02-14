@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "APIKit",
+        "repositoryURL": "https://github.com/ishkawa/APIKit.git",
+        "state": {
+          "branch": null,
+          "revision": "4e7f42d93afb787b0bc502171f9b5c12cf49d0ca",
+          "version": "5.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
