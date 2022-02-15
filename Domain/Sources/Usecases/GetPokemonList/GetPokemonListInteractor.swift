@@ -14,13 +14,15 @@ public typealias GetPokemonListOffset = Int
 public protocol GetPokemonListUseCase: UseCase
 where Input == GetPokemonListOffset, Output == PokemonListPage {}
 
-public struct GetPokemonListInteractor: GetPokemonListUseCase {
+public struct GetPokemonListInteractor {
     private let pokemonRepository: PokemonRepository
 
     public init(pokemonRepository: PokemonRepository) {
         self.pokemonRepository = pokemonRepository
     }
+}
 
+extension GetPokemonListInteractor: GetPokemonListUseCase {
     public func execute(_ input: Input) async throws -> Output {
         try await pokemonRepository.getPokemonList(offset: input)
     }
