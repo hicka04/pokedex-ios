@@ -12,11 +12,17 @@ import Infra
 
 @MainActor
 struct PokemonListView: View {
-    @StateObject private var viewModel = PokemonListViewModel(
-        getPokemonListInteractor: GetPokemonListInteractor(
-            pokemonRepository: PokemonDataStore()
+    @StateObject private var viewModel: PokemonListViewModel<GetPokemonListInteractor>
+
+    init() {
+        _viewModel = .init(
+            wrappedValue: .init(
+                getPokemonListInteractor: GetPokemonListInteractor(
+                    pokemonRepository: PokemonDataStore()
+                )
+            )
         )
-    )
+    }
 
     var body: some View {
         ScrollView {
@@ -26,8 +32,8 @@ struct PokemonListView: View {
                         PokemonDetailView(pokemon: pokemon)
                     } label: {
                         PokemonCell(pokemon: pokemon)
-                            .task {
-                                await viewModel.onAppearCell(pokemon: pokemon)
+                            .onAppear {
+                                viewModel.onAppearCell(pokemon: pokemon)
                             }
                     }
                     .buttonStyle(.plain)
@@ -38,8 +44,8 @@ struct PokemonListView: View {
             }
         }
         .navigationTitle("Pokedex")
-        .task {
-            await viewModel.onAppear()
+        .onAppear {
+            viewModel.onAppear()
         }
     }
 }

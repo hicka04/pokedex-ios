@@ -23,25 +23,27 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
         self.getPokemonListInteractor = getPokemonListInteractor
     }
 
-    func onAppear() async {
+    func onAppear() {
         guard uiState.isBlank else {
             return
         }
 
-        do {
-            uiState.changeToLoading()
-            let page = try await getPokemonListInteractor.execute()
-            if let nextOffset = page.nextOffset {
-                uiState = .partial(page.items, progress: nextOffset)
-            } else {
-                uiState = .ideal(page.items)
+        Task {
+            do {
+                uiState.changeToLoading()
+                let page = try await getPokemonListInteractor.execute()
+                if let nextOffset = page.nextOffset {
+                    uiState = .partial(page.items, progress: nextOffset)
+                } else {
+                    uiState = .ideal(page.items)
+                }
+            } catch {
+                uiState.changeToError(error)
             }
-        } catch {
-            uiState.changeToError(error)
         }
     }
 
-    func onAppearCell(pokemon: Pokemon) async {
+    func onAppearCell(pokemon: Pokemon) {
         guard
             let data = uiState.data,
             data.last == pokemon,
@@ -50,17 +52,19 @@ final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase
             return
         }
 
-        do {
-            uiState.changeToLoading()
-            let page = try await getPokemonListInteractor.execute(nextOffset)
-            let pokemonList = data + page.items
-            if let nextOffset = page.nextOffset {
-                uiState = .partial(pokemonList, progress: nextOffset)
-            } else {
-                uiState = .ideal(pokemonList)
+        Task {
+            do {
+                uiState.changeToLoading()
+                let page = try await getPokemonListInteractor.execute(nextOffset)
+                let pokemonList = data + page.items
+                if let nextOffset = page.nextOffset {
+                    uiState = .partial(pokemonList, progress: nextOffset)
+                } else {
+                    uiState = .ideal(pokemonList)
+                }
+            } catch {
+                uiState.changeToError(error)
             }
-        } catch {
-            uiState.changeToError(error)
         }
     }
 }

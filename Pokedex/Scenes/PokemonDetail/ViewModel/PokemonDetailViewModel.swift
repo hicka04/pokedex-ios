@@ -24,11 +24,13 @@ final class PokemonDetailViewModel<GetEvolutionChainInteractor: GetEvoluionChain
         self.getEvolutionChainInteractor = getEvolutionChainInteractor
     }
 
-    func onAppear() async {
-        do {
-            evolutionChain = try await getEvolutionChainInteractor.execute(pokemon.id)
-        } catch {
-            print(error)
+    func onAppear() {
+        Task {
+            do {
+                evolutionChain = try await getEvolutionChainInteractor.execute(pokemon.id)
+            } catch {
+                print(error)
+            }
         }
     }
 }
