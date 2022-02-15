@@ -14,7 +14,7 @@ struct EvolutionChainResponse: Decodable {
 }
 
 extension EvolutionChainResponse {
-    final class ChainLink: Decodable {
+    final class ChainLink: Decodable, Sendable {
         let species: Species
         let evolvesTo: [ChainLink]
     }

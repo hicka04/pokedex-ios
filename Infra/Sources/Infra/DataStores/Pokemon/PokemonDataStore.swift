@@ -10,7 +10,7 @@ import APIKit
 import Entity
 import Repository
 
-public struct PokemonDataStore {
+public struct PokemonDataStore: Sendable {
     private let session: Session
 
     init(session: Session) {
