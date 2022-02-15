@@ -7,31 +7,51 @@
 
 import SwiftUI
 import Entity
+import UseCase
+import Infra
 
 struct PokemonDetailView: View {
-    let pokemon: Pokemon
+    @StateObject private var viewModel: PokemonDetailViewModel<GetEvolutionChainInteractor>
+
+    init(pokemon: Pokemon) {
+        _viewModel = .init(
+            wrappedValue: .init(
+                pokemon: pokemon,
+                getEvolutionChainInteractor: .init(
+                    pokemonRepository: PokemonDataStore()
+                )
+            )
+        )
+    }
 
     var body: some View {
         ScrollView {
             VStack {
-                OfficialArtworkView(url: pokemon.sprites.officialArtwork)
+                OfficialArtworkView(url: viewModel.pokemon.sprites.officialArtwork)
 
                 VStack(alignment: .leading, spacing: 32) {
-                    TypesView(types: pokemon.types)
+                    TypesView(types: viewModel.pokemon.types)
 
                     HStack(spacing: 16) {
-                        HeightView(height: pokemon.height)
-                        WeightView(weight: pokemon.weight)
+                        HeightView(height: viewModel.pokemon.height)
+                        WeightView(weight: viewModel.pokemon.weight)
                     }
 
-                    AbilitiesView(abilities: pokemon.abilities)
+                    AbilitiesView(abilities: viewModel.pokemon.abilities)
 
-                    BaseStasView(baseStats: pokemon.baseStats)
+                    BaseStasView(baseStats: viewModel.pokemon.baseStats)
+
+                    if let evolutionChain = viewModel.evolutionChain {
+                        Text("\(evolutionChain.id.rawValue)")
+                    }
                 }
             }
             .padding(.horizontal, 32)
         }
-        .navigationTitle("No.\(pokemon.id.rawValue) \(pokemon.name)")
+        .navigationTitle("No.\(viewModel.pokemon.id.rawValue) \(viewModel.pokemon.name)")
+        .task {
+            await viewModel.onAppear()
+        }
     }
 }
 
