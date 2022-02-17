@@ -52,12 +52,12 @@ extension PokemonDataStore: PokemonRepository {
 
     public func getEvolutionChain(id: EvolutionChain.ID) async throws -> EvolutionChain {
         let evolutionChainResponse = try await session.send(GetEvolutionChainRequest(evolutionChainId: id))
-        @Sendable func getPokemonRecursive(chain: EvolutionChainResponse.ChainLink) async throws -> EvolutionChain.ChainLink {
+        @Sendable func getPokemonRecursive(chain: EvolutionChainResponse.ChainLink, isOrigin: Bool) async throws -> EvolutionChain.ChainLink {
             async let pokemon = getPokemon(name: chain.species.name)
             async let evolvesTo: [EvolutionChain.ChainLink] = withThrowingTaskGroup(of: EvolutionChain.ChainLink.self) { taskGroup in
                 chain.evolvesTo.forEach { chain in
                     taskGroup.addTask {
-                        try await getPokemonRecursive(chain: chain)
+                        try await getPokemonRecursive(chain: chain, isOrigin: false)
                     }
                 }
 
@@ -66,9 +66,9 @@ extension PokemonDataStore: PokemonRepository {
                         evolvesTo.append(result)
                     }.sorted { $0.pokemon.id.rawValue < $1.pokemon.id.rawValue }
             }
-            return try await .init(pokemon: pokemon, evolvesTo: evolvesTo)
+            return try await .init(pokemon: pokemon, isOrigin: isOrigin, evolvesTo: evolvesTo)
         }
-        let chain = try await getPokemonRecursive(chain: evolutionChainResponse.chain)
+        let chain = try await getPokemonRecursive(chain: evolutionChainResponse.chain, isOrigin: true)
         return .init(id: .init(rawValue: evolutionChainResponse.id), chain: chain)
     }
 }

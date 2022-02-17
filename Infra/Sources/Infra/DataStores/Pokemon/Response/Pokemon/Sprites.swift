@@ -10,22 +10,10 @@ import Entity
 
 extension PokemonResponse {
     struct Sprites: Decodable, TranslatableToEntity {
-        let frontDefault: URL
-        let frontShiny: URL
-        let frontFemale: URL?
-        let frontShinyFemale: URL?
-        let backDefault: URL
-        let backShiny: URL
-        let backFemale: URL?
-        let backShinyFemale: URL?
         let other: Other
 
         func translate() -> Pokemon.Sprites {
             .init(
-                default: .init(front: frontDefault, back: backDefault),
-                female: .init(front: frontFemale, back: backFemale),
-                shiny: .init(front: frontShiny, back: backShiny),
-                shinyFemale: .init(front: frontShinyFemale, back: backShinyFemale),
                 officialArtwork: other.officialArtwork.frontDefault
             )
         }

@@ -28,10 +28,12 @@ extension EvolutionChain {
 
     public final class ChainLink: Sendable {
         public let pokemon: Pokemon
+        public let isOrigin: Bool
         public let evolvesTo: [ChainLink]
 
-        public init(pokemon: Pokemon, evolvesTo: [ChainLink]) {
+        public init(pokemon: Pokemon, isOrigin: Bool, evolvesTo: [ChainLink]) {
             self.pokemon = pokemon
+            self.isOrigin = isOrigin
             self.evolvesTo = evolvesTo
         }
     }

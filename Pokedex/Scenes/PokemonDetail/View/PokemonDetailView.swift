@@ -42,7 +42,7 @@ struct PokemonDetailView: View {
                     BaseStasView(baseStats: viewModel.pokemon.baseStats)
 
                     if let evolutionChain = viewModel.evolutionChain {
-                        Text("\(evolutionChain.id.rawValue)")
+                        EvolutionChainView(evolutionChain: evolutionChain)
                     }
                 }
             }
