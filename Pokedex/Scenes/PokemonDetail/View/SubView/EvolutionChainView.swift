@@ -64,6 +64,7 @@ private extension PokemonDetailView.EvolutionChainView {
 private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
     struct PokemonView: View {
         let pokemon: Pokemon
+        @State private var isPresented: Bool = false
 
         var body: some View {
             VStack {
@@ -80,6 +81,12 @@ private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
                     Text("No.\(pokemon.id.rawValue)")
                         .font(.caption)
                     Text(pokemon.name)
+                }
+            }.onTapGesture {
+                isPresented = true
+            }.sheet(isPresented: $isPresented) {
+                NavigationView {
+                    PokemonDetailView(pokemon: pokemon)
                 }
             }
         }
