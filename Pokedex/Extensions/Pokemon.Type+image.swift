@@ -7,6 +7,7 @@
 
 import UIKit
 import Entity
+import DesignSystem
 
 extension Pokemon.`Type` {
     var outlinedImage: UIImage {

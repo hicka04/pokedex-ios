@@ -1,8 +1,15 @@
 xcassets:
-  inputs:
-    - Pokedex/Resources/Colors.xcassets
-    - Pokedex/Resources/Images.xcassets
-    - Pokedex/Preview Content/Preview Assets.xcassets
-  outputs:
-    - templateName: swift5
-      output: Pokedex/Generated/Assets.swift
+  - inputs:
+      - Pokedex/Preview Content/Preview Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: Pokedex/Generated/PreviewAssets.swift
+        params:
+          enumName: PreviewAsset
+  - inputs:
+      - DesignSystem/Sources/DesignSystem/Resources/
+    outputs:
+      - templateName: swift5
+        output: DesignSystem/Sources/DesignSystem/Generated/Assets.swift
+        params:
+          publicAccess: true
