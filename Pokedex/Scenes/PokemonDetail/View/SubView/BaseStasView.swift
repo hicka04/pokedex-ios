@@ -39,10 +39,10 @@ private extension PokemonDetailView.BaseStasView {
                 AxisLabelsView()
                 ZStack {
                     AxisShape()
-                        .stroke(Color(uiColor: Asset.Colors.BaseStats.axis.color))
+                        .stroke(Color(uiColor: Asset.BaseStats.axis.color))
                     ValuesShape(baseStats: baseStats)
                         .stroke(
-                            Color(uiColor: Asset.Colors.BaseStats.value.color),
+                            Color(uiColor: Asset.BaseStats.value.color),
                             lineWidth: 4
                         )
                 }.padding(40)
@@ -100,7 +100,7 @@ private extension PokemonDetailView.BaseStasView.RadarChart {
                 GeometryReader { proxy in
                     Text(category.label)
                         .font(.caption2)
-                        .foregroundColor(Color(uiColor: Asset.Colors.BaseStats.label.color))
+                        .foregroundColor(Color(uiColor: Asset.BaseStats.label.color))
                         .position(category.labelPosition(size: proxy.size))
                 }
             }

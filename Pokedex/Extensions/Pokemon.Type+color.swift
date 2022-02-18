@@ -12,24 +12,24 @@ import DesignSystem
 extension Pokemon.`Type` {
     var color: UIColor {
         switch self {
-        case .normal: return Asset.Colors.Types.normal.color
-        case .fighting: return Asset.Colors.Types.fighting.color
-        case .flying: return Asset.Colors.Types.flying.color
-        case .poison: return Asset.Colors.Types.poison.color
-        case .ground: return Asset.Colors.Types.ground.color
-        case .rock: return Asset.Colors.Types.rock.color
-        case .bug: return Asset.Colors.Types.bug.color
-        case .ghost: return Asset.Colors.Types.ghost.color
-        case .steel: return Asset.Colors.Types.steel.color
-        case .fire: return Asset.Colors.Types.fire.color
-        case .water: return Asset.Colors.Types.water.color
-        case .grass: return Asset.Colors.Types.grass.color
-        case .electric: return Asset.Colors.Types.electric.color
-        case .psychic: return Asset.Colors.Types.psychic.color
-        case .ice: return Asset.Colors.Types.ice.color
-        case .dragon: return Asset.Colors.Types.dragon.color
-        case .dark: return Asset.Colors.Types.dark.color
-        case .fairy: return Asset.Colors.Types.fairy.color
+        case .normal: return Asset.Types.Normal.tint.color
+        case .fighting: return Asset.Types.Fighting.tint.color
+        case .flying: return Asset.Types.Flying.tint.color
+        case .poison: return Asset.Types.Poison.tint.color
+        case .ground: return Asset.Types.Ground.tint.color
+        case .rock: return Asset.Types.Rock.tint.color
+        case .bug: return Asset.Types.Bug.tint.color
+        case .ghost: return Asset.Types.Ghost.tint.color
+        case .steel: return Asset.Types.Steel.tint.color
+        case .fire: return Asset.Types.Fire.tint.color
+        case .water: return Asset.Types.Water.tint.color
+        case .grass: return Asset.Types.Grass.tint.color
+        case .electric: return Asset.Types.Electric.tint.color
+        case .psychic: return Asset.Types.Psychic.tint.color
+        case .ice: return Asset.Types.Ice.tint.color
+        case .dragon: return Asset.Types.Dragon.tint.color
+        case .dark: return Asset.Types.Dark.tint.color
+        case .fairy: return Asset.Types.Fairy.tint.color
         }
     }
 }
