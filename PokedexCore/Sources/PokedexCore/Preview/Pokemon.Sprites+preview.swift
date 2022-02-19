@@ -9,7 +9,7 @@ import Foundation
 import Entity
 
 extension Pokemon.Sprites {
-    static func preview() -> Self {
+    public static func preview() -> Self {
         .init(
             officialArtwork: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")!
         )

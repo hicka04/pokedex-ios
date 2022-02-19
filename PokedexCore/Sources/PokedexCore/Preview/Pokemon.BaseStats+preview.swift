@@ -9,7 +9,7 @@ import Foundation
 import Entity
 
 extension Pokemon.BaseStats {
-    static func preview() -> Self {
+    public static func preview() -> Self {
         .init(
             hp: 45,
             attack: 49,

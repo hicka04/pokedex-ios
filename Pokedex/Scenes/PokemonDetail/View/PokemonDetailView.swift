@@ -9,6 +9,7 @@ import SwiftUI
 import Entity
 import UseCase
 import Infra
+import PokedexCore
 
 struct PokemonDetailView: View {
     @StateObject private var viewModel: PokemonDetailViewModel<GetEvolutionChainInteractor>

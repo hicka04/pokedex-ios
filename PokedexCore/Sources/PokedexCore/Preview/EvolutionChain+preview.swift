@@ -9,7 +9,7 @@ import Foundation
 import Entity
 
 extension EvolutionChain {
-    static func preview() -> Self {
+    public static func preview() -> Self {
         .init(
             id: .init(rawValue: 1),
             chain: .preview()
@@ -18,7 +18,7 @@ extension EvolutionChain {
 }
 
 extension EvolutionChain.ChainLink {
-    static func preview() -> Self {
+    public static func preview() -> Self {
         .init(
             pokemon: .preview(),
             isOrigin: true,

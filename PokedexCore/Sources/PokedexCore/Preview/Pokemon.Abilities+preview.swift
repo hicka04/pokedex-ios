@@ -9,7 +9,7 @@ import Foundation
 import Entity
 
 extension Pokemon.Abilities {
-    static func preview() -> Self {
+    public static func preview() -> Self {
         .init(
             first: .init(name: "overgrow"),
             second: nil,

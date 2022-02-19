@@ -9,7 +9,7 @@ import Foundation
 import Entity
 
 extension Pokemon {
-    static func preview() -> Self {
+    public static func preview() -> Self {
         .init(
             id: .init(rawValue: 1),
             name: "フシギダネ",

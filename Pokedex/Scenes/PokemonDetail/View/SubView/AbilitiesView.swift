@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Entity
+import PokedexCore
 
 extension PokemonDetailView {
     struct AbilitiesView: View {

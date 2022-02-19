@@ -8,6 +8,7 @@
 import SwiftUI
 import Entity
 import DesignSystem
+import PokedexCore
 
 extension PokemonDetailView {
     struct BaseStasView: View {
