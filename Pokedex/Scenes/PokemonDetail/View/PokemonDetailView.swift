@@ -59,7 +59,7 @@ struct PokemonDetailView: View {
 struct PokemonDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PokemonDetailView(pokemon: .preview())
+            PokemonDetailView(pokemon: .bulbasaur)
         }
     }
 }

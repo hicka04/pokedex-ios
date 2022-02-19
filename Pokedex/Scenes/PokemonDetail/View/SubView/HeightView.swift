@@ -31,7 +31,7 @@ extension PokemonDetailView {
 
 struct HeightView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.HeightView(height: Pokemon.preview().height)
+        PokemonDetailView.HeightView(height: Pokemon.bulbasaur.height)
             .previewLayout(.sizeThatFits)
     }
 }

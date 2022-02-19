@@ -5,3 +5,8 @@ configurations:
     templates:
       - Templates/Pokemon.Type+preview.stencil
     output: Pokedex/Scenes/PokemonDetail/View/SubView/TypesView.swift
+  - sources:
+      - Domain/Sources/Entities/
+    templates:
+      - Templates/Entity+stub.stencil
+    output: PokedexCore/Sources/PokedexCore/Generated/Entity+stub.swift

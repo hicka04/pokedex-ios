@@ -111,7 +111,7 @@ private extension PokemonDetailView.BaseStasView.RadarChart {
 
 struct BaseStasView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.BaseStasView(baseStats: .preview())
+        PokemonDetailView.BaseStasView(baseStats: .bulbasaur)
             .previewLayout(.sizeThatFits)
     }
 }

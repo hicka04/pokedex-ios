@@ -52,7 +52,7 @@ private extension PokemonDetailView.AbilitiesView {
 
 struct AbilitiesView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.AbilitiesView(abilities: .preview())
+        PokemonDetailView.AbilitiesView(abilities: .bulbasaur)
             .previewLayout(.sizeThatFits)
     }
 }

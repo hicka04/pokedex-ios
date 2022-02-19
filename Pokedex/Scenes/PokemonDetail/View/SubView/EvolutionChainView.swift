@@ -96,7 +96,7 @@ private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
 
 struct EvolutionChainView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.EvolutionChainView(evolutionChain: .preview())
+        PokemonDetailView.EvolutionChainView(evolutionChain: .bulbasaur)
             .previewLayout(.sizeThatFits)
     }
 }

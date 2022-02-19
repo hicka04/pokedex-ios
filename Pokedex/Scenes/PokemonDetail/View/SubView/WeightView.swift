@@ -30,7 +30,7 @@ extension PokemonDetailView {
 
 struct WeightView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.WeightView(weight: Pokemon.preview().weight)
+        PokemonDetailView.WeightView(weight: Pokemon.bulbasaur.weight)
             .previewLayout(.sizeThatFits)
     }
 }

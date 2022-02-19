@@ -31,7 +31,7 @@ extension PokemonDetailView {
 struct PokemonImageView_Previews: PreviewProvider {
     static var previews: some View {
         PokemonDetailView.OfficialArtworkView(
-            url: Pokemon.Sprites.preview().officialArtwork
+            url: Pokemon.Sprites.bulbasaur.officialArtwork
         ).previewLayout(.sizeThatFits)
     }
 }
