@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "DesignSystem",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         .library(
@@ -15,13 +15,15 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "Domain", path: "../Domain")
+        .package(name: "Domain", path: "../Domain"),
+        .package(name: "PokedexCore", path: "../PokedexCore")
     ],
     targets: [
         .target(
             name: "DesignSystem",
             dependencies: [
-                .product(name: "Entity", package: "Domain")
+                .product(name: "Entity", package: "Domain"),
+                "PokedexCore"
             ]
         )
     ]

@@ -9,21 +9,16 @@ import SwiftUI
 import Entity
 import SFSafeSymbols
 import PokedexCore
+import DesignSystem
 
 struct PokemonCell: View {
     let pokemon: Pokemon
 
     var body: some View {
         HStack(spacing: 16) {
-            AsyncImage(
-                url: pokemon.sprites.officialArtwork,
-                content: { image in
-                    image.resizable()
-                },
-                placeholder: {
-                    ProgressView()
-                }
-            ).frame(width: 80, height: 80)
+            OfficialArtworkImage(url: pokemon.sprites.officialArtwork)
+                .frame(width: 80, height: 80)
+
             VStack(alignment: .leading) {
                 Text("No.\(pokemon.id.rawValue)")
                     .font(.caption)

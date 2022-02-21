@@ -8,6 +8,7 @@
 import SwiftUI
 import Entity
 import PokedexCore
+import DesignSystem
 
 extension PokemonDetailView {
     struct EvolutionChainView: View {
@@ -69,14 +70,8 @@ private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
 
         var body: some View {
             VStack {
-                AsyncImage(
-                    url: pokemon.sprites.officialArtwork,
-                    content: { image in
-                        image.resizable()
-                    }, placeholder: {
-                        ProgressView()
-                    }
-                ).frame(width: 160, height: 160)
+                OfficialArtworkImage(url: pokemon.sprites.officialArtwork)
+                    .frame(width: 160, height: 160)
 
                 VStack(alignment: .leading) {
                     Text("No.\(pokemon.id.rawValue)")
