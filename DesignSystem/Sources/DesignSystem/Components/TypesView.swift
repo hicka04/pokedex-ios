@@ -9,22 +9,24 @@ import SwiftUI
 import Entity
 import PokedexCore
 
-extension PokemonDetailView {
-    struct TypesView: View {
-        let types: Pokemon.Types
+public struct TypesView: View {
+    let types: Pokemon.Types
 
-        var body: some View {
-            HStack(spacing: 16) {
-                TypeView(type: types.first)
-                if let secondType = types.second {
-                    TypeView(type: secondType)
-                }
+    public init(types: Pokemon.Types) {
+        self.types = types
+    }
+
+    public var body: some View {
+        HStack(spacing: 16) {
+            TypeView(type: types.first)
+            if let secondType = types.second {
+                TypeView(type: secondType)
             }
         }
     }
 }
 
-private extension PokemonDetailView.TypesView {
+private extension TypesView {
     struct TypeView: View {
         let type: Pokemon.`Type`
 
@@ -47,7 +49,11 @@ private extension PokemonDetailView.TypesView {
             .padding(.trailing, cornerRadius)
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .strokeBorder(Color(uiColor: type.color), lineWidth: 2, antialiased: true)
+                    .strokeBorder(
+                        Color(uiColor: type.color),
+                        lineWidth: 2,
+                        antialiased: true
+                    )
             }
         }
     }
@@ -55,10 +61,10 @@ private extension PokemonDetailView.TypesView {
 
 struct TypesView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView(types: .bulbasaur)
+        TypesView(types: .bulbasaur)
             .previewLayout(.sizeThatFits)
 
-        PokemonDetailView.TypesView(types: .init(first: .grass, second: nil))
+        TypesView(types: .init(first: .grass, second: nil))
             .previewLayout(.sizeThatFits)
     }
 }
@@ -66,109 +72,109 @@ struct TypesView_Previews: PreviewProvider {
 // sourcery:inline:Pokemon.`Type`.TemplateName
 struct TypeView_normal_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .normal)
+        TypesView.TypeView(type: .normal)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_fighting_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .fighting)
+        TypesView.TypeView(type: .fighting)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_flying_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .flying)
+        TypesView.TypeView(type: .flying)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_poison_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .poison)
+        TypesView.TypeView(type: .poison)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_ground_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .ground)
+        TypesView.TypeView(type: .ground)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_rock_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .rock)
+        TypesView.TypeView(type: .rock)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_bug_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .bug)
+        TypesView.TypeView(type: .bug)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_ghost_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .ghost)
+        TypesView.TypeView(type: .ghost)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_steel_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .steel)
+        TypesView.TypeView(type: .steel)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_fire_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .fire)
+        TypesView.TypeView(type: .fire)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_water_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .water)
+        TypesView.TypeView(type: .water)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_grass_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .grass)
+        TypesView.TypeView(type: .grass)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_electric_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .electric)
+        TypesView.TypeView(type: .electric)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_psychic_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .psychic)
+        TypesView.TypeView(type: .psychic)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_ice_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .ice)
+        TypesView.TypeView(type: .ice)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_dragon_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .dragon)
+        TypesView.TypeView(type: .dragon)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_dark_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .dark)
+        TypesView.TypeView(type: .dark)
             .previewLayout(.sizeThatFits)
     }
 }
 struct TypeView_fairy_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .fairy)
+        TypesView.TypeView(type: .fairy)
             .previewLayout(.sizeThatFits)
     }
 }

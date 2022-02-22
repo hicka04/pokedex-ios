@@ -4,7 +4,7 @@
 {% for case in enum.cases %}
 struct TypeView_{{ case.name }}_Preview: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.TypesView.TypeView(type: .{{ case.name }})
+        TypesView.TypeView(type: .{{ case.name }})
             .previewLayout(.sizeThatFits)
     }
 }

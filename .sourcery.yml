@@ -1,10 +1,10 @@
 configurations:
   - sources:
       - Domain/Sources/Entities/
-      - Pokedex/Scenes/PokemonDetail/View/SubView/TypesView.swift
+      - DesignSystem/Sources/DesignSystem/Components/TypesView.swift
     templates:
       - Templates/Pokemon.Type+preview.stencil
-    output: Pokedex/Scenes/PokemonDetail/View/SubView/TypesView.swift
+    output: DesignSystem/Sources/DesignSystem/Components/TypesView.swift
   - sources:
       - Domain/Sources/Entities/
     templates:
