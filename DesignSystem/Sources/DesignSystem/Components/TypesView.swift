@@ -11,13 +11,28 @@ import PokedexCore
 
 public struct TypesView: View {
     let types: Pokemon.Types
+    let axis: Axis
 
-    public init(types: Pokemon.Types) {
+    public init(types: Pokemon.Types, axis: Axis) {
         self.types = types
+        self.axis = axis
     }
 
     public var body: some View {
-        HStack(spacing: 16) {
+        switch axis {
+        case .horizontal:
+            HStack(spacing: 16) {
+                content()
+            }
+        case .vertical:
+            VStack(spacing: 8) {
+                content()
+            }.frame(width: 120)
+        }
+    }
+
+    private func content() -> some View {
+        Group {
             TypeView(type: types.first)
             if let secondType = types.second {
                 TypeView(type: secondType)
@@ -61,10 +76,13 @@ private extension TypesView {
 
 struct TypesView_Previews: PreviewProvider {
     static var previews: some View {
-        TypesView(types: .bulbasaur)
+        TypesView(types: .bulbasaur, axis: .horizontal)
             .previewLayout(.sizeThatFits)
 
-        TypesView(types: .init(first: .grass, second: nil))
+        TypesView(types: .bulbasaur, axis: .vertical)
+            .previewLayout(.sizeThatFits)
+
+        TypesView(types: .init(first: .grass, second: nil), axis: .horizontal)
             .previewLayout(.sizeThatFits)
     }
 }

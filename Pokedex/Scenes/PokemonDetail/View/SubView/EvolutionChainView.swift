@@ -78,6 +78,8 @@ private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
                         .font(.caption)
                     Text(pokemon.name)
                 }
+
+                TypesView(types: pokemon.types, axis: .vertical)
             }.onTapGesture {
                 isPresented = true
             }.sheet(isPresented: $isPresented) {

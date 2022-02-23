@@ -32,7 +32,10 @@ struct PokemonDetailView: View {
                 OfficialArtworkView(url: viewModel.pokemon.sprites.officialArtwork)
 
                 VStack(alignment: .leading, spacing: 32) {
-                    TypesView(types: viewModel.pokemon.types)
+                    TypesView(
+                        types: viewModel.pokemon.types,
+                        axis: .horizontal
+                    )
 
                     HStack(spacing: 16) {
                         HeightView(height: viewModel.pokemon.height)
