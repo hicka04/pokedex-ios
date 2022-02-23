@@ -10,26 +10,27 @@
 		B8113C8E27A18F070038FEFB /* HeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8113C8D27A18F070038FEFB /* HeightView.swift */; };
 		B8113C9027A191000038FEFB /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8113C8F27A191000038FEFB /* WeightView.swift */; };
 		B818DC25278320F300E97C5D /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B818DC24278320F300E97C5D /* PokemonListView.swift */; };
-		B818DC272783226500E97C5D /* UseCase in Frameworks */ = {isa = PBXBuildFile; productRef = B818DC262783226500E97C5D /* UseCase */; };
 		B81B748027BFDC2F0015C280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81B747F27BFDC2F0015C280 /* Assets.xcassets */; };
 		B81B748227BFE0D50015C280 /* PreviewAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81B748127BFE0D50015C280 /* PreviewAssets.swift */; };
 		B821898F27BBEF1E00A7606A /* EvolutionChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821898E27BBEF1E00A7606A /* EvolutionChainView.swift */; };
 		B82CBC9E27925E29009C2832 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CBC9D27925E29009C2832 /* PokemonCell.swift */; };
 		B82CBCA627931898009C2832 /* UiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CBCA527931898009C2832 /* UiState.swift */; };
 		B82EC6E9278AB7A3007A6A31 /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EC6E8278AB7A3007A6A31 /* PokemonDetailView.swift */; };
+		B834072527C5F3D700E1A585 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = B834072427C5F3D700E1A585 /* Core */; };
+		B834072727C5F3D700E1A585 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B834072627C5F3D700E1A585 /* DesignSystem */; };
+		B834072927C5F3D700E1A585 /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = B834072827C5F3D700E1A585 /* Entity */; };
+		B834072B27C5F3D700E1A585 /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = B834072A27C5F3D700E1A585 /* Repository */; };
+		B834072D27C5F3D700E1A585 /* UseCase in Frameworks */ = {isa = PBXBuildFile; productRef = B834072C27C5F3D700E1A585 /* UseCase */; };
+		B834072F27C5F3D700E1A585 /* Feature in Frameworks */ = {isa = PBXBuildFile; productRef = B834072E27C5F3D700E1A585 /* Feature */; };
+		B834073127C5F3D700E1A585 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B834073027C5F3D700E1A585 /* Infra */; };
+		B834073327C5F3D700E1A585 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = B834073227C5F3D700E1A585 /* SFSafeSymbols */; };
 		B86647BE27BBD6BE0077F46B /* PokemonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86647BD27BBD6BE0077F46B /* PokemonDetailViewModel.swift */; };
-		B86886EA27C0BC3C00014ECD /* PokedexCore in Frameworks */ = {isa = PBXBuildFile; productRef = B86886E927C0BC3C00014ECD /* PokedexCore */; };
 		B86CE27A2778A81A00D0D1C4 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */; };
 		B86CE2812778A81C00D0D1C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */; };
 		B86CE28B2778A81C00D0D1C4 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE28A2778A81C00D0D1C4 /* PokedexTests.swift */; };
-		B875F6B4277CA65600F9F6E0 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B875F6B3277CA65600F9F6E0 /* Infra */; };
-		B875F6B8277CA66B00F9F6E0 /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = B875F6B7277CA66B00F9F6E0 /* Repository */; };
 		B878129427AA347F00677C28 /* AbilitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878129327AA347F00677C28 /* AbilitiesView.swift */; };
 		B878129827ABF4E800677C28 /* OfficialArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878129727ABF4E800677C28 /* OfficialArtworkView.swift */; };
 		B878129E27AE382200677C28 /* BaseStasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878129D27AE382200677C28 /* BaseStasView.swift */; };
-		B88DA844278328EE00AD286C /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = B88DA843278328EE00AD286C /* Entity */; };
-		B89CD24B27BFD36F003D89E3 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = B89CD24A27BFD36F003D89E3 /* SFSafeSymbols */; };
-		B89CD24D27BFD776003D89E3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B89CD24C27BFD776003D89E3 /* DesignSystem */; };
 		B8A784D9278875AC004DFF3F /* PokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A784D8278875AC004DFF3F /* PokemonListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,13 +71,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B89CD24B27BFD36F003D89E3 /* SFSafeSymbols in Frameworks */,
-				B818DC272783226500E97C5D /* UseCase in Frameworks */,
-				B875F6B4277CA65600F9F6E0 /* Infra in Frameworks */,
-				B89CD24D27BFD776003D89E3 /* DesignSystem in Frameworks */,
-				B875F6B8277CA66B00F9F6E0 /* Repository in Frameworks */,
-				B86886EA27C0BC3C00014ECD /* PokedexCore in Frameworks */,
-				B88DA844278328EE00AD286C /* Entity in Frameworks */,
+				B834072527C5F3D700E1A585 /* Core in Frameworks */,
+				B834072927C5F3D700E1A585 /* Entity in Frameworks */,
+				B834072B27C5F3D700E1A585 /* Repository in Frameworks */,
+				B834072F27C5F3D700E1A585 /* Feature in Frameworks */,
+				B834072727C5F3D700E1A585 /* DesignSystem in Frameworks */,
+				B834072D27C5F3D700E1A585 /* UseCase in Frameworks */,
+				B834073327C5F3D700E1A585 /* SFSafeSymbols in Frameworks */,
+				B834073127C5F3D700E1A585 /* Infra in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,13 +264,14 @@
 			);
 			name = Pokedex;
 			packageProductDependencies = (
-				B875F6B3277CA65600F9F6E0 /* Infra */,
-				B875F6B7277CA66B00F9F6E0 /* Repository */,
-				B818DC262783226500E97C5D /* UseCase */,
-				B88DA843278328EE00AD286C /* Entity */,
-				B89CD24A27BFD36F003D89E3 /* SFSafeSymbols */,
-				B89CD24C27BFD776003D89E3 /* DesignSystem */,
-				B86886E927C0BC3C00014ECD /* PokedexCore */,
+				B834072427C5F3D700E1A585 /* Core */,
+				B834072627C5F3D700E1A585 /* DesignSystem */,
+				B834072827C5F3D700E1A585 /* Entity */,
+				B834072A27C5F3D700E1A585 /* Repository */,
+				B834072C27C5F3D700E1A585 /* UseCase */,
+				B834072E27C5F3D700E1A585 /* Feature */,
+				B834073027C5F3D700E1A585 /* Infra */,
+				B834073227C5F3D700E1A585 /* SFSafeSymbols */,
 			);
 			productName = Pokedex;
 			productReference = B86CE2762778A81A00D0D1C4 /* Pokedex.app */;
@@ -700,34 +703,38 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B818DC262783226500E97C5D /* UseCase */ = {
+		B834072427C5F3D700E1A585 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = UseCase;
+			productName = Core;
 		};
-		B86886E927C0BC3C00014ECD /* PokedexCore */ = {
+		B834072627C5F3D700E1A585 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = PokedexCore;
+			productName = DesignSystem;
 		};
-		B875F6B3277CA65600F9F6E0 /* Infra */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Infra;
-		};
-		B875F6B7277CA66B00F9F6E0 /* Repository */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Repository;
-		};
-		B88DA843278328EE00AD286C /* Entity */ = {
+		B834072827C5F3D700E1A585 /* Entity */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Entity;
 		};
-		B89CD24A27BFD36F003D89E3 /* SFSafeSymbols */ = {
+		B834072A27C5F3D700E1A585 /* Repository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Repository;
+		};
+		B834072C27C5F3D700E1A585 /* UseCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UseCase;
+		};
+		B834072E27C5F3D700E1A585 /* Feature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Feature;
+		};
+		B834073027C5F3D700E1A585 /* Infra */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Infra;
+		};
+		B834073227C5F3D700E1A585 /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B82CBCA227926323009C2832 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
-		};
-		B89CD24C27BFD776003D89E3 /* DesignSystem */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DesignSystem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

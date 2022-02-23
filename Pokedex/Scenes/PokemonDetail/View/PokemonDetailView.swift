@@ -9,7 +9,7 @@ import SwiftUI
 import Entity
 import UseCase
 import Infra
-import PokedexCore
+import Core
 import DesignSystem
 
 struct PokemonDetailView: View {

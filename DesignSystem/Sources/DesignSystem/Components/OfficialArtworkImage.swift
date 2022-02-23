@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Entity
-import PokedexCore
+import Core
 
 public struct OfficialArtworkImage: View {
     let url: URL

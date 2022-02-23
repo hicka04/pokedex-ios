@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Entity
-import PokedexCore
+import Core
 import DesignSystem
 
 extension PokemonDetailView {

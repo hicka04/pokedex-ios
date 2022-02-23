@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Domain", path: "../Domain"),
-        .package(name: "PokedexCore", path: "../PokedexCore")
+        .package(name: "Core", path: "../Core")
     ],
     targets: [
         .target(

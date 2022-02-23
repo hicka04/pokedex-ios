@@ -8,7 +8,7 @@
 import SwiftUI
 import Entity
 import SFSafeSymbols
-import PokedexCore
+import Core
 import DesignSystem
 
 struct PokemonCell: View {

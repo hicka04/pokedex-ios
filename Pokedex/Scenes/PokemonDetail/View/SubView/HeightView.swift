@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 import Entity
-import PokedexCore
+import Core
 
 extension PokemonDetailView {
     struct HeightView: View {

@@ -8,9 +8,6 @@
       location = "group:Feature">
    </FileRef>
    <FileRef
-      location = "group:PokedexCore">
-   </FileRef>
-   <FileRef
       location = "group:DesignSystem">
    </FileRef>
    <FileRef
@@ -18,5 +15,8 @@
    </FileRef>
    <FileRef
       location = "group:Infra">
+   </FileRef>
+   <FileRef
+      location = "group:Core">
    </FileRef>
 </Workspace>
