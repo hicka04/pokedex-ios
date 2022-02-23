@@ -5,6 +5,9 @@
       location = "group:Pokedex.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Feature">
+   </FileRef>
+   <FileRef
       location = "group:PokedexCore">
    </FileRef>
    <FileRef
