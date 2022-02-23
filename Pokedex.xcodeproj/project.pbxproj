@@ -172,13 +172,6 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		B82D0E53279848E4000A09DC /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		B82EC6E7278AB638007A6A31 /* PokemonDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +213,6 @@
 			children = (
 				B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */,
 				B82D0E4E2796FFAB000A09DC /* Scenes */,
-				B82D0E53279848E4000A09DC /* Extensions */,
 				B82D0E4F2797008B000A09DC /* Generated */,
 				B82D0E4D2796FF94000A09DC /* Resources */,
 				B86CE27F2778A81C00D0D1C4 /* Preview Content */,
