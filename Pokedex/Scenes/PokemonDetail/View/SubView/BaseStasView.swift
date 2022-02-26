@@ -10,28 +10,26 @@ import Entity
 import DesignSystem
 import Core
 
-extension PokemonDetailView {
-    struct BaseStasView: View {
-        let baseStats: Pokemon.BaseStats
+struct BaseStasView: View {
+    let baseStats: Pokemon.BaseStats
 
-        var body: some View {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Base Stats")
-                    .font(.headline)
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Base Stats")
+                .font(.headline)
 
-                GeometryReader { proxy in
-                    RadarChart(baseStats: baseStats)
-                        .frame(
-                            width: proxy.size.width,
-                            height: proxy.size.width
-                        )
-                }.scaledToFit()
-            }
+            GeometryReader { proxy in
+                RadarChart(baseStats: baseStats)
+                    .frame(
+                        width: proxy.size.width,
+                        height: proxy.size.width
+                    )
+            }.scaledToFit()
         }
     }
 }
 
-private extension PokemonDetailView.BaseStasView {
+private extension BaseStasView {
     struct RadarChart: View {
         let baseStats: Pokemon.BaseStats
 
@@ -52,7 +50,7 @@ private extension PokemonDetailView.BaseStasView {
     }
 }
 
-private extension PokemonDetailView.BaseStasView.RadarChart {
+private extension BaseStasView.RadarChart {
     struct ValuesShape: Shape {
         let baseStats: Pokemon.BaseStats
 
@@ -111,7 +109,7 @@ private extension PokemonDetailView.BaseStasView.RadarChart {
 
 struct BaseStasView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.BaseStasView(baseStats: .bulbasaur)
+        BaseStasView(baseStats: .bulbasaur)
             .previewLayout(.sizeThatFits)
     }
 }

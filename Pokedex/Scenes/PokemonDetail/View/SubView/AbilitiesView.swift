@@ -9,30 +9,28 @@ import SwiftUI
 import Entity
 import Core
 
-extension PokemonDetailView {
-    struct AbilitiesView: View {
-        let abilities: Pokemon.Abilities
+struct AbilitiesView: View {
+    let abilities: Pokemon.Abilities
 
-        var body: some View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Abilities")
+                .font(.headline)
+
             VStack(alignment: .leading, spacing: 16) {
-                Text("Abilities")
-                    .font(.headline)
-
-                VStack(alignment: .leading, spacing: 16) {
-                    AbilityView(ability: abilities.first, isHidden: false)
-                    if let second = abilities.second {
-                        AbilityView(ability: second, isHidden: false)
-                    }
-                    if let hidden = abilities.hidden {
-                        AbilityView(ability: hidden, isHidden: true)
-                    }
-                }.padding(.leading, 16)
-            }
+                AbilityView(ability: abilities.first, isHidden: false)
+                if let second = abilities.second {
+                    AbilityView(ability: second, isHidden: false)
+                }
+                if let hidden = abilities.hidden {
+                    AbilityView(ability: hidden, isHidden: true)
+                }
+            }.padding(.leading, 16)
         }
     }
 }
 
-private extension PokemonDetailView.AbilitiesView {
+private extension AbilitiesView {
     struct AbilityView: View {
         let ability: Pokemon.Abilities.Ability
         let isHidden: Bool
@@ -52,7 +50,7 @@ private extension PokemonDetailView.AbilitiesView {
 
 struct AbilitiesView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.AbilitiesView(abilities: .bulbasaur)
+        AbilitiesView(abilities: .bulbasaur)
             .previewLayout(.sizeThatFits)
     }
 }

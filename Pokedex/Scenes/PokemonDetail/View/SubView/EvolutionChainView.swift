@@ -9,27 +9,27 @@ import SwiftUI
 import Entity
 import Core
 import DesignSystem
+import UseCase
+import Infra
 
-extension PokemonDetailView {
-    struct EvolutionChainView: View {
-        let evolutionChain: EvolutionChain
+struct EvolutionChainView: View {
+    let evolutionChain: EvolutionChain
 
-        var body: some View {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Evolution Chain")
-                    .font(.headline)
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Evolution Chain")
+                .font(.headline)
 
-                HStack {
-                    Spacer()
-                    ChainLinkView(chainLink: evolutionChain.chain)
-                    Spacer()
-                }
+            HStack {
+                Spacer()
+                ChainLinkView(chainLink: evolutionChain.chain)
+                Spacer()
             }
         }
     }
 }
 
-private extension PokemonDetailView.EvolutionChainView {
+private extension EvolutionChainView {
     struct ChainLinkView: View {
         let chainLink: EvolutionChain.ChainLink
 
@@ -63,7 +63,7 @@ private extension PokemonDetailView.EvolutionChainView {
     }
 }
 
-private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
+private extension EvolutionChainView.ChainLinkView {
     struct PokemonView: View {
         let pokemon: Pokemon
         @State private var isPresented: Bool = false
@@ -84,7 +84,14 @@ private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
                 isPresented = true
             }.sheet(isPresented: $isPresented) {
                 NavigationView {
-                    PokemonDetailView(pokemon: pokemon)
+                    PokemonDetailView(
+                        viewModel: PokemonDetailViewModelImpl(
+                            pokemon: .bulbasaur,
+                            getEvolutionChainInteractor: GetEvolutionChainInteractor(
+                                pokemonRepository: PokemonDataStore()
+                            )
+                        )
+                    )
                 }
             }
         }
@@ -93,7 +100,7 @@ private extension PokemonDetailView.EvolutionChainView.ChainLinkView {
 
 struct EvolutionChainView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView.EvolutionChainView(evolutionChain: .bulbasaur)
+        EvolutionChainView(evolutionChain: .bulbasaur)
             .previewLayout(.sizeThatFits)
     }
 }

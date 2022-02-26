@@ -10,7 +10,15 @@ import Entity
 import UseCase
 
 @MainActor
-final class PokemonDetailViewModel<GetEvolutionChainInteractor: GetEvoluionChainUseCase>: ObservableObject {
+protocol PokemonDetailViewModel: ObservableObject {
+    var pokemon: Pokemon { get }
+    var evolutionChain: EvolutionChain? { get }
+
+    func onAppear()
+}
+
+@MainActor
+final class PokemonDetailViewModelImpl<GetEvolutionChainInteractor: GetEvoluionChainUseCase>: PokemonDetailViewModel {
     let pokemon: Pokemon
     @Published private(set) var evolutionChain: EvolutionChain?
 

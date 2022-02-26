@@ -19,7 +19,14 @@ struct PokemonListView<ViewModel: PokemonListViewModel>: View {
             LazyVStack(alignment: .leading, spacing: 16) {
                 ForEach(viewModel.uiState.data ?? []) { pokemon in
                     NavigationLink {
-                        PokemonDetailView(pokemon: pokemon)
+                        PokemonDetailView(
+                            viewModel: PokemonDetailViewModelImpl(
+                                pokemon: .bulbasaur,
+                                getEvolutionChainInteractor: GetEvolutionChainInteractor(
+                                    pokemonRepository: PokemonDataStore()
+                                )
+                            )
+                        )
                     } label: {
                         PokemonCell(pokemon: pokemon)
                             .onAppear {

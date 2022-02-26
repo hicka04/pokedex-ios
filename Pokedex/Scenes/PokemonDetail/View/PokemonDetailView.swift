@@ -12,19 +12,8 @@ import Infra
 import Core
 import DesignSystem
 
-struct PokemonDetailView: View {
-    @StateObject private var viewModel: PokemonDetailViewModel<GetEvolutionChainInteractor>
-
-    init(pokemon: Pokemon) {
-        _viewModel = .init(
-            wrappedValue: .init(
-                pokemon: pokemon,
-                getEvolutionChainInteractor: .init(
-                    pokemonRepository: PokemonDataStore()
-                )
-            )
-        )
-    }
+struct PokemonDetailView<ViewModel: PokemonDetailViewModel>: View {
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         ScrollView {
@@ -63,7 +52,14 @@ struct PokemonDetailView: View {
 struct PokemonDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PokemonDetailView(pokemon: .bulbasaur)
+            PokemonDetailView(
+                viewModel: PokemonDetailViewModelImpl(
+                    pokemon: .bulbasaur,
+                    getEvolutionChainInteractor: GetEvolutionChainInteractor(
+                        pokemonRepository: PokemonDataStore()
+                    )
+                )
+            )
         }
     }
 }
