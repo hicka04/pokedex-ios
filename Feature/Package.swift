@@ -12,8 +12,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "Domain", path: "../Domain"),
-        .package(name: "Core", path: "../Core")
     ],
     targets: [
         .target(
