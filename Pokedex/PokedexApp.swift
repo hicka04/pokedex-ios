@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import UseCase
+import Infra
 
 @main
 struct PokedexApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                PokemonListView()
+                PokemonListView(
+                    viewModel: PokemonListViewModelImpl(
+                        getPokemonListInteractor: GetPokemonListInteractor(
+                            pokemonRepository: PokemonDataStore()
+                        )
+                    )
+                )
             }
         }
     }

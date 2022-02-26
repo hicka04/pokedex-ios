@@ -10,7 +10,15 @@ import Entity
 import UseCase
 
 @MainActor
-final class PokemonListViewModel<GetPokemonListInteractor: GetPokemonListUseCase>: ObservableObject {
+protocol PokemonListViewModel: ObservableObject {
+    var uiState: UiState<[Pokemon], Int> { get }
+
+    func onAppear()
+    func onAppearCell(pokemon: Pokemon)
+}
+
+@MainActor
+final class PokemonListViewModelImpl<GetPokemonListInteractor: GetPokemonListUseCase>: PokemonListViewModel {
     @Published private(set) var uiState: UiState<[Pokemon], Int> = .blank {
         didSet {
             print(uiState)

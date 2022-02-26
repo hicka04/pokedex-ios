@@ -11,18 +11,8 @@ import UseCase
 import Infra
 
 @MainActor
-struct PokemonListView: View {
-    @StateObject private var viewModel: PokemonListViewModel<GetPokemonListInteractor>
-
-    init() {
-        _viewModel = .init(
-            wrappedValue: .init(
-                getPokemonListInteractor: GetPokemonListInteractor(
-                    pokemonRepository: PokemonDataStore()
-                )
-            )
-        )
-    }
+struct PokemonListView<ViewModel: PokemonListViewModel>: View {
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         ScrollView {
@@ -53,7 +43,13 @@ struct PokemonListView: View {
 struct PokemonListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PokemonListView()
+            PokemonListView(
+                viewModel: PokemonListViewModelImpl(
+                    getPokemonListInteractor: GetPokemonListInteractor(
+                        pokemonRepository: PokemonDataStore()
+                    )
+                )
+            )
         }
     }
 }
