@@ -11,17 +11,13 @@ import Infra
 
 @main
 struct PokedexApp: App {
+    init() {
+        registerProviderFactories()
+    }
+
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                PokemonListView(
-                    viewModel: PokemonListViewModelImpl(
-                        getPokemonListInteractor: GetPokemonListInteractor(
-                            pokemonRepository: PokemonDataStore()
-                        )
-                    )
-                )
-            }
+            RootComponent().build()
         }
     }
 }

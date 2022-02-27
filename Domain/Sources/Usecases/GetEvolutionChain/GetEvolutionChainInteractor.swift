@@ -9,7 +9,7 @@ import Foundation
 import Entity
 import Repository
 
-public protocol GetEvoluionChainUseCase: UseCase
+public protocol GetEvolutionChainUseCase: UseCase
 where Input == Pokemon.ID, Output == EvolutionChain {}
 
 public struct GetEvolutionChainInteractor {
@@ -20,7 +20,7 @@ public struct GetEvolutionChainInteractor {
     }
 }
 
-extension GetEvolutionChainInteractor: GetEvoluionChainUseCase {
+extension GetEvolutionChainInteractor: GetEvolutionChainUseCase {
     public func execute(_ input: Input) async throws -> Output {
         let species = try await pokemonRepository.getPokemonSpecies(pokemonId: input)
         return try await pokemonRepository.getEvolutionChain(id: species.evolutionChainId)

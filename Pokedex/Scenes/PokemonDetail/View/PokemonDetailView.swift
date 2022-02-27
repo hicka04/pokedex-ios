@@ -12,8 +12,12 @@ import Infra
 import Core
 import DesignSystem
 
-struct PokemonDetailView<ViewModel: PokemonDetailViewModel>: View {
+struct PokemonDetailView<
+    ViewModel: PokemonDetailViewModel,
+    EvolutionChainViewBuilder: EvolutionChainViewBuildable
+>: View {
     @StateObject var viewModel: ViewModel
+    let evolutionChainViewBuilder: EvolutionChainViewBuilder
 
     var body: some View {
         ScrollView {
@@ -36,7 +40,7 @@ struct PokemonDetailView<ViewModel: PokemonDetailViewModel>: View {
                     BaseStasView(baseStats: viewModel.pokemon.baseStats)
 
                     if let evolutionChain = viewModel.evolutionChain {
-                        EvolutionChainView(evolutionChain: evolutionChain)
+                        evolutionChainViewBuilder.build(evolutionChain)
                     }
                 }
             }
@@ -58,8 +62,15 @@ struct PokemonDetailView_Previews: PreviewProvider {
                     getEvolutionChainInteractor: GetEvolutionChainInteractor(
                         pokemonRepository: PokemonDataStore()
                     )
-                )
+                ),
+                evolutionChainViewBuilder: MockEvolutionChainViewBuilder()
             )
+        }
+    }
+
+    private final class MockEvolutionChainViewBuilder: EvolutionChainViewBuildable {
+        func build(_ evolutionChain: EvolutionChain) -> some View {
+            Text("\(evolutionChain.id.rawValue)")
         }
     }
 }

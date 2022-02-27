@@ -11,22 +11,19 @@ import UseCase
 import Infra
 
 @MainActor
-struct PokemonListView<ViewModel: PokemonListViewModel>: View {
+struct PokemonListView<
+    ViewModel: PokemonListViewModel,
+    PokemonDetailViewBuilder: PokemonDetailViewBuildable
+>: View {
     @StateObject var viewModel: ViewModel
+    let pokemonDetailViewBuilder: PokemonDetailViewBuilder
 
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 16) {
                 ForEach(viewModel.uiState.data ?? []) { pokemon in
                     NavigationLink {
-                        PokemonDetailView(
-                            viewModel: PokemonDetailViewModelImpl(
-                                pokemon: .bulbasaur,
-                                getEvolutionChainInteractor: GetEvolutionChainInteractor(
-                                    pokemonRepository: PokemonDataStore()
-                                )
-                            )
-                        )
+                        pokemonDetailViewBuilder.build(pokemon)
                     } label: {
                         PokemonCell(pokemon: pokemon)
                             .onAppear {
@@ -55,8 +52,15 @@ struct PokemonListView_Previews: PreviewProvider {
                     getPokemonListInteractor: GetPokemonListInteractor(
                         pokemonRepository: PokemonDataStore()
                     )
-                )
+                ),
+                pokemonDetailViewBuilder: MockPokemonDetailViewBuilder()
             )
+        }
+    }
+
+    private final class MockPokemonDetailViewBuilder: PokemonDetailViewBuildable {
+        func build(_ pokemon: Pokemon) -> some View {
+            Text(pokemon.name)
         }
     }
 }

@@ -18,7 +18,7 @@ protocol PokemonDetailViewModel: ObservableObject {
 }
 
 @MainActor
-final class PokemonDetailViewModelImpl<GetEvolutionChainInteractor: GetEvoluionChainUseCase>: PokemonDetailViewModel {
+final class PokemonDetailViewModelImpl<GetEvolutionChainInteractor: GetEvolutionChainUseCase>: PokemonDetailViewModel {
     let pokemon: Pokemon
     @Published private(set) var evolutionChain: EvolutionChain?
 
