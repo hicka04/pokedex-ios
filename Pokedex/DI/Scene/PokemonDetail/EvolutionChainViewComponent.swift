@@ -6,11 +6,10 @@
 //
 
 import Foundation
+import DI
+import NeedleFoundation
 import SwiftUI
 import Entity
-import NeedleFoundation
-
-protocol EvolutionChainViewCreatable: ViewCreatable where Parameter == EvolutionChain {}
 
 final class EvolutionChainViewComponent: Component<EmptyDependency>, EvolutionChainViewCreatable {
     let pokemonDetailViewComponent: PokemonDetailViewComponent

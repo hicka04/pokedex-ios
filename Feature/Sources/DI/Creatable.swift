@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-protocol Creatable {
+public protocol Creatable {
     associatedtype Parameter
     associatedtype Output
 
@@ -16,11 +16,11 @@ protocol Creatable {
     func create(_ parameter: Parameter) -> Output
 }
 
-extension Creatable where Parameter == Void {
+public extension Creatable where Parameter == Void {
     @MainActor
     func create() -> Output {
         create(())
     }
 }
 
-protocol ViewCreatable: Creatable where Output: View {}
+public protocol ViewCreatable: Creatable where Output: View {}

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import DI
+import NeedleFoundation
 import UseCase
 import Repository
-import NeedleFoundation
 
 protocol GetPokemonListUseCaseDependency: Dependency {
     var pokemonRepository: PokemonRepository { get }

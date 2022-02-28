@@ -11,6 +11,7 @@ import Core
 import DesignSystem
 import UseCase
 import Infra
+import DI
 
 struct EvolutionChainView<PokemonDetailViewCreator: PokemonDetailViewCreatable>: View {
     let evolutionChain: EvolutionChain

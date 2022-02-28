@@ -11,6 +11,7 @@ import UseCase
 import Infra
 import Core
 import DesignSystem
+import DI
 
 struct PokemonDetailView<
     ViewModel: PokemonDetailViewModel,

@@ -6,12 +6,9 @@
 //
 
 import Foundation
-import SwiftUI
-import Repository
-import Infra
+import DI
 import NeedleFoundation
-
-protocol PokemonListViewCreatable: ViewCreatable where Parameter == Void {}
+import SwiftUI
 
 final class PokemonListViewComponent: Component<EmptyDependency>, PokemonListViewCreatable {
     func create(_ parameter: Void) -> some View {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DI
 import NeedleFoundation
 import Infra
 import Repository

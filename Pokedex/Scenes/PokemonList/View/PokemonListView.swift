@@ -9,6 +9,7 @@ import SwiftUI
 import Entity
 import UseCase
 import Infra
+import DI
 
 @MainActor
 struct PokemonListView<

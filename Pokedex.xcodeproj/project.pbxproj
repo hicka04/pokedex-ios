@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B8113C8E27A18F070038FEFB /* HeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8113C8D27A18F070038FEFB /* HeightView.swift */; };
 		B8113C9027A191000038FEFB /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8113C8F27A191000038FEFB /* WeightView.swift */; };
+		B814274227CD09FB0099E1B3 /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = B814274127CD09FB0099E1B3 /* DI */; };
 		B818DC25278320F300E97C5D /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B818DC24278320F300E97C5D /* PokemonListView.swift */; };
 		B81B748027BFDC2F0015C280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81B747F27BFDC2F0015C280 /* Assets.xcassets */; };
 		B81B748227BFE0D50015C280 /* PreviewAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81B748127BFE0D50015C280 /* PreviewAssets.swift */; };
@@ -25,7 +26,6 @@
 		B834073127C5F3D700E1A585 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B834073027C5F3D700E1A585 /* Infra */; };
 		B834073327C5F3D700E1A585 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = B834073227C5F3D700E1A585 /* SFSafeSymbols */; };
 		B8429C7E27CBC2CF00F09C15 /* EvolutionChainViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8429C7D27CBC2CF00F09C15 /* EvolutionChainViewComponent.swift */; };
-		B8429C8027CCECD300F09C15 /* Creatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8429C7F27CCECD300F09C15 /* Creatable.swift */; };
 		B85500F527CA5914001EC32E /* PokemonListViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85500F427CA5914001EC32E /* PokemonListViewComponent.swift */; };
 		B85500F827CA74FC001EC32E /* GetPokemonListUseCaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85500F727CA74FC001EC32E /* GetPokemonListUseCaseComponent.swift */; };
 		B85BE06327CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06227CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift */; };
@@ -64,7 +64,6 @@
 		B82CBCA527931898009C2832 /* UiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiState.swift; sourceTree = "<group>"; };
 		B82EC6E8278AB7A3007A6A31 /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		B8429C7D27CBC2CF00F09C15 /* EvolutionChainViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainViewComponent.swift; sourceTree = "<group>"; };
-		B8429C7F27CCECD300F09C15 /* Creatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creatable.swift; sourceTree = "<group>"; };
 		B85500F427CA5914001EC32E /* PokemonListViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewComponent.swift; sourceTree = "<group>"; };
 		B85500F727CA74FC001EC32E /* GetPokemonListUseCaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPokemonListUseCaseComponent.swift; sourceTree = "<group>"; };
 		B85BE06227CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvolutionChainUseCaseComponent.swift; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 				B834072927C5F3D700E1A585 /* Entity in Frameworks */,
 				B834072B27C5F3D700E1A585 /* Repository in Frameworks */,
 				B834072F27C5F3D700E1A585 /* Feature in Frameworks */,
+				B814274227CD09FB0099E1B3 /* DI in Frameworks */,
 				B834072727C5F3D700E1A585 /* DesignSystem in Frameworks */,
 				B834072D27C5F3D700E1A585 /* UseCase in Frameworks */,
 				B834073327C5F3D700E1A585 /* SFSafeSymbols in Frameworks */,
@@ -223,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				B85BE06927CB1B9200EDD566 /* RootComponent.swift */,
-				B8429C7F27CCECD300F09C15 /* Creatable.swift */,
 				B85500F927CA752A001EC32E /* Scene */,
 				B85500F627CA74E2001EC32E /* UseCase */,
 			);
@@ -340,6 +339,7 @@
 				B834073027C5F3D700E1A585 /* Infra */,
 				B834073227C5F3D700E1A585 /* SFSafeSymbols */,
 				B875506127C9CEB00003AB2B /* NeedleFoundation */,
+				B814274127CD09FB0099E1B3 /* DI */,
 			);
 			productName = Pokedex;
 			productReference = B86CE2762778A81A00D0D1C4 /* Pokedex.app */;
@@ -491,7 +491,6 @@
 				B85BE06827CA878600EDD566 /* NeedleGenerated.swift in Sources */,
 				B878129E27AE382200677C28 /* BaseStasView.swift in Sources */,
 				B878129827ABF4E800677C28 /* OfficialArtworkView.swift in Sources */,
-				B8429C8027CCECD300F09C15 /* Creatable.swift in Sources */,
 				B8113C9027A191000038FEFB /* WeightView.swift in Sources */,
 				B85BE06A27CB1B9200EDD566 /* RootComponent.swift in Sources */,
 				B85BE06327CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift in Sources */,
@@ -806,6 +805,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B814274127CD09FB0099E1B3 /* DI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DI;
+		};
 		B834072427C5F3D700E1A585 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;

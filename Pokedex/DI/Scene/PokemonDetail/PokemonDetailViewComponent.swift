@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import SwiftUI
+import DI
 import NeedleFoundation
+import SwiftUI
 import Entity
-
-protocol PokemonDetailViewCreatable: ViewCreatable where Parameter == Pokemon {}
+import DI
 
 final class PokemonDetailViewComponent: Component<EmptyDependency>, PokemonDetailViewCreatable {
     func create(_ pokemon: Pokemon) -> some View {
