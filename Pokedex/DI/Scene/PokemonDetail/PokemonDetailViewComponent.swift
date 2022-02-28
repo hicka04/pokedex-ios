@@ -10,13 +10,13 @@ import SwiftUI
 import NeedleFoundation
 import Entity
 
-protocol PokemonDetailViewBuildable: ViewBuildable where Parameter == Pokemon {}
+protocol PokemonDetailViewCreatable: ViewCreatable where Parameter == Pokemon {}
 
-final class PokemonDetailViewComponent: Component<EmptyDependency>, PokemonDetailViewBuildable {
-    func build(_ pokemon: Pokemon) -> some View {
+final class PokemonDetailViewComponent: Component<EmptyDependency>, PokemonDetailViewCreatable {
+    func create(_ pokemon: Pokemon) -> some View {
         PokemonDetailView(
-            viewModel: self.viewModelComponent.build(pokemon),
-            evolutionChainViewBuilder: evolutionChainViewComponent
+            viewModel: self.viewModelComponent.create(pokemon),
+            evolutionChainViewCreator: evolutionChainViewComponent
         )
     }
 
@@ -30,15 +30,14 @@ final class PokemonDetailViewComponent: Component<EmptyDependency>, PokemonDetai
 }
 
 protocol PokemonDetailViewModelDependency: Dependency {
-    var getEvolutionChainComponent: GetEvolutionChainUseCaseComponent { get }
+    var getEvolutionChainUseCaseComponent: GetEvolutionChainUseCaseComponent { get }
 }
 
-final class PokemonDetailViewModelComponent: Component<PokemonDetailViewModelDependency> {
-    @MainActor
-    func build(_ pokemon: Pokemon) -> some PokemonDetailViewModel {
+final class PokemonDetailViewModelComponent: Component<PokemonDetailViewModelDependency>, Creatable {
+    func create(_ pokemon: Pokemon) -> some PokemonDetailViewModel {
         PokemonDetailViewModelImpl(
             pokemon: pokemon,
-            getEvolutionChainInteractor: self.dependency.getEvolutionChainComponent.getEvolutionChainInteractor
+            getEvolutionChainInteractor: self.dependency.getEvolutionChainUseCaseComponent.create()
         )
     }
 }

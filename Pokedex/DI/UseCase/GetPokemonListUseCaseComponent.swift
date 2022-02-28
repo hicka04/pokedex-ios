@@ -14,8 +14,8 @@ protocol GetPokemonListUseCaseDependency: Dependency {
     var pokemonRepository: PokemonRepository { get }
 }
 
-final class GetPokemonListUseCaseComponent: Component<GetPokemonListUseCaseDependency> {
-    var getPokemonListInteractor: some GetPokemonListUseCase {
+final class GetPokemonListUseCaseComponent: Component<GetPokemonListUseCaseDependency>, Creatable {
+    func create(_ parameter: Void) -> some GetPokemonListUseCase {
         GetPokemonListInteractor(pokemonRepository: dependency.pokemonRepository)
     }
 }

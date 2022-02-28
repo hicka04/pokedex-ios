@@ -12,9 +12,9 @@ import DesignSystem
 import UseCase
 import Infra
 
-struct EvolutionChainView<PokemonDetailViewBuilder: PokemonDetailViewBuildable>: View {
+struct EvolutionChainView<PokemonDetailViewCreator: PokemonDetailViewCreatable>: View {
     let evolutionChain: EvolutionChain
-    let pokemonDetailViewBuilder: PokemonDetailViewBuilder
+    let pokemonDetailViewCreator: PokemonDetailViewCreator
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -25,8 +25,7 @@ struct EvolutionChainView<PokemonDetailViewBuilder: PokemonDetailViewBuildable>:
                 Spacer()
                 ChainLinkView(
                     chainLink: evolutionChain.chain,
-
-                    pokemonDetailViewBuilder: pokemonDetailViewBuilder
+                    pokemonDetailViewCreator: pokemonDetailViewCreator
                 )
                 Spacer()
             }
@@ -37,7 +36,7 @@ struct EvolutionChainView<PokemonDetailViewBuilder: PokemonDetailViewBuildable>:
 private extension EvolutionChainView {
     struct ChainLinkView: View {
         let chainLink: EvolutionChain.ChainLink
-        let pokemonDetailViewBuilder: PokemonDetailViewBuilder
+        let pokemonDetailViewCreator: PokemonDetailViewCreator
 
         var body: some View {
             VStack(spacing: 16) {
@@ -49,7 +48,7 @@ private extension EvolutionChainView {
                     PokemonView(
                         pokemon: chainLink.pokemon,
 
-                        pokemonDetailViewBuilder: pokemonDetailViewBuilder
+                        pokemonDetailViewCreator: pokemonDetailViewCreator
                     )
                 }
 
@@ -68,7 +67,7 @@ private extension EvolutionChainView {
                 ForEach(chainLink.evolvesTo, id: \.pokemon.id) { chain in
                     ChainLinkView(
                         chainLink: chain,
-                        pokemonDetailViewBuilder: pokemonDetailViewBuilder
+                        pokemonDetailViewCreator: pokemonDetailViewCreator
                     )
                 }
             }
@@ -79,7 +78,7 @@ private extension EvolutionChainView {
 private extension EvolutionChainView.ChainLinkView {
     struct PokemonView: View {
         let pokemon: Pokemon
-        let pokemonDetailViewBuilder: PokemonDetailViewBuilder
+        let pokemonDetailViewCreator: PokemonDetailViewCreator
         @State private var isPresented: Bool = false
 
         var body: some View {
@@ -98,7 +97,7 @@ private extension EvolutionChainView.ChainLinkView {
                 isPresented = true
             }.sheet(isPresented: $isPresented) {
                 NavigationView {
-                    pokemonDetailViewBuilder.build(pokemon)
+                    pokemonDetailViewCreator.create(pokemon)
                 }
             }
         }
@@ -109,12 +108,12 @@ struct EvolutionChainView_Previews: PreviewProvider {
     static var previews: some View {
         EvolutionChainView(
             evolutionChain: .bulbasaur,
-            pokemonDetailViewBuilder: MockPokemonDetailViewBuilder()
+            pokemonDetailViewCreator: MockPokemonDetailViewCreator()
         ).previewLayout(.sizeThatFits)
     }
 
-    private final class MockPokemonDetailViewBuilder: PokemonDetailViewBuildable {
-        func build(_ pokemon: Pokemon) -> some View {
+    private final class MockPokemonDetailViewCreator: PokemonDetailViewCreatable {
+        func create(_ pokemon: Pokemon) -> some View {
             Text(pokemon.name)
         }
     }

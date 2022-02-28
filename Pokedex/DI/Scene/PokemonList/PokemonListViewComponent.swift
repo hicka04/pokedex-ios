@@ -11,14 +11,13 @@ import Repository
 import Infra
 import NeedleFoundation
 
-protocol PokemonListViewBuildable: ViewBuildable where Parameter == Void {}
+protocol PokemonListViewCreatable: ViewCreatable where Parameter == Void {}
 
-final class PokemonListViewComponent: Component<EmptyDependency>, PokemonListViewBuildable {
-    @MainActor
-    func build(_ parameter: Void) -> some View {
+final class PokemonListViewComponent: Component<EmptyDependency>, PokemonListViewCreatable {
+    func create(_ parameter: Void) -> some View {
         PokemonListView(
-            viewModel: self.pokemonListViewModelComponent.build(()),
-            pokemonDetailViewBuilder: pokemonDetailViewComponent
+            viewModel: self.pokemonListViewModelComponent.create(()),
+            pokemonDetailViewCreator: pokemonDetailViewComponent
         )
     }
 
@@ -32,12 +31,11 @@ final class PokemonListViewComponent: Component<EmptyDependency>, PokemonListVie
 }
 
 protocol PokemonListViewModelDependency: Dependency {
-    var getPokemonListComponent: GetPokemonListUseCaseComponent { get }
+    var getPokemonListUseCaseComponent: GetPokemonListUseCaseComponent { get }
 }
 
-final class PokemonListViewModelComponent: Component<PokemonListViewModelDependency> {
-    @MainActor
-    func build(_ parameter: Void) -> some PokemonListViewModel {
-        PokemonListViewModelImpl(getPokemonListInteractor: self.dependency.getPokemonListComponent.getPokemonListInteractor)
+final class PokemonListViewModelComponent: Component<PokemonListViewModelDependency>, Creatable {
+    func create(_ parameter: Void) -> some PokemonListViewModel {
+        PokemonListViewModelImpl(getPokemonListInteractor: self.dependency.getPokemonListUseCaseComponent.create())
     }
 }

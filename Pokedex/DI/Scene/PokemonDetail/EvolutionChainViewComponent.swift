@@ -10,9 +10,9 @@ import SwiftUI
 import Entity
 import NeedleFoundation
 
-protocol EvolutionChainViewBuildable: ViewBuildable where Parameter == EvolutionChain {}
+protocol EvolutionChainViewCreatable: ViewCreatable where Parameter == EvolutionChain {}
 
-final class EvolutionChainViewComponent: Component<EmptyDependency>, EvolutionChainViewBuildable {
+final class EvolutionChainViewComponent: Component<EmptyDependency>, EvolutionChainViewCreatable {
     let pokemonDetailViewComponent: PokemonDetailViewComponent
 
     init(parent: Scope, pokemonDetailViewComponent: PokemonDetailViewComponent) {
@@ -20,7 +20,7 @@ final class EvolutionChainViewComponent: Component<EmptyDependency>, EvolutionCh
         super.init(parent: parent)
     }
 
-    func build(_ evolutionChain: EvolutionChain) -> some View {
-        EvolutionChainView(evolutionChain: evolutionChain, pokemonDetailViewBuilder: pokemonDetailViewComponent)
+    func create(_ evolutionChain: EvolutionChain) -> some View {
+        EvolutionChainView(evolutionChain: evolutionChain, pokemonDetailViewCreator: pokemonDetailViewComponent)
     }
 }

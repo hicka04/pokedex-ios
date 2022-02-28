@@ -25,9 +25,9 @@
 		B834073127C5F3D700E1A585 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B834073027C5F3D700E1A585 /* Infra */; };
 		B834073327C5F3D700E1A585 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = B834073227C5F3D700E1A585 /* SFSafeSymbols */; };
 		B8429C7E27CBC2CF00F09C15 /* EvolutionChainViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8429C7D27CBC2CF00F09C15 /* EvolutionChainViewComponent.swift */; };
+		B8429C8027CCECD300F09C15 /* Creatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8429C7F27CCECD300F09C15 /* Creatable.swift */; };
 		B85500F527CA5914001EC32E /* PokemonListViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85500F427CA5914001EC32E /* PokemonListViewComponent.swift */; };
 		B85500F827CA74FC001EC32E /* GetPokemonListUseCaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85500F727CA74FC001EC32E /* GetPokemonListUseCaseComponent.swift */; };
-		B85500FD27CA781B001EC32E /* ViewBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85500FC27CA781B001EC32E /* ViewBuildable.swift */; };
 		B85BE06327CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06227CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift */; };
 		B85BE06527CA80D300EDD566 /* PokemonDetailViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06427CA80D300EDD566 /* PokemonDetailViewComponent.swift */; };
 		B85BE06827CA878600EDD566 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06727CA878600EDD566 /* NeedleGenerated.swift */; };
@@ -64,9 +64,9 @@
 		B82CBCA527931898009C2832 /* UiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiState.swift; sourceTree = "<group>"; };
 		B82EC6E8278AB7A3007A6A31 /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		B8429C7D27CBC2CF00F09C15 /* EvolutionChainViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainViewComponent.swift; sourceTree = "<group>"; };
+		B8429C7F27CCECD300F09C15 /* Creatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creatable.swift; sourceTree = "<group>"; };
 		B85500F427CA5914001EC32E /* PokemonListViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewComponent.swift; sourceTree = "<group>"; };
 		B85500F727CA74FC001EC32E /* GetPokemonListUseCaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPokemonListUseCaseComponent.swift; sourceTree = "<group>"; };
-		B85500FC27CA781B001EC32E /* ViewBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuildable.swift; sourceTree = "<group>"; };
 		B85BE06227CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvolutionChainUseCaseComponent.swift; sourceTree = "<group>"; };
 		B85BE06427CA80D300EDD566 /* PokemonDetailViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewComponent.swift; sourceTree = "<group>"; };
 		B85BE06727CA878600EDD566 /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				B85BE06927CB1B9200EDD566 /* RootComponent.swift */,
-				B85500FC27CA781B001EC32E /* ViewBuildable.swift */,
+				B8429C7F27CCECD300F09C15 /* Creatable.swift */,
 				B85500F927CA752A001EC32E /* Scene */,
 				B85500F627CA74E2001EC32E /* UseCase */,
 			);
@@ -489,9 +489,9 @@
 				B82CBC9E27925E29009C2832 /* PokemonCell.swift in Sources */,
 				B85500F827CA74FC001EC32E /* GetPokemonListUseCaseComponent.swift in Sources */,
 				B85BE06827CA878600EDD566 /* NeedleGenerated.swift in Sources */,
-				B85500FD27CA781B001EC32E /* ViewBuildable.swift in Sources */,
 				B878129E27AE382200677C28 /* BaseStasView.swift in Sources */,
 				B878129827ABF4E800677C28 /* OfficialArtworkView.swift in Sources */,
+				B8429C8027CCECD300F09C15 /* Creatable.swift in Sources */,
 				B8113C9027A191000038FEFB /* WeightView.swift in Sources */,
 				B85BE06A27CB1B9200EDD566 /* RootComponent.swift in Sources */,
 				B85BE06327CA7FD300EDD566 /* GetEvolutionChainUseCaseComponent.swift in Sources */,

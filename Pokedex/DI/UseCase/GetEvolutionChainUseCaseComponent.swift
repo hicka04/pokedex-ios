@@ -14,8 +14,8 @@ protocol GetEvolutionChainUseCaseDependency: Dependency {
     var pokemonRepository: PokemonRepository { get }
 }
 
-final class GetEvolutionChainUseCaseComponent: Component<GetEvolutionChainUseCaseDependency> {
-    var getEvolutionChainInteractor: some GetEvolutionChainUseCase {
+final class GetEvolutionChainUseCaseComponent: Component<GetEvolutionChainUseCaseDependency>, Creatable {
+    func create(_ parameter: Void) -> some GetEvolutionChainUseCase {
         GetEvolutionChainInteractor(pokemonRepository: dependency.pokemonRepository)
     }
 }

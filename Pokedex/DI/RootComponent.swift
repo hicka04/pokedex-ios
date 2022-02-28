@@ -11,11 +11,10 @@ import Infra
 import Repository
 import SwiftUI
 
-final class RootComponent: BootstrapComponent, ViewBuildable {
-    @MainActor
-    func build(_ parameter: ()) -> some View {
+final class RootComponent: BootstrapComponent, ViewCreatable {
+    func create(_ parameter: ()) -> some View {
         NavigationView {
-            pokemonListViewComponent.build()
+            pokemonListViewComponent.create()
         }
     }
 

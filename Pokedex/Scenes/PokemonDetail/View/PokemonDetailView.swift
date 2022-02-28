@@ -14,10 +14,10 @@ import DesignSystem
 
 struct PokemonDetailView<
     ViewModel: PokemonDetailViewModel,
-    EvolutionChainViewBuilder: EvolutionChainViewBuildable
+    EvolutionChainViewCreator: EvolutionChainViewCreatable
 >: View {
     @StateObject var viewModel: ViewModel
-    let evolutionChainViewBuilder: EvolutionChainViewBuilder
+    let evolutionChainViewCreator: EvolutionChainViewCreator
 
     var body: some View {
         ScrollView {
@@ -40,7 +40,7 @@ struct PokemonDetailView<
                     BaseStasView(baseStats: viewModel.pokemon.baseStats)
 
                     if let evolutionChain = viewModel.evolutionChain {
-                        evolutionChainViewBuilder.build(evolutionChain)
+                        evolutionChainViewCreator.create(evolutionChain)
                     }
                 }
             }
@@ -63,13 +63,13 @@ struct PokemonDetailView_Previews: PreviewProvider {
                         pokemonRepository: PokemonDataStore()
                     )
                 ),
-                evolutionChainViewBuilder: MockEvolutionChainViewBuilder()
+                evolutionChainViewCreator: MockEvolutionChainViewCreator()
             )
         }
     }
 
-    private final class MockEvolutionChainViewBuilder: EvolutionChainViewBuildable {
-        func build(_ evolutionChain: EvolutionChain) -> some View {
+    private final class MockEvolutionChainViewCreator: EvolutionChainViewCreatable {
+        func create(_ evolutionChain: EvolutionChain) -> some View {
             Text("\(evolutionChain.id.rawValue)")
         }
     }
