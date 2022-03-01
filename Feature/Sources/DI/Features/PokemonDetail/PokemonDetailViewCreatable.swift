@@ -7,5 +7,9 @@
 
 import Foundation
 import Entity
+import SwiftUI
 
-public protocol PokemonDetailViewCreatable: ViewCreatable where Parameter == Pokemon {}
+public protocol PokemonDetailViewCreatable {
+    @MainActor
+    func create(pokemon: Pokemon) -> AnyView
+}

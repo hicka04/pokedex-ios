@@ -13,18 +13,17 @@ import DI
 
 @MainActor
 struct PokemonListView<
-    ViewModel: PokemonListViewModel,
-    PokemonDetailViewCreator: PokemonDetailViewCreatable
+    ViewModel: PokemonListViewModel
 >: View {
     @StateObject var viewModel: ViewModel
-    let pokemonDetailViewCreator: PokemonDetailViewCreator
+    let pokemonDetailViewCreator: PokemonDetailViewCreatable
 
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 16) {
                 ForEach(viewModel.uiState.data ?? []) { pokemon in
                     NavigationLink {
-                        pokemonDetailViewCreator.create(pokemon)
+                        pokemonDetailViewCreator.create(pokemon: pokemon)
                     } label: {
                         PokemonCell(pokemon: pokemon)
                             .onAppear {
@@ -60,8 +59,8 @@ struct PokemonListView_Previews: PreviewProvider {
     }
 
     private final class MockPokemonDetailViewCreator: PokemonDetailViewCreatable {
-        func create(_ pokemon: Pokemon) -> some View {
-            Text(pokemon.name)
+        func create(pokemon: Pokemon) -> AnyView {
+            .init(Text(pokemon.name))
         }
     }
 }

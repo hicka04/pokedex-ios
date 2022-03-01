@@ -11,20 +11,38 @@ import NeedleFoundation
 import Infra
 import Repository
 import SwiftUI
+import PokemonList
+import PokemonDetail
 
-final class RootComponent: BootstrapComponent, ViewCreatable {
-    func create(_ parameter: ()) -> some View {
+final class RootComponent: BootstrapComponent {
+    @MainActor
+    func create() -> some View {
         NavigationView {
             pokemonListViewComponent.create()
         }
     }
+}
 
-    var pokemonListViewComponent: PokemonListViewComponent{
+// MARK: - Feature
+// PokemonList
+extension RootComponent {
+    var pokemonListViewComponent: PokemonListViewComponent {
         PokemonListViewComponent(parent: self)
     }
 }
 
-// UseCase
+// PokemonDetail
+extension RootComponent {
+    var pokemonDetailViewComponent: PokemonDetailViewComponent {
+        PokemonDetailViewComponent(parent: self)
+    }
+
+    var pokemonDetailViewCreator: PokemonDetailViewCreatable {
+        pokemonDetailViewComponent
+    }
+}
+
+// MARK: - UseCase
 extension RootComponent {
     var getPokemonListUseCaseComponent: GetPokemonListUseCaseComponent {
         GetPokemonListUseCaseComponent(parent: self)
@@ -35,7 +53,7 @@ extension RootComponent {
     }
 }
 
-// Repository
+// MARK: - Repository
 extension RootComponent {
     var pokemonRepository: PokemonRepository {
         PokemonDataStore()

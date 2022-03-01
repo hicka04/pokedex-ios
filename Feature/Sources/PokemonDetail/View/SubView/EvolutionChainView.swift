@@ -98,7 +98,7 @@ private extension EvolutionChainView.ChainLinkView {
                 isPresented = true
             }.sheet(isPresented: $isPresented) {
                 NavigationView {
-                    pokemonDetailViewCreator.create(pokemon)
+                    pokemonDetailViewCreator.create(pokemon: pokemon)
                 }
             }
         }
@@ -114,8 +114,8 @@ struct EvolutionChainView_Previews: PreviewProvider {
     }
 
     private final class MockPokemonDetailViewCreator: PokemonDetailViewCreatable {
-        func create(_ pokemon: Pokemon) -> some View {
-            Text(pokemon.name)
+        func create(pokemon: Pokemon) -> AnyView {
+            .init(Text(pokemon.name))
         }
     }
 }

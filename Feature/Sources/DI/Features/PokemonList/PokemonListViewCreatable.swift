@@ -6,5 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-public protocol PokemonListViewCreatable: ViewCreatable where Parameter == Void {}
+public protocol PokemonListViewCreatable {
+    @MainActor
+    func create() -> AnyView
+}

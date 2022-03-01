@@ -41,7 +41,7 @@ struct PokemonDetailView<
                     BaseStasView(baseStats: viewModel.pokemon.baseStats)
 
                     if let evolutionChain = viewModel.evolutionChain {
-                        evolutionChainViewCreator.create(evolutionChain)
+                        evolutionChainViewCreator.create(evolutionChain: evolutionChain)
                     }
                 }
             }
@@ -70,8 +70,8 @@ struct PokemonDetailView_Previews: PreviewProvider {
     }
 
     private final class MockEvolutionChainViewCreator: EvolutionChainViewCreatable {
-        func create(_ evolutionChain: EvolutionChain) -> some View {
-            Text("\(evolutionChain.id.rawValue)")
+        func create(evolutionChain: EvolutionChain) -> AnyView {
+            .init(Text("\(evolutionChain.id.rawValue)"))
         }
     }
 }

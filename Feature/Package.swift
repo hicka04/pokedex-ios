@@ -6,12 +6,15 @@ import PackageDescription
 let package = Package(
     name: "Feature",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         .library(
-            name: "Feature",
-            targets: ["Feature"]
+            name: "Features",
+            targets: [
+                "PokemonList",
+                "PokemonDetail"
+            ]
         ),
         .library(
             name: "DI",
@@ -19,22 +22,38 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "Domain", path: "../Domain")
+        .package(name: "Domain", path: "../Domain"),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "2.1.3"))
     ],
     targets: [
         .target(
-            name: "Feature",
-            dependencies: []
+            name: "PokemonList",
+            dependencies: [
+                "SFSafeSymbols",
+                "DI"
+            ]
+        ),
+        .target(
+            name: "PokemonDetail",
+            dependencies: [
+                "SFSafeSymbols",
+                "DI"
+            ]
         ),
         .target(
             name: "DI",
             dependencies: [
-                .product(name: "Entity", package: "Domain")
+                .product(name: "Entity", package: "Domain"),
+                .product(name: "UseCase", package: "Domain"),
+                .product(name: "Repository", package: "Domain")
             ]
         ),
         .testTarget(
             name: "FeatureTests",
-            dependencies: ["Feature"]
+            dependencies: [
+                "PokemonList",
+                "PokemonDetail"
+            ]
         )
     ]
 )

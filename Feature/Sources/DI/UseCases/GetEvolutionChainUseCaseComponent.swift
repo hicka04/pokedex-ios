@@ -6,17 +6,16 @@
 //
 
 import Foundation
-import DI
 import NeedleFoundation
 import UseCase
 import Repository
 
-protocol GetEvolutionChainUseCaseDependency: Dependency {
+public protocol GetEvolutionChainUseCaseDependency: Dependency {
     var pokemonRepository: PokemonRepository { get }
 }
 
-final class GetEvolutionChainUseCaseComponent: Component<GetEvolutionChainUseCaseDependency>, Creatable {
-    func create(_ parameter: Void) -> some GetEvolutionChainUseCase {
+public final class GetEvolutionChainUseCaseComponent: Component<GetEvolutionChainUseCaseDependency> {
+    public func create() -> some GetEvolutionChainUseCase {
         GetEvolutionChainInteractor(pokemonRepository: dependency.pokemonRepository)
     }
 }
