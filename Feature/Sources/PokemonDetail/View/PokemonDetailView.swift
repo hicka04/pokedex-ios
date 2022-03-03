@@ -46,8 +46,8 @@ struct PokemonDetailView<
             .padding(.horizontal, 32)
         }
         .navigationTitle("No.\(viewModel.pokemon.id.rawValue) \(viewModel.pokemon.name)")
-        .onAppear {
-            viewModel.onAppear()
+        .task {
+            await viewModel.onAppear()
         }
     }
 }
@@ -74,7 +74,7 @@ struct PokemonDetailView_Previews: PreviewProvider {
             self.evolutionChain = evolutionChain
         }
 
-        func onAppear() {}
+        func onAppear() async {}
     }
 
     private final class MockEvolutionChainViewCreator: EvolutionChainViewCreatable {

@@ -14,7 +14,7 @@ protocol PokemonDetailViewModel: ObservableObject {
     var pokemon: Pokemon { get }
     var evolutionChain: EvolutionChain? { get }
 
-    func onAppear()
+    func onAppear() async
 }
 
 @MainActor
@@ -32,13 +32,11 @@ final class PokemonDetailViewModelImpl<GetEvolutionChainInteractor: GetEvolution
         self.getEvolutionChainInteractor = getEvolutionChainInteractor
     }
 
-    func onAppear() {
-        Task {
-            do {
-                evolutionChain = try await getEvolutionChainInteractor.execute(pokemon.id)
-            } catch {
-                print(error)
-            }
+    func onAppear() async {
+        do {
+            evolutionChain = try await getEvolutionChainInteractor.execute(pokemon.id)
+        } catch {
+            print(error)
         }
     }
 }
