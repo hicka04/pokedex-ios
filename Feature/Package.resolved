@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "needle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uber/needle.git",
+      "state" : {
+        "revision" : "6a2d5e25cd3c77ddfa57835e991469db791c4744",
+        "version" : "0.17.2"
+      }
+    },
+    {
+      "identity" : "sfsafesymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
+      "state" : {
+        "revision" : "c61de7a6e9eb1520d32316b06d5932accd974e70",
+        "version" : "2.1.3"
+      }
+    }
+  ],
+  "version" : 2
+}

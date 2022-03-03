@@ -23,26 +23,34 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Domain", path: "../Domain"),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "2.1.3"))
+        .package(name: "Core", path: "../Core"),
+        .package(name: "DesignSystem", path: "../DesignSystem"),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "2.1.3")),
+        .package(url: "https://github.com/uber/needle.git", .upToNextMajor(from: "0.17.2"))
     ],
     targets: [
         .target(
             name: "PokemonList",
             dependencies: [
-                "SFSafeSymbols",
-                "DI"
+                "DI",
+                "DesignSystem",
+                "Core",
+                "SFSafeSymbols"
             ]
         ),
         .target(
             name: "PokemonDetail",
             dependencies: [
+                "DI",
+                "DesignSystem",
+                "Core",
                 "SFSafeSymbols",
-                "DI"
             ]
         ),
         .target(
             name: "DI",
             dependencies: [
+                .product(name: "NeedleFoundation", package: "Needle"),
                 .product(name: "Entity", package: "Domain"),
                 .product(name: "UseCase", package: "Domain"),
                 .product(name: "Repository", package: "Domain")

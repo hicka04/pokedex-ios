@@ -7,8 +7,6 @@
 
 import SwiftUI
 import Entity
-import UseCase
-import Infra
 import Core
 import DesignSystem
 import DI
@@ -58,15 +56,25 @@ struct PokemonDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             PokemonDetailView(
-                viewModel: PokemonDetailViewModelImpl(
+                viewModel: MockPokemonDetailViewModel(
                     pokemon: .bulbasaur,
-                    getEvolutionChainInteractor: GetEvolutionChainInteractor(
-                        pokemonRepository: PokemonDataStore()
-                    )
+                    evolutionChain: .bulbasaur
                 ),
                 evolutionChainViewCreator: MockEvolutionChainViewCreator()
             )
         }
+    }
+
+    private final class MockPokemonDetailViewModel: PokemonDetailViewModel {
+        let pokemon: Pokemon
+        let evolutionChain: EvolutionChain?
+
+        init(pokemon: Pokemon, evolutionChain: EvolutionChain?) {
+            self.pokemon = pokemon
+            self.evolutionChain = evolutionChain
+        }
+
+        func onAppear() {}
     }
 
     private final class MockEvolutionChainViewCreator: EvolutionChainViewCreatable {

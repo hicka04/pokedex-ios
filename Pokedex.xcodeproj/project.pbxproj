@@ -11,19 +11,17 @@
 		B814274427CD0D970099E1B3 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = B814274327CD0D970099E1B3 /* Features */; };
 		B81B748027BFDC2F0015C280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81B747F27BFDC2F0015C280 /* Assets.xcassets */; };
 		B81B748227BFE0D50015C280 /* PreviewAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81B748127BFE0D50015C280 /* PreviewAssets.swift */; };
-		B834072527C5F3D700E1A585 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = B834072427C5F3D700E1A585 /* Core */; };
 		B834072727C5F3D700E1A585 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B834072627C5F3D700E1A585 /* DesignSystem */; };
 		B834072927C5F3D700E1A585 /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = B834072827C5F3D700E1A585 /* Entity */; };
 		B834072B27C5F3D700E1A585 /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = B834072A27C5F3D700E1A585 /* Repository */; };
 		B834072D27C5F3D700E1A585 /* UseCase in Frameworks */ = {isa = PBXBuildFile; productRef = B834072C27C5F3D700E1A585 /* UseCase */; };
 		B834073127C5F3D700E1A585 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B834073027C5F3D700E1A585 /* Infra */; };
-		B834073327C5F3D700E1A585 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = B834073227C5F3D700E1A585 /* SFSafeSymbols */; };
+		B845207727D06F150067081D /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = B845207627D06F150067081D /* Core */; };
 		B85BE06827CA878600EDD566 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06727CA878600EDD566 /* NeedleGenerated.swift */; };
 		B85BE06A27CB1B9200EDD566 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06927CB1B9200EDD566 /* RootComponent.swift */; };
 		B86CE27A2778A81A00D0D1C4 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */; };
 		B86CE2812778A81C00D0D1C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */; };
 		B86CE28B2778A81C00D0D1C4 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE28A2778A81C00D0D1C4 /* PokedexTests.swift */; };
-		B875506227C9CEB00003AB2B /* NeedleFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B875506127C9CEB00003AB2B /* NeedleFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,15 +51,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B834072527C5F3D700E1A585 /* Core in Frameworks */,
-				B875506227C9CEB00003AB2B /* NeedleFoundation in Frameworks */,
 				B834072927C5F3D700E1A585 /* Entity in Frameworks */,
 				B834072B27C5F3D700E1A585 /* Repository in Frameworks */,
 				B814274227CD09FB0099E1B3 /* DI in Frameworks */,
 				B834072727C5F3D700E1A585 /* DesignSystem in Frameworks */,
 				B834072D27C5F3D700E1A585 /* UseCase in Frameworks */,
+				B845207727D06F150067081D /* Core in Frameworks */,
 				B814274427CD0D970099E1B3 /* Features in Frameworks */,
-				B834073327C5F3D700E1A585 /* SFSafeSymbols in Frameworks */,
 				B834073127C5F3D700E1A585 /* Infra in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,16 +171,14 @@
 			);
 			name = Pokedex;
 			packageProductDependencies = (
-				B834072427C5F3D700E1A585 /* Core */,
 				B834072627C5F3D700E1A585 /* DesignSystem */,
 				B834072827C5F3D700E1A585 /* Entity */,
 				B834072A27C5F3D700E1A585 /* Repository */,
 				B834072C27C5F3D700E1A585 /* UseCase */,
 				B834073027C5F3D700E1A585 /* Infra */,
-				B834073227C5F3D700E1A585 /* SFSafeSymbols */,
-				B875506127C9CEB00003AB2B /* NeedleFoundation */,
 				B814274127CD09FB0099E1B3 /* DI */,
 				B814274327CD0D970099E1B3 /* Features */,
+				B845207627D06F150067081D /* Core */,
 			);
 			productName = Pokedex;
 			productReference = B86CE2762778A81A00D0D1C4 /* Pokedex.app */;
@@ -237,8 +231,6 @@
 			);
 			mainGroup = B86CE26D2778A81A00D0D1C4;
 			packageReferences = (
-				B82CBCA227926323009C2832 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
-				B875506027C9CEB00003AB2B /* XCRemoteSwiftPackageReference "needle" */,
 			);
 			productRefGroup = B86CE2772778A81A00D0D1C4 /* Products */;
 			projectDirPath = "";
@@ -613,25 +605,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		B82CBCA227926323009C2832 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.3;
-			};
-		};
-		B875506027C9CEB00003AB2B /* XCRemoteSwiftPackageReference "needle" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/uber/needle.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.17.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		B814274127CD09FB0099E1B3 /* DI */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -640,10 +613,6 @@
 		B814274327CD0D970099E1B3 /* Features */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Features;
-		};
-		B834072427C5F3D700E1A585 /* Core */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Core;
 		};
 		B834072627C5F3D700E1A585 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -665,15 +634,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Infra;
 		};
-		B834073227C5F3D700E1A585 /* SFSafeSymbols */ = {
+		B845207627D06F150067081D /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B82CBCA227926323009C2832 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
-		};
-		B875506127C9CEB00003AB2B /* NeedleFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B875506027C9CEB00003AB2B /* XCRemoteSwiftPackageReference "needle" */;
-			productName = NeedleFoundation;
+			productName = Core;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

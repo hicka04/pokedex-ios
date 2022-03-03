@@ -7,8 +7,6 @@
 
 import SwiftUI
 import Entity
-import UseCase
-import Infra
 import DI
 
 @MainActor
@@ -48,14 +46,23 @@ struct PokemonListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             PokemonListView(
-                viewModel: PokemonListViewModelImpl(
-                    getPokemonListInteractor: GetPokemonListInteractor(
-                        pokemonRepository: PokemonDataStore()
-                    )
+                viewModel: MockPokemonListViewModel(
+                    uiState: .ideal([.bulbasaur])
                 ),
                 pokemonDetailViewCreator: MockPokemonDetailViewCreator()
             )
         }
+    }
+
+    private final class MockPokemonListViewModel: PokemonListViewModel {
+        let uiState: UiState<[Pokemon], Int>
+
+        init(uiState: UiState<[Pokemon], Int>) {
+            self.uiState = uiState
+        }
+
+        func onAppear() {}
+        func onAppearCell(pokemon: Pokemon) {}
     }
 
     private final class MockPokemonDetailViewCreator: PokemonDetailViewCreatable {
