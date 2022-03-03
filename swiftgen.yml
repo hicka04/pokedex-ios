@@ -13,3 +13,4 @@ xcassets:
         output: DesignSystem/Sources/DesignSystem/Generated/Assets.swift
         params:
           publicAccess: true
+          bundle: MyBundleToken.bundle
