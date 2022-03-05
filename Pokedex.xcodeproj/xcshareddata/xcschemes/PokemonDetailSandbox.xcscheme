@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8D1AD2B27D10B8800E4BABF"
-               BuildableName = "PokemonDetailFeature.app"
-               BlueprintName = "PokemonDetailFeature"
+               BuildableName = "PokemonDetailSandbox.app"
+               BlueprintName = "PokemonDetailSandbox"
                ReferencedContainer = "container:Pokedex.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8D1AD2B27D10B8800E4BABF"
-            BuildableName = "PokemonDetailFeature.app"
-            BlueprintName = "PokemonDetailFeature"
+            BuildableName = "PokemonDetailSandbox.app"
+            BlueprintName = "PokemonDetailSandbox"
             ReferencedContainer = "container:Pokedex.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8D1AD2B27D10B8800E4BABF"
-            BuildableName = "PokemonDetailFeature.app"
-            BlueprintName = "PokemonDetailFeature"
+            BuildableName = "PokemonDetailSandbox.app"
+            BlueprintName = "PokemonDetailSandbox"
             ReferencedContainer = "container:Pokedex.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

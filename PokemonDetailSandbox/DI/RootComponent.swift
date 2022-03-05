@@ -1,6 +1,6 @@
 //
 //  RootComponent.swift
-//  PokemonDetailFeature
+//  PokemonDetailSandbox
 //
 //  Created by hicka04 on 2022/03/03.
 //
