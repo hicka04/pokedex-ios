@@ -19,7 +19,7 @@ final class RootComponent: BootstrapComponent {
     func create() -> some View {
         NavigationView {
             pokemonListViewComponent.create()
-        }
+        }.navigationViewStyle(.stack)
     }
 }
 

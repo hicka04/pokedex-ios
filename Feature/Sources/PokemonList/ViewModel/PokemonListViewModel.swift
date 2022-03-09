@@ -19,11 +19,7 @@ protocol PokemonListViewModel: ObservableObject {
 
 @MainActor
 final class PokemonListViewModelImpl<GetPokemonListInteractor: GetPokemonListUseCase>: PokemonListViewModel {
-    @Published private(set) var uiState: UiState<[Pokemon], Int> = .blank {
-        didSet {
-            print(uiState)
-        }
-    }
+    @Published private(set) var uiState: UiState<[Pokemon], Int> = .blank
 
     private let getPokemonListInteractor: GetPokemonListInteractor
 

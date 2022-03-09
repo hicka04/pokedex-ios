@@ -16,9 +16,26 @@ struct PokemonListView<
     @StateObject var viewModel: ViewModel
     let pokemonDetailViewCreator: PokemonDetailViewCreatable
 
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 16) {
+        let colomnCount: Int = {
+            switch horizontalSizeClass {
+            case .regular: return 3
+            default: return 2
+            }
+        }()
+
+        return ScrollView {
+            LazyVGrid(
+                columns: .init(
+                    repeating: .init(
+                        .flexible(minimum: 80),
+                        alignment: .bottom
+                    ),
+                    count: colomnCount
+                )
+            ) {
                 ForEach(viewModel.uiState.data ?? []) { pokemon in
                     NavigationLink {
                         pokemonDetailViewCreator.create(pokemon: pokemon)
@@ -30,7 +47,7 @@ struct PokemonListView<
                     }
                     .buttonStyle(.plain)
                 }
-            }
+            }.padding(.horizontal, 32)
             if viewModel.uiState.isLoading {
                 ProgressView()
             }

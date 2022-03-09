@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Entity
-import SFSafeSymbols
 import Core
 import DesignSystem
 
@@ -15,19 +14,16 @@ struct PokemonCell: View {
     let pokemon: Pokemon
 
     var body: some View {
-        HStack(spacing: 16) {
+        VStack(spacing: 16) {
             OfficialArtworkImage(url: pokemon.sprites.officialArtwork)
-                .frame(width: 80, height: 80)
 
             VStack(alignment: .leading) {
                 Text("No.\(pokemon.id.rawValue)")
                     .font(.caption)
                 Text(pokemon.name)
             }
-            Spacer()
-            Image(systemSymbol: .chevronRight)
         }
-        .padding(.horizontal, 16)
+        .padding(16)
         .contentShape(Rectangle())
     }
 }
