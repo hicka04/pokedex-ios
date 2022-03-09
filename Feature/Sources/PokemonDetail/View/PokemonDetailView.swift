@@ -21,7 +21,10 @@ struct PokemonDetailView<
     var body: some View {
         ScrollView {
             VStack {
-                OfficialArtworkView(url: viewModel.pokemon.sprites.officialArtwork)
+                OfficialArtworkImage(
+                    url: viewModel.pokemon.sprites.officialArtwork,
+                    scale: 0.8
+                )
 
                 VStack(alignment: .leading, spacing: 32) {
                     TypesView(
