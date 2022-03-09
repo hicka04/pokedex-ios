@@ -41,8 +41,8 @@ struct PokemonListView<
                         pokemonDetailViewCreator.create(pokemon: pokemon)
                     } label: {
                         PokemonCell(pokemon: pokemon)
-                            .onAppear {
-                                viewModel.onAppearCell(pokemon: pokemon)
+                            .task {
+                                await viewModel.onAppearCell(pokemon: pokemon)
                             }
                     }
                     .buttonStyle(.plain)
@@ -53,8 +53,8 @@ struct PokemonListView<
             }
         }
         .navigationTitle("Pokedex")
-        .onAppear {
-            viewModel.onAppear()
+        .task {
+            await viewModel.onAppear()
         }
     }
 }
@@ -78,8 +78,8 @@ struct PokemonListView_Previews: PreviewProvider {
             self.uiState = uiState
         }
 
-        func onAppear() {}
-        func onAppearCell(pokemon: Pokemon) {}
+        func onAppear() async {}
+        func onAppearCell(pokemon: Pokemon) async {}
     }
 
     private final class MockPokemonDetailViewCreator: PokemonDetailViewCreatable {
