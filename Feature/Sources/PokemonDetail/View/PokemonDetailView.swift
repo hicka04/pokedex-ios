@@ -22,9 +22,9 @@ struct PokemonDetailView<
         ScrollView {
             VStack {
                 OfficialArtworkImage(
-                    url: viewModel.pokemon.sprites.officialArtwork,
-                    scale: 0.8
+                    url: viewModel.pokemon.sprites.officialArtwork
                 )
+                .scaleEffect(0.8)
 
                 VStack(alignment: .leading, spacing: 32) {
                     TypesView(
