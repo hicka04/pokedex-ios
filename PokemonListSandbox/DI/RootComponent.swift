@@ -17,9 +17,7 @@ import Entity
 final class RootComponent: BootstrapComponent {
     @MainActor
     func create() -> some View {
-        NavigationView {
-            pokemonListViewComponent.create()
-        }.navigationViewStyle(.stack)
+        pokemonListViewComponent.create()
     }
 }
 

@@ -16,7 +16,8 @@ struct PokemonListView<
     @StateObject var viewModel: ViewModel
     let pokemonDetailViewCreator: PokemonDetailViewCreatable
 
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @State private var tappedPokemon: Pokemon?
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         let colomnCount: Int = {
@@ -37,23 +38,23 @@ struct PokemonListView<
                 )
             ) {
                 ForEach(viewModel.uiState.data ?? []) { pokemon in
-                    NavigationLink {
-                        pokemonDetailViewCreator.create(pokemon: pokemon)
-                    } label: {
-                        PokemonCell(pokemon: pokemon)
-                            .task {
-                                await viewModel.onAppearCell(pokemon: pokemon)
-                            }
-                    }
-                    .buttonStyle(.plain)
+                    PokemonCell(pokemon: pokemon)
+                        .task {
+                            await viewModel.onAppearCell(pokemon: pokemon)
+                        }.onTapGesture {
+                            tappedPokemon = pokemon
+                        }.sheet(item: $tappedPokemon) { pokemon in
+                            NavigationView {
+                                pokemonDetailViewCreator.create(pokemon: pokemon)
+                            }.navigationViewStyle(.stack)
+                        }
                 }
             }.padding(.horizontal, 32)
+
             if viewModel.uiState.isLoading {
                 ProgressView()
             }
-        }
-        .navigationTitle("Pokedex")
-        .task {
+        }.task {
             await viewModel.onAppear()
         }
     }

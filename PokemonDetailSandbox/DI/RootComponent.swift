@@ -18,7 +18,7 @@ final class RootComponent: BootstrapComponent {
     func create() -> some View {
         NavigationView {
             pokemonDetailViewComponent.create(pokemon: .bulbasaur)
-        }
+        }.navigationViewStyle(.stack)
     }
 }
 

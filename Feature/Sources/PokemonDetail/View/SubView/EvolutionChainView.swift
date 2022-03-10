@@ -11,9 +11,9 @@ import Core
 import DesignSystem
 import DI
 
-struct EvolutionChainView<PokemonDetailViewCreator: PokemonDetailViewCreatable>: View {
+struct EvolutionChainView: View {
     let evolutionChain: EvolutionChain
-    let pokemonDetailViewCreator: PokemonDetailViewCreator
+    let pokemonDetailViewCreator: PokemonDetailViewCreatable
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -35,7 +35,7 @@ struct EvolutionChainView<PokemonDetailViewCreator: PokemonDetailViewCreatable>:
 private extension EvolutionChainView {
     struct ChainLinkView: View {
         let chainLink: EvolutionChain.ChainLink
-        let pokemonDetailViewCreator: PokemonDetailViewCreator
+        let pokemonDetailViewCreator: PokemonDetailViewCreatable
 
         var body: some View {
             VStack(spacing: 16) {
@@ -77,7 +77,7 @@ private extension EvolutionChainView {
 private extension EvolutionChainView.ChainLinkView {
     struct PokemonView: View {
         let pokemon: Pokemon
-        let pokemonDetailViewCreator: PokemonDetailViewCreator
+        let pokemonDetailViewCreator: PokemonDetailViewCreatable
         @State private var isPresented: Bool = false
 
         var body: some View {
@@ -97,7 +97,7 @@ private extension EvolutionChainView.ChainLinkView {
             }.sheet(isPresented: $isPresented) {
                 NavigationView {
                     pokemonDetailViewCreator.create(pokemon: pokemon)
-                }
+                }.navigationViewStyle(.stack)
             }
         }
     }
