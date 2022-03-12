@@ -12,38 +12,45 @@ import DesignSystem
 import DI
 
 struct PokemonDetailView<
-    ViewModel: PokemonDetailViewModel,
-    EvolutionChainViewCreator: EvolutionChainViewCreatable
+    ViewModel: PokemonDetailViewModel
 >: View {
     @StateObject var viewModel: ViewModel
-    let evolutionChainViewCreator: EvolutionChainViewCreator
+    let evolutionChainViewCreator: EvolutionChainViewCreatable
 
     var body: some View {
         ScrollView {
-            VStack {
-                OfficialArtworkImage(
-                    url: viewModel.pokemon.sprites.officialArtwork
-                )
-                .scaleEffect(0.8)
+            VStack(spacing: 32) {
+                AdaptiveStack(spacing: 32) {
+                    OfficialArtworkImage(
+                        url: viewModel.pokemon.sprites.officialArtwork
+                    ).scaleEffect(0.8)
 
-                VStack(alignment: .leading, spacing: 32) {
-                    TypesView(
-                        types: viewModel.pokemon.types,
-                        axis: .horizontal
-                    )
+                    VStack(alignment: .leading, spacing: 32) {
+                        TypesView(
+                            types: viewModel.pokemon.types,
+                            axis: .horizontal
+                        )
 
-                    HStack(spacing: 16) {
-                        HeightView(height: viewModel.pokemon.height)
-                        WeightView(weight: viewModel.pokemon.weight)
+                        HStack(spacing: 16) {
+                            HeightView(height: viewModel.pokemon.height)
+                            WeightView(weight: viewModel.pokemon.weight)
+                        }
+
+                        AbilitiesView(abilities: viewModel.pokemon.abilities)
                     }
+                }
 
-                    AbilitiesView(abilities: viewModel.pokemon.abilities)
-
+                AdaptiveStack(verticalAlignment: .top, spacing: 32) {
                     BaseStasView(baseStats: viewModel.pokemon.baseStats)
+                        .frame(maxWidth: .infinity)
 
-                    if let evolutionChain = viewModel.evolutionChain {
-                        evolutionChainViewCreator.create(evolutionChain: evolutionChain)
-                    }
+                    Group {
+                        if let evolutionChain = viewModel.evolutionChain {
+                            evolutionChainViewCreator.create(evolutionChain: evolutionChain)
+                        } else {
+                            Spacer()
+                        }
+                    }.frame(maxWidth: .infinity)
                 }
             }
             .padding(.horizontal, 32)
@@ -66,6 +73,7 @@ struct PokemonDetailView_Previews: PreviewProvider {
                 evolutionChainViewCreator: MockEvolutionChainViewCreator()
             )
         }
+        .navigationViewStyle(.stack)
     }
 
     private final class MockPokemonDetailViewModel: PokemonDetailViewModel {
