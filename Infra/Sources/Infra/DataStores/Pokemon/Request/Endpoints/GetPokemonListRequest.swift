@@ -13,7 +13,7 @@ struct GetPokemonListRequest: PaginablePokemonRequest {
 
     let path = "pokemon"
     let method: HTTPMethod = .get
-    let limit = 20
+    let limit = 30
     let offset: Int?
     var queryParameters: [String : Any]? {
         [
