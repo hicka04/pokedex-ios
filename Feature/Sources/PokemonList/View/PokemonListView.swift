@@ -37,7 +37,7 @@ struct PokemonListView<
                     count: colomnCount
                 )
             ) {
-                ForEach(viewModel.uiState.data ?? []) { pokemon in
+                ForEach(viewModel.viewState.pokemonList) { pokemon in
                     PokemonCell(pokemon: pokemon)
                         .task {
                             await viewModel.onAppearCell(pokemon: pokemon)
@@ -51,7 +51,7 @@ struct PokemonListView<
                 }
             }.padding(.horizontal, 32)
 
-            if viewModel.uiState.isLoading {
+            if viewModel.viewState.loadState == .loading {
                 ProgressView()
             }
         }.task {
@@ -65,7 +65,7 @@ struct PokemonListView_Previews: PreviewProvider {
         NavigationView {
             PokemonListView(
                 viewModel: MockPokemonListViewModel(
-                    uiState: .ideal([.bulbasaur])
+                    viewState: .init(loadState: .partial(progress: 1), pokemonList: [.bulbasaur])
                 ),
                 pokemonDetailViewCreator: MockPokemonDetailViewCreator()
             )
@@ -73,10 +73,10 @@ struct PokemonListView_Previews: PreviewProvider {
     }
 
     private final class MockPokemonListViewModel: PokemonListViewModel {
-        let uiState: UiState<[Pokemon], Int>
+        let viewState: PokemonListViewState
 
-        init(uiState: UiState<[Pokemon], Int>) {
-            self.uiState = uiState
+        init(viewState: PokemonListViewState) {
+            self.viewState = viewState
         }
 
         func onAppear() async {}

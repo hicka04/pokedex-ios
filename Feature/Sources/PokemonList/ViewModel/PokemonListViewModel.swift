@@ -11,15 +11,20 @@ import UseCase
 
 @MainActor
 protocol PokemonListViewModel: ObservableObject {
-    var uiState: UiState<[Pokemon], Int> { get }
+    var viewState: PokemonListViewState { get }
 
     func onAppear() async
     func onAppearCell(pokemon: Pokemon) async
 }
 
+struct PokemonListViewState {
+    var loadState: LoadState = .blank
+    var pokemonList: [Pokemon] = []
+}
+
 @MainActor
 final class PokemonListViewModelImpl<GetPokemonListInteractor: GetPokemonListUseCase>: PokemonListViewModel {
-    @Published private(set) var uiState: UiState<[Pokemon], Int> = .blank
+    @Published private(set) var viewState: PokemonListViewState = .init()
 
     private let getPokemonListInteractor: GetPokemonListInteractor
 
@@ -28,43 +33,43 @@ final class PokemonListViewModelImpl<GetPokemonListInteractor: GetPokemonListUse
     }
 
     func onAppear() async {
-        guard uiState.isBlank else {
+        guard viewState.loadState == .blank else {
             return
         }
 
         do {
-            uiState.changeToLoading()
+            viewState.loadState = .loading
             let page = try await getPokemonListInteractor.execute()
+            viewState.pokemonList.append(contentsOf: page.items)
             if let nextOffset = page.nextOffset {
-                uiState = .partial(page.items, progress: nextOffset)
+                viewState.loadState = .partial(progress: nextOffset)
             } else {
-                uiState = .ideal(page.items)
+                viewState.loadState = .ideal
             }
         } catch {
-            uiState.changeToError(error)
+            viewState.loadState = .failure(error)
         }
     }
 
     func onAppearCell(pokemon: Pokemon) async {
         guard
-            let data = uiState.data,
-            data.last == pokemon,
-            let nextOffset = uiState.progress
+            viewState.pokemonList.last == pokemon,
+            let nextOffset = viewState.loadState.progress
         else {
             return
         }
 
         do {
-            uiState.changeToLoading()
+            viewState.loadState = .loading
             let page = try await getPokemonListInteractor.execute(nextOffset)
-            let pokemonList = data + page.items
+            viewState.pokemonList.append(contentsOf: page.items)
             if let nextOffset = page.nextOffset {
-                uiState = .partial(pokemonList, progress: nextOffset)
+                viewState.loadState = .partial(progress: nextOffset)
             } else {
-                uiState = .ideal(pokemonList)
+                viewState.loadState = .ideal
             }
         } catch {
-            uiState.changeToError(error)
+            viewState.loadState = .failure(error)
         }
     }
 }
