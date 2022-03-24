@@ -22,30 +22,30 @@ struct PokemonDetailView<
             VStack(spacing: 32) {
                 AdaptiveStack(spacing: 32) {
                     OfficialArtworkImage(
-                        url: viewModel.pokemon.sprites.officialArtwork
+                        url: viewModel.viewState.pokemon.sprites.officialArtwork
                     ).scaleEffect(0.8)
 
                     VStack(alignment: .leading, spacing: 32) {
                         TypesView(
-                            types: viewModel.pokemon.types,
+                            types: viewModel.viewState.pokemon.types,
                             axis: .horizontal
                         )
 
                         HStack(spacing: 16) {
-                            HeightView(height: viewModel.pokemon.height)
-                            WeightView(weight: viewModel.pokemon.weight)
+                            HeightView(height: viewModel.viewState.pokemon.height)
+                            WeightView(weight: viewModel.viewState.pokemon.weight)
                         }
 
-                        AbilitiesView(abilities: viewModel.pokemon.abilities)
+                        AbilitiesView(abilities: viewModel.viewState.pokemon.abilities)
                     }
                 }
 
                 AdaptiveStack(verticalAlignment: .top, spacing: 32) {
-                    BaseStasView(baseStats: viewModel.pokemon.baseStats)
+                    BaseStasView(baseStats: viewModel.viewState.pokemon.baseStats)
                         .frame(maxWidth: .infinity)
 
                     Group {
-                        if let evolutionChain = viewModel.evolutionChain {
+                        if let evolutionChain = viewModel.viewState.evolutionChain {
                             evolutionChainViewCreator.create(evolutionChain: evolutionChain)
                         } else {
                             Spacer()
@@ -55,7 +55,7 @@ struct PokemonDetailView<
             }
             .padding(.horizontal, 32)
         }
-        .navigationTitle("No.\(viewModel.pokemon.id.rawValue) \(viewModel.pokemon.name)")
+        .navigationTitle("No.\(viewModel.viewState.pokemon.id.rawValue) \(viewModel.viewState.pokemon.name)")
         .task {
             await viewModel.onAppear()
         }
@@ -77,12 +77,13 @@ struct PokemonDetailView_Previews: PreviewProvider {
     }
 
     private final class MockPokemonDetailViewModel: PokemonDetailViewModel {
-        let pokemon: Pokemon
-        let evolutionChain: EvolutionChain?
+        let viewState: PokemonDetailViewState
 
         init(pokemon: Pokemon, evolutionChain: EvolutionChain?) {
-            self.pokemon = pokemon
-            self.evolutionChain = evolutionChain
+            viewState = .init(
+                pokemon: pokemon,
+                evolutionChain: evolutionChain
+            )
         }
 
         func onAppear() async {}
