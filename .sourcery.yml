@@ -10,3 +10,13 @@ configurations:
     templates:
       - Templates/Entity+stub.stencil
     output: Core/Sources/Core/Generated/Entity+stub.swift
+  - sources:
+      - Domain/Sources/Repositories/
+    templates:
+      - Templates/AutoMockable.stencil
+    output: Domain/Tests/DomainTests/Generated/RepositoryMock.swift 
+  - sources:
+      - Domain/Sources/UseCases/
+    templates:
+      - Templates/AutoMockable.stencil
+    output: Feature/Tests/FeatureTests/Generated/UseCaseMock.swift 
