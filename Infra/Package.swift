@@ -2,6 +2,7 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+import Darwin
 
 let package = Package(
     name: "Infra",
@@ -16,7 +17,8 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Domain", path: "../Domain/"),
-        .package(name: "APIKit", url: "https://github.com/ishkawa/APIKit.git", .upToNextMajor(from: "5.2.0"))
+        .package(url: "https://github.com/ishkawa/APIKit.git", .upToNextMajor(from: "5.2.0")),
+        .package(url: "https://github.com/AliSoftware/OHHTTPStubs.git", .upToNextMajor(from: "9.1.0"))
     ],
     targets: [
         .target(
@@ -29,7 +31,13 @@ let package = Package(
         ),
         .testTarget(
             name: "InfraTests",
-            dependencies: ["Infra"]
+            dependencies: [
+                "Infra",
+                .product(name: "OHHTTPStubsSwift", package: "OHHTTPStubs")
+            ],
+            resources: [
+                .process("DataStores/Pokemon/Stubs")
+            ]
         )
     ]
 )
