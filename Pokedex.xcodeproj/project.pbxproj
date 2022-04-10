@@ -386,7 +386,7 @@
 				B8D1AD4E27D10FD900E4BABF /* Infra */,
 				B8D1AD5027D1108000E4BABF /* Core */,
 			);
-			productName = "PokemonDetailSandbox";
+			productName = PokemonDetailSandbox;
 			productReference = B8D1AD2C27D10B8800E4BABF /* PokemonDetailSandbox.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -482,6 +482,10 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Domain/Sources/Entities/",
+				"$(SRCROOT)/DesignSystem/Sources/DesignSystem/Components/TypesView.swift",
+				"$(SRCROOT)/Domain/Sources/Repositories/",
+				"$(SRCROOT)/Domain/Sources/UseCases/",
 			);
 			name = "Run Sourcery";
 			outputFileListPaths = (

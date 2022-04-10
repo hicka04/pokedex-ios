@@ -14,7 +14,11 @@ configurations:
       - Domain/Sources/Repositories/
     templates:
       - Templates/AutoMockable.stencil
-    output: Domain/Tests/DomainTests/Generated/RepositoryMock.swift 
+    args:
+      autoMockableImports:
+        - Repository
+        - Entity
+    output: Domain/Tests/DomainTests/Generated/RepositoryMock.swift
   - sources:
       - Domain/Sources/UseCases/
     templates:
