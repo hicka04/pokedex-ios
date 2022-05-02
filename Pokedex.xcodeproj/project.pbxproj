@@ -149,6 +149,15 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		B8306C66282014CA00EA9E5C /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				B8CE724127D39BD300C6350F /* PokemonList */,
+				B8D1AD2427D10B8700E4BABF /* PokemonDetail */,
+			);
+			path = Sandbox;
+			sourceTree = "<group>";
+		};
 		B85500F127CA566A001EC32E /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +171,7 @@
 			children = (
 				B86CE2782778A81A00D0D1C4 /* Pokedex */,
 				B86CE2892778A81C00D0D1C4 /* PokedexTests */,
-				B8D1AD2427D10B8700E4BABF /* PokemonDetailSandbox */,
-				B8CE724127D39BD300C6350F /* PokemonListSandbox */,
+				B8306C66282014CA00EA9E5C /* Sandbox */,
 				B86CE2772778A81A00D0D1C4 /* Products */,
 				B875F6B2277CA65600F9F6E0 /* Frameworks */,
 			);
@@ -215,7 +223,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B8CE724127D39BD300C6350F /* PokemonListSandbox */ = {
+		B8CE724127D39BD300C6350F /* PokemonList */ = {
 			isa = PBXGroup;
 			children = (
 				B8CE724227D39BD300C6350F /* PokemonListSandboxApp.swift */,
@@ -223,7 +231,7 @@
 				B8CE726D27D39CC800C6350F /* Generated */,
 				B8CE726B27D39CA000C6350F /* Resources */,
 			);
-			path = PokemonListSandbox;
+			path = PokemonList;
 			sourceTree = "<group>";
 		};
 		B8CE726B27D39CA000C6350F /* Resources */ = {
@@ -250,7 +258,7 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		B8D1AD2427D10B8700E4BABF /* PokemonDetailSandbox */ = {
+		B8D1AD2427D10B8700E4BABF /* PokemonDetail */ = {
 			isa = PBXGroup;
 			children = (
 				B8D1AD2527D10B8700E4BABF /* PokemonDetailSandboxApp.swift */,
@@ -258,7 +266,7 @@
 				B8D1AD5227D110CF00E4BABF /* Generated */,
 				B8D1AD4127D10C7400E4BABF /* Resources */,
 			);
-			path = PokemonDetailSandbox;
+			path = PokemonDetail;
 			sourceTree = "<group>";
 		};
 		B8D1AD4027D10C6000E4BABF /* DI */ = {
@@ -548,7 +556,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nexport SOURCEKIT_LOGGING=0 && \\\nneedle generate $SRCROOT/PokemonListSandbox/Generated/NeedleGenerated.swift \\\n    $SRCROOT/PokemonListSandbox/DI/ \\\n    $SRCROOT/Feature/\n";
+			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nexport SOURCEKIT_LOGGING=0 && \\\nneedle generate $SRCROOT/Sandbox/PokemonList/Generated/NeedleGenerated.swift \\\n    $SRCROOT/Sandbox/PokemonList/DI/ \\\n    $SRCROOT/Feature/\n";
 		};
 		B8D1AD5327D1111100E4BABF /* Run Needle */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -566,7 +574,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nexport SOURCEKIT_LOGGING=0 && \\\nneedle generate $SRCROOT/PokemonDetailSandbox/Generated/NeedleGenerated.swift \\\n    $SRCROOT/PokemonDetailSandbox/DI/ \\\n    $SRCROOT/Feature/\n";
+			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nexport SOURCEKIT_LOGGING=0 && \\\nneedle generate $SRCROOT/Sandbox/PokemonDetail/Generated/NeedleGenerated.swift \\\n    $SRCROOT/Sandbox/PokemonDetail/DI/ \\\n    $SRCROOT/Feature/\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
