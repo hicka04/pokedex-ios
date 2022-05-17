@@ -22,14 +22,14 @@ struct PokemonDetailViewState {
 }
 
 @MainActor
-final class PokemonDetailViewModelImpl<GetEvolutionChainInteractor: GetEvolutionChainUseCase>: PokemonDetailViewModel {
+final class PokemonDetailViewModelImpl: PokemonDetailViewModel {
     @Published private(set) var viewState: PokemonDetailViewState
 
-    private let getEvolutionChainInteractor: GetEvolutionChainInteractor
+    private let getEvolutionChainInteractor: AnyGetEvolutionChainUseCase
 
     init(
         pokemon: Pokemon,
-        getEvolutionChainInteractor: GetEvolutionChainInteractor
+        getEvolutionChainInteractor: AnyGetEvolutionChainUseCase
     ) {
         self.viewState = .init(pokemon: pokemon)
         self.getEvolutionChainInteractor = getEvolutionChainInteractor

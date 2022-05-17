@@ -23,12 +23,12 @@ struct PokemonListViewState {
 }
 
 @MainActor
-final class PokemonListViewModelImpl<GetPokemonListInteractor: GetPokemonListUseCase>: PokemonListViewModel {
+final class PokemonListViewModelImpl: PokemonListViewModel {
     @Published private(set) var viewState: PokemonListViewState = .init()
 
-    private let getPokemonListInteractor: GetPokemonListInteractor
+    private let getPokemonListInteractor: AnyGetPokemonListUseCase
 
-    init(getPokemonListInteractor: GetPokemonListInteractor) {
+    init(getPokemonListInteractor: AnyGetPokemonListUseCase) {
         self.getPokemonListInteractor = getPokemonListInteractor
     }
 
@@ -39,7 +39,7 @@ final class PokemonListViewModelImpl<GetPokemonListInteractor: GetPokemonListUse
 
         do {
             viewState.loadState = .loading
-            let page = try await getPokemonListInteractor.execute()
+            let page = try await getPokemonListInteractor.execute(0)
             viewState.pokemonList.append(contentsOf: page.items)
             if let nextOffset = page.nextOffset {
                 viewState.loadState = .partial(progress: nextOffset)

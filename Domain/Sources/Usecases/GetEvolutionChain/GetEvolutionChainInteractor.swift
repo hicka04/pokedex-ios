@@ -26,3 +26,5 @@ extension GetEvolutionChainInteractor: GetEvolutionChainUseCase {
         return try await pokemonRepository.getEvolutionChain(id: species.evolutionChainId)
     }
 }
+
+public typealias AnyGetEvolutionChainUseCase = AnyUseCase<Pokemon.ID, EvolutionChain>

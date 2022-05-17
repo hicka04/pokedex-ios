@@ -15,7 +15,7 @@ public protocol GetEvolutionChainUseCaseDependency: Dependency {
 }
 
 public final class GetEvolutionChainUseCaseComponent: Component<GetEvolutionChainUseCaseDependency> {
-    public func create() -> some GetEvolutionChainUseCase {
-        GetEvolutionChainInteractor(pokemonRepository: dependency.pokemonRepository)
+    public func create() -> AnyGetEvolutionChainUseCase {
+        .init(GetEvolutionChainInteractor(pokemonRepository: dependency.pokemonRepository))
     }
 }
