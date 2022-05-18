@@ -8,6 +8,7 @@
 import Foundation
 import Entity
 import UseCase
+import Environment
 
 @MainActor
 protocol PokemonDetailViewModel: ObservableObject {
@@ -25,14 +26,10 @@ struct PokemonDetailViewState {
 final class PokemonDetailViewModelImpl: PokemonDetailViewModel {
     @Published private(set) var viewState: PokemonDetailViewState
 
-    private let getEvolutionChainInteractor: AnyGetEvolutionChainUseCase
+    @Injected(\.getEvolutionChainUseCase) private var getEvolutionChainInteractor: AnyGetEvolutionChainUseCase
 
-    init(
-        pokemon: Pokemon,
-        getEvolutionChainInteractor: AnyGetEvolutionChainUseCase
-    ) {
+    init(pokemon: Pokemon) {
         self.viewState = .init(pokemon: pokemon)
-        self.getEvolutionChainInteractor = getEvolutionChainInteractor
     }
 
     func onAppear() async {

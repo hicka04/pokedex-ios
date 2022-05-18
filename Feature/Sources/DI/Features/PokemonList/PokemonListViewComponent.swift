@@ -10,7 +10,6 @@ import NeedleFoundation
 import SwiftUI
 
 public protocol PokemonListViewDependency: Dependency {
-    var getPokemonListUseCaseComponent: GetPokemonListUseCaseComponent { get }
     var pokemonDetailViewCreator: PokemonDetailViewCreatable { get }
 }
 

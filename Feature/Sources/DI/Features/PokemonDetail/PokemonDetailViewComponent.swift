@@ -10,8 +10,4 @@ import NeedleFoundation
 import SwiftUI
 import Entity
 
-public protocol PokemonDetailViewDependency: Dependency {
-    var getEvolutionChainUseCaseComponent: GetEvolutionChainUseCaseComponent { get }
-}
-
-public final class PokemonDetailViewComponent: Component<PokemonDetailViewDependency> {}
+public final class PokemonDetailViewComponent: Component<EmptyDependency> {}

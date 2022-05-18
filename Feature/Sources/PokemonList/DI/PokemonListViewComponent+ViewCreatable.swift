@@ -13,9 +13,7 @@ extension PokemonListViewComponent: PokemonListViewCreatable {
     public func create() -> AnyView {
         .init(
             PokemonListView(
-                viewModel: PokemonListViewModelImpl(
-                    getPokemonListInteractor: self.dependency.getPokemonListUseCaseComponent.create()
-                ),
+                viewModel: PokemonListViewModelImpl(),
                 pokemonDetailViewCreator: self.dependency.pokemonDetailViewCreator
             )
         )

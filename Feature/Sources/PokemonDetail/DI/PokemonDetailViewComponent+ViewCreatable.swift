@@ -14,10 +14,7 @@ extension PokemonDetailViewComponent: PokemonDetailViewCreatable {
     public func create(pokemon: Pokemon) -> AnyView {
         .init(
             PokemonDetailView(
-                viewModel: PokemonDetailViewModelImpl(
-                    pokemon: pokemon,
-                    getEvolutionChainInteractor: self.dependency.getEvolutionChainUseCaseComponent.create()
-                ),
+                viewModel: PokemonDetailViewModelImpl(pokemon: pokemon),
                 evolutionChainViewCreator: evolutionChainViewComponent
             )
         )

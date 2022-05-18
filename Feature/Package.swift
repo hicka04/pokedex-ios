@@ -25,6 +25,7 @@ let package = Package(
         .package(name: "Domain", path: "../Domain"),
         .package(name: "Core", path: "../Core"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
+        .package(name: "Environment", path: "../Environment"),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "2.1.3")),
         .package(url: "https://github.com/uber/needle.git", .upToNextMajor(from: "0.17.2"))
     ],
@@ -33,6 +34,7 @@ let package = Package(
             name: "PokemonList",
             dependencies: [
                 "DI",
+                "Environment",
                 "DesignSystem",
                 "Core",
                 "SFSafeSymbols"
@@ -42,6 +44,7 @@ let package = Package(
             name: "PokemonDetail",
             dependencies: [
                 "DI",
+                "Environment",
                 "DesignSystem",
                 "Core",
                 "SFSafeSymbols",

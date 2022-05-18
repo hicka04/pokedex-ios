@@ -39,21 +39,3 @@ extension RootComponent {
         pokemonDetailViewComponent
     }
 }
-
-// MARK: - UseCase
-extension RootComponent {
-    var getPokemonListUseCaseComponent: GetPokemonListUseCaseComponent {
-        GetPokemonListUseCaseComponent(parent: self)
-    }
-
-    var getEvolutionChainUseCaseComponent: GetEvolutionChainUseCaseComponent {
-        GetEvolutionChainUseCaseComponent(parent: self)
-    }
-}
-
-// MARK: - Repository
-extension RootComponent {
-    var pokemonRepository: PokemonRepository {
-        PokemonDataStore()
-    }
-}
