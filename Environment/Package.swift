@@ -9,10 +9,13 @@ let package = Package(
         .iOS(.v13)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "Environment",
-            targets: ["Environment"]
+            name: "DI",
+            targets: ["DI"]
+        ),
+        .library(
+            name: "Routing",
+            targets: ["Routing"]
         )
     ],
     dependencies: [
@@ -20,15 +23,19 @@ let package = Package(
         .package(name: "Infra", path: "../Infra")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "Environment",
+            name: "DI",
             dependencies: [
                 .product(name: "Entity", package: "Domain"),
                 .product(name: "UseCase", package: "Domain"),
                 .product(name: "Repository", package: "Domain"),
                 "Infra"
+            ]
+        ),
+        .target(
+            name: "Routing",
+            dependencies: [
+                .product(name: "Entity", package: "Domain")
             ]
         )
     ]

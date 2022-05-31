@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-@main
+@main @MainActor
 struct PokemonListSandboxApp: App {
-    init() {
-        registerProviderFactories()
-    }
+    let appRouter = AppRouter()
 
     var body: some Scene {
         WindowGroup {
-            RootComponent().create()
+            appRouter.assembleModules()
         }
     }
 }

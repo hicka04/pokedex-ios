@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol InjectionKey {
+public protocol InjectionKey {
     /// The associated type representing the type of the dependency injection key's value.
     associatedtype Value
 

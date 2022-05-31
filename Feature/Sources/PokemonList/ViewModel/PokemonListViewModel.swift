@@ -8,7 +8,7 @@
 import Foundation
 import Entity
 import UseCase
-import Environment
+import DI
 
 @MainActor
 protocol PokemonListViewModel: ObservableObject {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B814274227CD09FB0099E1B3 /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = B814274127CD09FB0099E1B3 /* DI */; };
 		B814274427CD0D970099E1B3 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = B814274327CD0D970099E1B3 /* Features */; };
 		B81B748027BFDC2F0015C280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81B747F27BFDC2F0015C280 /* Assets.xcassets */; };
 		B81B748227BFE0D50015C280 /* PreviewAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81B748127BFE0D50015C280 /* PreviewAssets.swift */; };
@@ -17,11 +16,12 @@
 		B834072D27C5F3D700E1A585 /* UseCase in Frameworks */ = {isa = PBXBuildFile; productRef = B834072C27C5F3D700E1A585 /* UseCase */; };
 		B834073127C5F3D700E1A585 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B834073027C5F3D700E1A585 /* Infra */; };
 		B845207727D06F150067081D /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = B845207627D06F150067081D /* Core */; };
-		B85BE06827CA878600EDD566 /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06727CA878600EDD566 /* NeedleGenerated.swift */; };
-		B85BE06A27CB1B9200EDD566 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85BE06927CB1B9200EDD566 /* RootComponent.swift */; };
 		B86CE27A2778A81A00D0D1C4 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */; };
 		B86CE2812778A81C00D0D1C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */; };
 		B86CE28B2778A81C00D0D1C4 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE28A2778A81C00D0D1C4 /* PokedexTests.swift */; };
+		B8A249AC284661D800EBCD61 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A249AB284661D800EBCD61 /* AppRouter.swift */; };
+		B8C648C4284665FF00267DFA /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C648C3284665FF00267DFA /* AppRouter.swift */; };
+		B8C648C72846675200267DFA /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C648C5284666D300267DFA /* AppRouter.swift */; };
 		B8CE725127D39BD400C6350F /* PokemonListSandboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CE724227D39BD300C6350F /* PokemonListSandboxApp.swift */; };
 		B8CE725527D39BD400C6350F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CE724427D39BD400C6350F /* Assets.xcassets */; };
 		B8CE725E27D39C0900C6350F /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = B8CE725D27D39C0900C6350F /* Core */; };
@@ -31,11 +31,8 @@
 		B8CE726627D39C0900C6350F /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B8CE726527D39C0900C6350F /* Infra */; };
 		B8CE726827D39C1500C6350F /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = B8CE726727D39C1500C6350F /* Repository */; };
 		B8CE726A27D39C1500C6350F /* UseCase in Frameworks */ = {isa = PBXBuildFile; productRef = B8CE726927D39C1500C6350F /* UseCase */; };
-		B8CE726F27D39CF800C6350F /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CE726E27D39CF800C6350F /* RootComponent.swift */; };
-		B8CE727227D39F3F00C6350F /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CE727127D39F3F00C6350F /* NeedleGenerated.swift */; };
 		B8D1AD3427D10B8800E4BABF /* PokemonDetailSandboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D1AD2527D10B8700E4BABF /* PokemonDetailSandboxApp.swift */; };
 		B8D1AD3827D10B8800E4BABF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D1AD2727D10B8800E4BABF /* Assets.xcassets */; };
-		B8D1AD4327D10D1200E4BABF /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D1AD4227D10D1200E4BABF /* RootComponent.swift */; };
 		B8D1AD4527D10FD900E4BABF /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = B8D1AD4427D10FD900E4BABF /* Entity */; };
 		B8D1AD4727D10FD900E4BABF /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = B8D1AD4627D10FD900E4BABF /* Repository */; };
 		B8D1AD4927D10FD900E4BABF /* UseCase in Frameworks */ = {isa = PBXBuildFile; productRef = B8D1AD4827D10FD900E4BABF /* UseCase */; };
@@ -43,7 +40,6 @@
 		B8D1AD4D27D10FD900E4BABF /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = B8D1AD4C27D10FD900E4BABF /* Features */; };
 		B8D1AD4F27D10FD900E4BABF /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B8D1AD4E27D10FD900E4BABF /* Infra */; };
 		B8D1AD5127D1108000E4BABF /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = B8D1AD5027D1108000E4BABF /* Core */; };
-		B8D1AD5527D111BE00E4BABF /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D1AD5427D111BE00E4BABF /* NeedleGenerated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,23 +55,20 @@
 /* Begin PBXFileReference section */
 		B81B747F27BFDC2F0015C280 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B81B748127BFE0D50015C280 /* PreviewAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewAssets.swift; sourceTree = "<group>"; };
-		B85BE06727CA878600EDD566 /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
-		B85BE06927CB1B9200EDD566 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		B86CE2762778A81A00D0D1C4 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
 		B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B86CE2862778A81C00D0D1C4 /* PokedexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86CE28A2778A81C00D0D1C4 /* PokedexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexTests.swift; sourceTree = "<group>"; };
+		B8A249AB284661D800EBCD61 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		B8C648C3284665FF00267DFA /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		B8C648C5284666D300267DFA /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		B8CE724227D39BD300C6350F /* PokemonListSandboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListSandboxApp.swift; sourceTree = "<group>"; };
 		B8CE724427D39BD400C6350F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8CE724927D39BD400C6350F /* PokemonListSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonListSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8CE726E27D39CF800C6350F /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
-		B8CE727127D39F3F00C6350F /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
 		B8D1AD2527D10B8700E4BABF /* PokemonDetailSandboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailSandboxApp.swift; sourceTree = "<group>"; };
 		B8D1AD2727D10B8800E4BABF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8D1AD2C27D10B8800E4BABF /* PokemonDetailSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonDetailSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8D1AD4227D10D1200E4BABF /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
-		B8D1AD5427D111BE00E4BABF /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +78,6 @@
 			files = (
 				B834072927C5F3D700E1A585 /* Entity in Frameworks */,
 				B834072B27C5F3D700E1A585 /* Repository in Frameworks */,
-				B814274227CD09FB0099E1B3 /* DI in Frameworks */,
 				B834072727C5F3D700E1A585 /* DesignSystem in Frameworks */,
 				B834072D27C5F3D700E1A585 /* UseCase in Frameworks */,
 				B845207727D06F150067081D /* Core in Frameworks */,
@@ -143,7 +135,6 @@
 		B82D0E4F2797008B000A09DC /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				B85BE06727CA878600EDD566 /* NeedleGenerated.swift */,
 				B81B748127BFE0D50015C280 /* PreviewAssets.swift */,
 			);
 			path = Generated;
@@ -156,14 +147,6 @@
 				B8D1AD2427D10B8700E4BABF /* PokemonDetail */,
 			);
 			path = Sandbox;
-			sourceTree = "<group>";
-		};
-		B85500F127CA566A001EC32E /* DI */ = {
-			isa = PBXGroup;
-			children = (
-				B85BE06927CB1B9200EDD566 /* RootComponent.swift */,
-			);
-			path = DI;
 			sourceTree = "<group>";
 		};
 		B86CE26D2778A81A00D0D1C4 = {
@@ -192,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */,
-				B85500F127CA566A001EC32E /* DI */,
+				B8A249AB284661D800EBCD61 /* AppRouter.swift */,
 				B82D0E4F2797008B000A09DC /* Generated */,
 				B82D0E4D2796FF94000A09DC /* Resources */,
 				B86CE27F2778A81C00D0D1C4 /* Preview Content */,
@@ -227,8 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CE724227D39BD300C6350F /* PokemonListSandboxApp.swift */,
-				B8CE726C27D39CBD00C6350F /* DI */,
-				B8CE726D27D39CC800C6350F /* Generated */,
+				B8C648C3284665FF00267DFA /* AppRouter.swift */,
 				B8CE726B27D39CA000C6350F /* Resources */,
 			);
 			path = PokemonList;
@@ -242,39 +224,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B8CE726C27D39CBD00C6350F /* DI */ = {
-			isa = PBXGroup;
-			children = (
-				B8CE726E27D39CF800C6350F /* RootComponent.swift */,
-			);
-			path = DI;
-			sourceTree = "<group>";
-		};
-		B8CE726D27D39CC800C6350F /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				B8CE727127D39F3F00C6350F /* NeedleGenerated.swift */,
-			);
-			path = Generated;
-			sourceTree = "<group>";
-		};
 		B8D1AD2427D10B8700E4BABF /* PokemonDetail */ = {
 			isa = PBXGroup;
 			children = (
 				B8D1AD2527D10B8700E4BABF /* PokemonDetailSandboxApp.swift */,
-				B8D1AD4027D10C6000E4BABF /* DI */,
-				B8D1AD5227D110CF00E4BABF /* Generated */,
+				B8C648C5284666D300267DFA /* AppRouter.swift */,
 				B8D1AD4127D10C7400E4BABF /* Resources */,
 			);
 			path = PokemonDetail;
-			sourceTree = "<group>";
-		};
-		B8D1AD4027D10C6000E4BABF /* DI */ = {
-			isa = PBXGroup;
-			children = (
-				B8D1AD4227D10D1200E4BABF /* RootComponent.swift */,
-			);
-			path = DI;
 			sourceTree = "<group>";
 		};
 		B8D1AD4127D10C7400E4BABF /* Resources */ = {
@@ -283,14 +240,6 @@
 				B8D1AD2727D10B8800E4BABF /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		B8D1AD5227D110CF00E4BABF /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				B8D1AD5427D111BE00E4BABF /* NeedleGenerated.swift */,
-			);
-			path = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +251,6 @@
 			buildPhases = (
 				B82D0E5227970295000A09DC /* Run SwiftGen */,
 				B8113C9527A6DA9E0038FEFB /* Run Sourcery */,
-				B85BE06627CA856300EDD566 /* Run Needle */,
 				B86CE2722778A81A00D0D1C4 /* Sources */,
 				B86CE2732778A81A00D0D1C4 /* Frameworks */,
 				B86CE2742778A81A00D0D1C4 /* Resources */,
@@ -318,7 +266,6 @@
 				B834072A27C5F3D700E1A585 /* Repository */,
 				B834072C27C5F3D700E1A585 /* UseCase */,
 				B834073027C5F3D700E1A585 /* Infra */,
-				B814274127CD09FB0099E1B3 /* DI */,
 				B814274327CD0D970099E1B3 /* Features */,
 				B845207627D06F150067081D /* Core */,
 			);
@@ -348,7 +295,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8CE725B27D39BD400C6350F /* Build configuration list for PBXNativeTarget "PokemonListSandbox" */;
 			buildPhases = (
-				B8CE727027D39DA600C6350F /* Run Needle */,
 				B8CE724527D39BD400C6350F /* Sources */,
 				B8CE724627D39BD400C6350F /* Frameworks */,
 				B8CE724727D39BD400C6350F /* Resources */,
@@ -375,7 +321,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8D1AD3E27D10B8800E4BABF /* Build configuration list for PBXNativeTarget "PokemonDetailSandbox" */;
 			buildPhases = (
-				B8D1AD5327D1111100E4BABF /* Run Needle */,
 				B8D1AD2827D10B8800E4BABF /* Sources */,
 				B8D1AD2927D10B8800E4BABF /* Frameworks */,
 				B8D1AD2A27D10B8800E4BABF /* Resources */,
@@ -522,60 +467,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nSDKROOT=$(xcrun --sdk macosx --show-sdk-path)\nmint run swiftgen\n";
 		};
-		B85BE06627CA856300EDD566 /* Run Needle */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Needle";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nexport SOURCEKIT_LOGGING=0 && \\\nneedle generate $SRCROOT/Pokedex/Generated/NeedleGenerated.swift \\\n    $SRCROOT/Pokedex/ \\\n    $SRCROOT/Feature/ \\\n";
-		};
-		B8CE727027D39DA600C6350F /* Run Needle */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Needle";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nexport SOURCEKIT_LOGGING=0 && \\\nneedle generate $SRCROOT/Sandbox/PokemonList/Generated/NeedleGenerated.swift \\\n    $SRCROOT/Sandbox/PokemonList/DI/ \\\n    $SRCROOT/Feature/\n";
-		};
-		B8D1AD5327D1111100E4BABF /* Run Needle */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Needle";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nexport SOURCEKIT_LOGGING=0 && \\\nneedle generate $SRCROOT/Sandbox/PokemonDetail/Generated/NeedleGenerated.swift \\\n    $SRCROOT/Sandbox/PokemonDetail/DI/ \\\n    $SRCROOT/Feature/\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -583,10 +474,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B85BE06827CA878600EDD566 /* NeedleGenerated.swift in Sources */,
-				B85BE06A27CB1B9200EDD566 /* RootComponent.swift in Sources */,
 				B81B748227BFE0D50015C280 /* PreviewAssets.swift in Sources */,
 				B86CE27A2778A81A00D0D1C4 /* PokedexApp.swift in Sources */,
+				B8A249AC284661D800EBCD61 /* AppRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,8 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CE725127D39BD400C6350F /* PokemonListSandboxApp.swift in Sources */,
-				B8CE726F27D39CF800C6350F /* RootComponent.swift in Sources */,
-				B8CE727227D39F3F00C6350F /* NeedleGenerated.swift in Sources */,
+				B8C648C4284665FF00267DFA /* AppRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,9 +501,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8D1AD4327D10D1200E4BABF /* RootComponent.swift in Sources */,
+				B8C648C72846675200267DFA /* AppRouter.swift in Sources */,
 				B8D1AD3427D10B8800E4BABF /* PokemonDetailSandboxApp.swift in Sources */,
-				B8D1AD5527D111BE00E4BABF /* NeedleGenerated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,10 +914,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B814274127CD09FB0099E1B3 /* DI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DI;
-		};
 		B814274327CD0D970099E1B3 /* Features */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Features;

@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "needle",
+      "identity" : "apikit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/uber/needle.git",
+      "location" : "https://github.com/ishkawa/APIKit.git",
       "state" : {
-        "revision" : "6a2d5e25cd3c77ddfa57835e991469db791c4744",
-        "version" : "0.17.2"
+        "revision" : "4e7f42d93afb787b0bc502171f9b5c12cf49d0ca",
+        "version" : "5.3.0"
       }
     },
     {

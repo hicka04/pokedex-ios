@@ -15,26 +15,20 @@ let package = Package(
                 "PokemonList",
                 "PokemonDetail"
             ]
-        ),
-        .library(
-            name: "DI",
-            targets: ["DI"]
         )
     ],
     dependencies: [
-        .package(name: "Domain", path: "../Domain"),
         .package(name: "Core", path: "../Core"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(name: "Environment", path: "../Environment"),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "2.1.3")),
-        .package(url: "https://github.com/uber/needle.git", .upToNextMajor(from: "0.17.2"))
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "2.1.3"))
     ],
     targets: [
         .target(
             name: "PokemonList",
             dependencies: [
-                "DI",
-                "Environment",
+                .product(name: "DI", package: "Environment"),
+                .product(name: "Routing", package: "Environment"),
                 "DesignSystem",
                 "Core",
                 "SFSafeSymbols"
@@ -43,20 +37,11 @@ let package = Package(
         .target(
             name: "PokemonDetail",
             dependencies: [
-                "DI",
-                "Environment",
+                .product(name: "DI", package: "Environment"),
+                .product(name: "Routing", package: "Environment"),
                 "DesignSystem",
                 "Core",
                 "SFSafeSymbols",
-            ]
-        ),
-        .target(
-            name: "DI",
-            dependencies: [
-                .product(name: "NeedleFoundation", package: "Needle"),
-                .product(name: "Entity", package: "Domain"),
-                .product(name: "UseCase", package: "Domain"),
-                .product(name: "Repository", package: "Domain")
             ]
         ),
         .testTarget(

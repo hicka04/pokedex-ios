@@ -10,7 +10,7 @@ import Foundation
 public struct AnyUseCase<Input, Output>: UseCase {
     private let _execute: (Input) async throws -> Output
 
-    public init<X: UseCase>(_ base: X) where X.Input == Input, X.Output == Output {
+    public init<Base: UseCase>(_ base: Base) where Base.Input == Input, Base.Output == Output {
         _execute = { try await base.execute($0) }
     }
 

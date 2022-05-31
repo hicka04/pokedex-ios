@@ -10,10 +10,11 @@ import Entity
 import Core
 import DesignSystem
 import DI
+import Routing
 
-struct EvolutionChainView: View {
+struct EvolutionChainView<PokemonDetailRouter: PokemonDetailWireframe>: View {
     let evolutionChain: EvolutionChain
-    let pokemonDetailViewCreator: PokemonDetailViewCreatable
+    let pokemonDetailRouter: PokemonDetailRouter
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -24,7 +25,7 @@ struct EvolutionChainView: View {
                 Spacer()
                 ChainLinkView(
                     chainLink: evolutionChain.chain,
-                    pokemonDetailViewCreator: pokemonDetailViewCreator
+                    pokemonDetailRouter: pokemonDetailRouter
                 )
                 Spacer()
             }
@@ -35,7 +36,7 @@ struct EvolutionChainView: View {
 private extension EvolutionChainView {
     struct ChainLinkView: View {
         let chainLink: EvolutionChain.ChainLink
-        let pokemonDetailViewCreator: PokemonDetailViewCreatable
+        let pokemonDetailRouter: PokemonDetailRouter
 
         var body: some View {
             VStack(spacing: 16) {
@@ -46,8 +47,7 @@ private extension EvolutionChainView {
                     }
                     PokemonView(
                         pokemon: chainLink.pokemon,
-
-                        pokemonDetailViewCreator: pokemonDetailViewCreator
+                        pokemonDetailRouter: pokemonDetailRouter
                     )
                 }
 
@@ -66,7 +66,7 @@ private extension EvolutionChainView {
                 ForEach(chainLink.evolvesTo, id: \.pokemon.id) { chain in
                     ChainLinkView(
                         chainLink: chain,
-                        pokemonDetailViewCreator: pokemonDetailViewCreator
+                        pokemonDetailRouter: pokemonDetailRouter
                     )
                 }
             }
@@ -77,7 +77,7 @@ private extension EvolutionChainView {
 private extension EvolutionChainView.ChainLinkView {
     struct PokemonView: View {
         let pokemon: Pokemon
-        let pokemonDetailViewCreator: PokemonDetailViewCreatable
+        let pokemonDetailRouter: PokemonDetailRouter
         @State private var isPresented: Bool = false
 
         var body: some View {
@@ -96,7 +96,7 @@ private extension EvolutionChainView.ChainLinkView {
                 isPresented = true
             }.sheet(isPresented: $isPresented) {
                 NavigationView {
-                    pokemonDetailViewCreator.create(pokemon: pokemon)
+                    pokemonDetailRouter.assembleModules(pokemon)
                 }.navigationViewStyle(.stack)
             }
         }
@@ -107,13 +107,13 @@ struct EvolutionChainView_Previews: PreviewProvider {
     static var previews: some View {
         EvolutionChainView(
             evolutionChain: .bulbasaur,
-            pokemonDetailViewCreator: MockPokemonDetailViewCreator()
+            pokemonDetailRouter: MockPokemonDetailRouter()
         ).previewLayout(.sizeThatFits)
     }
 
-    private final class MockPokemonDetailViewCreator: PokemonDetailViewCreatable {
-        func create(pokemon: Pokemon) -> AnyView {
-            .init(Text(pokemon.name))
+    private struct MockPokemonDetailRouter: PokemonDetailWireframe {
+        func assembleModules(_ dependency: Pokemon) -> AnyView {
+            .init(Text(dependency.name))
         }
     }
 }

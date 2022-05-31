@@ -12,10 +12,11 @@ import DesignSystem
 import DI
 
 struct PokemonDetailView<
-    ViewModel: PokemonDetailViewModel
+    ViewModel: PokemonDetailViewModel,
+    EvolutionChainRouter: EvolutionChainWireframe
 >: View {
     @StateObject var viewModel: ViewModel
-    let evolutionChainViewCreator: EvolutionChainViewCreatable
+    let evolutionChainRouter: EvolutionChainRouter
 
     var body: some View {
         ScrollView {
@@ -46,7 +47,7 @@ struct PokemonDetailView<
 
                     Group {
                         if let evolutionChain = viewModel.viewState.evolutionChain {
-                            evolutionChainViewCreator.create(evolutionChain: evolutionChain)
+                            evolutionChainRouter.assembleModules(evolutionChain)
                         } else {
                             Spacer()
                         }
@@ -70,7 +71,7 @@ struct PokemonDetailView_Previews: PreviewProvider {
                     pokemon: .bulbasaur,
                     evolutionChain: .bulbasaur
                 ),
-                evolutionChainViewCreator: MockEvolutionChainViewCreator()
+                evolutionChainRouter: MockEvolutionChainRouter()
             )
         }
         .navigationViewStyle(.stack)
@@ -89,9 +90,9 @@ struct PokemonDetailView_Previews: PreviewProvider {
         func onAppear() async {}
     }
 
-    private final class MockEvolutionChainViewCreator: EvolutionChainViewCreatable {
-        func create(evolutionChain: EvolutionChain) -> AnyView {
-            .init(Text("\(evolutionChain.id.rawValue)"))
+    private struct MockEvolutionChainRouter: EvolutionChainWireframe {
+        func assembleModules(_ dependency: EvolutionChain) -> AnyView {
+            .init(Text("\(dependency.id.rawValue)"))
         }
     }
 }

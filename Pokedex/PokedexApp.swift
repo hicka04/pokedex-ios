@@ -6,18 +6,14 @@
 //
 
 import SwiftUI
-import UseCase
-import Infra
 
-@main
+@main @MainActor
 struct PokedexApp: App {
-    init() {
-        registerProviderFactories()
-    }
+    let appRouter = AppRouter()
 
     var body: some Scene {
         WindowGroup {
-            RootComponent().create()
+            appRouter.assembleModules()
         }
     }
 }

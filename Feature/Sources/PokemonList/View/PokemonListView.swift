@@ -8,13 +8,15 @@
 import SwiftUI
 import Entity
 import DI
+import Routing
 
 @MainActor
 struct PokemonListView<
-    ViewModel: PokemonListViewModel
+    ViewModel: PokemonListViewModel,
+    PokemonDetailRouter: PokemonDetailWireframe
 >: View {
     @StateObject var viewModel: ViewModel
-    let pokemonDetailViewCreator: PokemonDetailViewCreatable
+    let pokemonDetailViewRouter: PokemonDetailRouter
 
     @State private var tappedPokemon: Pokemon?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -45,7 +47,7 @@ struct PokemonListView<
                             tappedPokemon = pokemon
                         }.sheet(item: $tappedPokemon) { pokemon in
                             NavigationView {
-                                pokemonDetailViewCreator.create(pokemon: pokemon)
+                                pokemonDetailViewRouter.assembleModules(pokemon)
                             }.navigationViewStyle(.stack)
                         }
                 }
@@ -67,7 +69,7 @@ struct PokemonListView_Previews: PreviewProvider {
                 viewModel: MockPokemonListViewModel(
                     viewState: .init(loadState: .partial(progress: 1), pokemonList: [.bulbasaur])
                 ),
-                pokemonDetailViewCreator: MockPokemonDetailViewCreator()
+                pokemonDetailViewRouter: MockPokemonDetailRouter()
             )
         }
     }
@@ -83,9 +85,9 @@ struct PokemonListView_Previews: PreviewProvider {
         func onAppearCell(pokemon: Pokemon) async {}
     }
 
-    private final class MockPokemonDetailViewCreator: PokemonDetailViewCreatable {
-        func create(pokemon: Pokemon) -> AnyView {
-            .init(Text(pokemon.name))
+    private struct MockPokemonDetailRouter: PokemonDetailWireframe {
+        func assembleModules(_ dependency: Pokemon) -> AnyView {
+            .init(Text(dependency.name))
         }
     }
 }
