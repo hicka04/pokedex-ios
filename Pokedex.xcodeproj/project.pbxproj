@@ -17,7 +17,6 @@
 		B834073127C5F3D700E1A585 /* Infra in Frameworks */ = {isa = PBXBuildFile; productRef = B834073027C5F3D700E1A585 /* Infra */; };
 		B845207727D06F150067081D /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = B845207627D06F150067081D /* Core */; };
 		B86CE27A2778A81A00D0D1C4 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */; };
-		B86CE2812778A81C00D0D1C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */; };
 		B86CE28B2778A81C00D0D1C4 /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CE28A2778A81C00D0D1C4 /* PokedexTests.swift */; };
 		B8A249AC284661D800EBCD61 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A249AB284661D800EBCD61 /* AppRouter.swift */; };
 		B8C648C4284665FF00267DFA /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C648C3284665FF00267DFA /* AppRouter.swift */; };
@@ -57,7 +56,6 @@
 		B81B748127BFE0D50015C280 /* PreviewAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewAssets.swift; sourceTree = "<group>"; };
 		B86CE2762778A81A00D0D1C4 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
-		B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B86CE2862778A81C00D0D1C4 /* PokedexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86CE28A2778A81C00D0D1C4 /* PokedexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexTests.swift; sourceTree = "<group>"; };
 		B8A249AB284661D800EBCD61 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
@@ -178,17 +176,8 @@
 				B8A249AB284661D800EBCD61 /* AppRouter.swift */,
 				B82D0E4F2797008B000A09DC /* Generated */,
 				B82D0E4D2796FF94000A09DC /* Resources */,
-				B86CE27F2778A81C00D0D1C4 /* Preview Content */,
 			);
 			path = Pokedex;
-			sourceTree = "<group>";
-		};
-		B86CE27F2778A81C00D0D1C4 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				B86CE2802778A81C00D0D1C4 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		B86CE2892778A81C00D0D1C4 /* PokedexTests */ = {
@@ -249,7 +238,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B86CE29A2778A81C00D0D1C4 /* Build configuration list for PBXNativeTarget "Pokedex" */;
 			buildPhases = (
-				B82D0E5227970295000A09DC /* Run SwiftGen */,
 				B8113C9527A6DA9E0038FEFB /* Run Sourcery */,
 				B86CE2722778A81A00D0D1C4 /* Sources */,
 				B86CE2732778A81A00D0D1C4 /* Frameworks */,
@@ -396,7 +384,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B86CE2812778A81C00D0D1C4 /* Preview Assets.xcassets in Resources */,
 				B81B748027BFDC2F0015C280 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,24 +435,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nSDKROOT=$(xcrun --sdk macosx --show-sdk-path)\nmint run sourcery\n";
-		};
-		B82D0E5227970295000A09DC /* Run SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftGen";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nSDKROOT=$(xcrun --sdk macosx --show-sdk-path)\nmint run swiftgen\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -641,7 +610,6 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
 				DEVELOPMENT_TEAM = 8RYHZQ93KG;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
@@ -675,7 +643,6 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
 				DEVELOPMENT_TEAM = 8RYHZQ93KG;
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
