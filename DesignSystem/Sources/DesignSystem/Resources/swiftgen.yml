@@ -1,9 +1,0 @@
-xcassets:
-  - inputs:
-      - ${INPUT_DIR}
-    outputs:
-      - templateName: swift5
-        output: ${OUTPUT_DIR}/Assets.generated.swift
-        params:
-          publicAccess: true
-          bundle: MyBundleToken.bundle

@@ -16,18 +16,10 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Domain", path: "../Domain"),
-        .package(name: "Core", path: "../Core")
+        .package(name: "Core", path: "../Core"),
+        .package(name: "Plugins", path: "../Plugins")
     ],
     targets: [
-        .binaryTarget(
-            name: "swiftgen",
-            path: "Artifacts/swiftgen.artifactbundle"
-        ),
-        .plugin(
-            name: "SwiftGenPlugin",
-            capability: .buildTool(),
-            dependencies: ["swiftgen"]
-        ),
         .target(
             name: "DesignSystem",
             dependencies: [
@@ -35,10 +27,10 @@ let package = Package(
                 "Core"
             ],
             resources: [
-                .process("Resources")
+                .process("swiftgen.yml")
             ],
             plugins: [
-                .plugin(name: "SwiftGenPlugin")
+                .plugin(name: "SwiftGenPlugin", package: "Plugins")
             ]
         )
     ]
