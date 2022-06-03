@@ -6,13 +6,21 @@ import PackageDescription
 let package = Package(
     name: "Plugins",
     products: [
+        .plugin(name: "SourceryPlugin", targets: ["SourceryPlugin"]),
         .plugin(name: "SwiftGenPlugin", targets: ["SwiftGenPlugin"])
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
     targets: [
+        // Sourcery
+        .binaryTarget(
+            name: "sourcery",
+            path: "Artifacts/sourcery.artifactbundle"
+        ),
+        .plugin(
+            name: "SourceryPlugin",
+            capability: .buildTool(),
+            dependencies: ["sourcery"]
+        ),
+        // SwiftGen
         .binaryTarget(
             name: "swiftgen",
             path: "Artifacts/swiftgen.artifactbundle"
