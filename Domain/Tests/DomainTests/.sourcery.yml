@@ -1,0 +1,9 @@
+sources:
+  - ../../Sources/Repositories/
+templates:
+  - ../../../Templates/AutoMockable.stencil
+args:
+  autoMockableImports:
+    - Repository
+    - Entity
+output: ${OUTPUT_DIR}/RepositoryMock.swift

@@ -1,0 +1,6 @@
+sources:
+  - ../../../Domain/Sources/Entities/
+  - Components/TypesView.swift
+templates:
+  - ../../../Templates/Pokemon.Type+preview.stencil
+output: Components/TypesView.swift

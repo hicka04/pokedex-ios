@@ -1,0 +1,5 @@
+sources:
+  - ../../../Domain/Sources/Entities/
+templates:
+  - ../../../Templates/Entity+stub.stencil
+output: ${OUTPUT_DIR}/Entity+stub.swift

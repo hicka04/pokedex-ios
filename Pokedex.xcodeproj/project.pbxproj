@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B814274427CD0D970099E1B3 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = B814274327CD0D970099E1B3 /* Features */; };
 		B81B748027BFDC2F0015C280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81B747F27BFDC2F0015C280 /* Assets.xcassets */; };
-		B81B748227BFE0D50015C280 /* PreviewAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81B748127BFE0D50015C280 /* PreviewAssets.swift */; };
 		B834072727C5F3D700E1A585 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B834072627C5F3D700E1A585 /* DesignSystem */; };
 		B834072927C5F3D700E1A585 /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = B834072827C5F3D700E1A585 /* Entity */; };
 		B834072B27C5F3D700E1A585 /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = B834072A27C5F3D700E1A585 /* Repository */; };
@@ -53,7 +52,6 @@
 
 /* Begin PBXFileReference section */
 		B81B747F27BFDC2F0015C280 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B81B748127BFE0D50015C280 /* PreviewAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewAssets.swift; sourceTree = "<group>"; };
 		B86CE2762778A81A00D0D1C4 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
 		B86CE2862778A81C00D0D1C4 /* PokedexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,14 +128,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B82D0E4F2797008B000A09DC /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				B81B748127BFE0D50015C280 /* PreviewAssets.swift */,
-			);
-			path = Generated;
-			sourceTree = "<group>";
-		};
 		B8306C66282014CA00EA9E5C /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +164,6 @@
 			children = (
 				B86CE2792778A81A00D0D1C4 /* PokedexApp.swift */,
 				B8A249AB284661D800EBCD61 /* AppRouter.swift */,
-				B82D0E4F2797008B000A09DC /* Generated */,
 				B82D0E4D2796FF94000A09DC /* Resources */,
 			);
 			path = Pokedex;
@@ -238,7 +227,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B86CE29A2778A81C00D0D1C4 /* Build configuration list for PBXNativeTarget "Pokedex" */;
 			buildPhases = (
-				B8113C9527A6DA9E0038FEFB /* Run Sourcery */,
 				B86CE2722778A81A00D0D1C4 /* Sources */,
 				B86CE2732778A81A00D0D1C4 /* Frameworks */,
 				B86CE2742778A81A00D0D1C4 /* Resources */,
@@ -413,37 +401,11 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		B8113C9527A6DA9E0038FEFB /* Run Sourcery */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Domain/Sources/Entities/",
-				"$(SRCROOT)/DesignSystem/Sources/DesignSystem/Components/TypesView.swift",
-				"$(SRCROOT)/Domain/Sources/Repositories/",
-				"$(SRCROOT)/Domain/Sources/UseCases/",
-			);
-			name = "Run Sourcery";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ `uname -m` == 'arm64' ] && [ -d /opt/homebrew/bin/ ]; then\n  export PATH=/opt/homebrew/bin:$PATH\nfi\n\nSDKROOT=$(xcrun --sdk macosx --show-sdk-path)\nmint run sourcery\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		B86CE2722778A81A00D0D1C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B81B748227BFE0D50015C280 /* PreviewAssets.swift in Sources */,
 				B86CE27A2778A81A00D0D1C4 /* PokedexApp.swift in Sources */,
 				B8A249AC284661D800EBCD61 /* AppRouter.swift in Sources */,
 			);

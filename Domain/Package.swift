@@ -22,6 +22,9 @@ let package = Package(
             targets: ["Repository"]
         )
     ],
+    dependencies: [
+        .package(name: "Plugins", path: "../Plugins")
+    ],
     targets: [
         .target(
             name: "Entity",
@@ -48,6 +51,12 @@ let package = Package(
                 "Entity",
                 "UseCase",
                 "Repository"
+            ],
+            resources: [
+                .process(".sourcery.yml")
+            ],
+            plugins: [
+                .plugin(name: "SourceryPlugin", package: "Plugins")
             ]
         )
     ]

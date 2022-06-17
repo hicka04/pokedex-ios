@@ -20,7 +20,7 @@ struct SourceryPlugin: BuildToolPlugin {
                     "--config", target.directory.appending(".sourcery.yml").string
                 ],
                 environment: [
-                    "OUTPUT_DIR": outputFilesDirectory.string,
+                    "OUTPUT_DIR": outputFilesDirectory.string
                 ],
                 outputFilesDirectory: outputFilesDirectory
             )

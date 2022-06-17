@@ -27,10 +27,12 @@ let package = Package(
                 "Core"
             ],
             resources: [
-                .process("swiftgen.yml")
+                .process("swiftgen.yml"),
+                .process(".sourcery.yml")
             ],
             plugins: [
-                .plugin(name: "SwiftGenPlugin", package: "Plugins")
+                .plugin(name: "SwiftGenPlugin", package: "Plugins"),
+                .plugin(name: "SourceryPlugin", package: "Plugins")
             ]
         )
     ]
