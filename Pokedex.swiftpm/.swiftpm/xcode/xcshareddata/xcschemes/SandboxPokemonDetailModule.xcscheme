@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1330"
+   LastUpgradeVersion = "1400"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8CE724827D39BD400C6350F"
-               BuildableName = "PokemonListSandbox.app"
-               BlueprintName = "PokemonListSandbox"
-               ReferencedContainer = "container:Pokedex.xcodeproj">
+               BlueprintIdentifier = "SandboxPokemonDetailModule"
+               BuildableName = "SandboxPokemonDetailModule"
+               BlueprintName = "SandboxPokemonDetailModule"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8CE724827D39BD400C6350F"
-            BuildableName = "PokemonListSandbox.app"
-            BlueprintName = "PokemonListSandbox"
-            ReferencedContainer = "container:Pokedex.xcodeproj">
+            BlueprintIdentifier = "SandboxPokemonDetailModule"
+            BuildableName = "SandboxPokemonDetailModule"
+            BlueprintName = "SandboxPokemonDetailModule"
+            ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8CE724827D39BD400C6350F"
-            BuildableName = "PokemonListSandbox.app"
-            BlueprintName = "PokemonListSandbox"
-            ReferencedContainer = "container:Pokedex.xcodeproj">
+            BlueprintIdentifier = "SandboxPokemonDetailModule"
+            BuildableName = "SandboxPokemonDetailModule"
+            BlueprintName = "SandboxPokemonDetailModule"
+            ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
