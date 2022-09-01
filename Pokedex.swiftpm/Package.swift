@@ -7,6 +7,16 @@
 import PackageDescription
 import AppleProductTypes
 
+let dependencies: [PackageDescription.Package.Dependency] = [
+    .package(name: "Feature", path: "../Feature"),
+    .package(name: "DesignSystem", path: "../DesignSystem"),
+    .package(name: "Domain", path: "../Domain"),
+    .package(name: "Infra", path: "../Infra"),
+    .package(name: "Core", path: "../Core"),
+    .package(name: "Environment", path: "../Environment"),
+    .package(name: "Plugins", path: "../Plugins")
+]
+
 let package = Package(
     name: "Pokedex",
     platforms: [
@@ -74,10 +84,7 @@ let package = Package(
             ]
         )
     ],
-    dependencies: [
-        .package(name: "Environment", path: "../Environment"),
-        .package(name: "Feature", path: "../Feature")
-    ],
+    dependencies: dependencies,
     targets: [
         .executableTarget(
             name: "AppModule",
