@@ -21,7 +21,7 @@ let package = Package(
         .package(name: "Core", path: "../Core"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(name: "Environment", path: "../Environment"),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "2.1.3"))
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", from: "2.1.3")
     ],
     targets: [
         .target(
