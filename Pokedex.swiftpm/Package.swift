@@ -16,7 +16,7 @@ let package = Package(
         .iOSApplication(
             name: "Pokedex",
             targets: ["AppModule"],
-            bundleIdentifier: "com.hicka04.Pokedex",
+            bundleIdentifier: "dev.hicka04.Pokedex",
             teamIdentifier: "8RYHZQ93KG",
             displayVersion: "1.0",
             bundleVersion: "1",
@@ -36,7 +36,7 @@ let package = Package(
         .iOSApplication(
             name: "PokemonListSandbox",
             targets: ["SandboxPokemonListModule"],
-            bundleIdentifier: "com.hicka04.Pokedex.Sandbox.PokemonList",
+            bundleIdentifier: "dev.hicka04.Pokedex.Sandbox.PokemonList",
             teamIdentifier: "8RYHZQ93KG",
             displayVersion: "1.0",
             bundleVersion: "1",
@@ -56,7 +56,7 @@ let package = Package(
         .iOSApplication(
             name: "PokemonDetailSandbox",
             targets: ["SandboxPokemonDetailModule"],
-            bundleIdentifier: "com.hicka04.Pokedex.Sandbox.PokemonDetail",
+            bundleIdentifier: "dev.hicka04.Pokedex.Sandbox.PokemonDetail",
             teamIdentifier: "8RYHZQ93KG",
             displayVersion: "1.0",
             bundleVersion: "1",
