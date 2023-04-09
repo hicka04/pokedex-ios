@@ -8,7 +8,7 @@
 import UIKit
 import Entity
 
-extension Pokemon.`Type` {
+public extension Pokemon.`Type` {
     var color: UIColor {
         switch self {
         case .normal: return Asset.Types.Normal.tint.color

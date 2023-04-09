@@ -23,16 +23,26 @@ let package = Package(
         .target(
             name: "DesignSystem",
             dependencies: [
-                .product(name: "Entity", package: "Domain"),
+                "Foundations",
                 "Core"
             ],
             resources: [
-                .process("swiftgen.yml"),
                 .process(".sourcery.yml")
             ],
             plugins: [
-                .plugin(name: "SwiftGenPlugin", package: "Plugins"),
                 .plugin(name: "SourceryPlugin", package: "Plugins")
+            ]
+        ),
+        .target(
+            name: "Foundations",
+            dependencies: [
+                .product(name: "Entity", package: "Domain"),
+            ],
+            resources: [
+                .process("swiftgen.yml")
+            ],
+            plugins: [
+                .plugin(name: "SwiftGenPlugin", package: "Plugins")
             ]
         )
     ]
