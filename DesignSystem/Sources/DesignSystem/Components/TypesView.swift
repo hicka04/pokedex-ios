@@ -21,11 +21,11 @@ public struct TypesView: View {
     public var body: some View {
         switch axis {
         case .horizontal:
-            HStack(spacing: 16) {
+            HStack(spacing: .medium) {
                 content()
             }
         case .vertical:
-            VStack(spacing: 8) {
+            VStack(spacing: .small) {
                 content()
             }.frame(width: 120)
         }

@@ -8,16 +8,17 @@
 import SwiftUI
 import Entity
 import Core
+import DesignSystem
 
 struct AbilitiesView: View {
     let abilities: Pokemon.Abilities
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: .medium) {
             Text("Abilities")
                 .font(.headline)
 
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: .medium) {
                 AbilityView(ability: abilities.first, isHidden: false)
                 if let second = abilities.second {
                     AbilityView(ability: second, isHidden: false)

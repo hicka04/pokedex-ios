@@ -11,13 +11,13 @@ public struct AdaptiveStack<Content: View>: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     let horizontalAlignment: HorizontalAlignment
     let verticalAlignment: VerticalAlignment
-    let spacing: CGFloat?
+    let spacing: Spacing?
     let content: () -> Content
 
     public init(
         horizontalAlignment: HorizontalAlignment = .center,
         verticalAlignment: VerticalAlignment = .center,
-        spacing: CGFloat? = nil,
+        spacing: Spacing? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.horizontalAlignment = horizontalAlignment
@@ -30,9 +30,9 @@ public struct AdaptiveStack<Content: View>: View {
         Group {
             switch horizontalSizeClass {
             case .regular:
-                HStack(alignment: verticalAlignment, spacing: spacing, content: content)
+                HStack(alignment: verticalAlignment, spacing: spacing?.rawValue, content: content)
             default:
-                VStack(alignment: horizontalAlignment, spacing: spacing, content: content)
+                VStack(alignment: horizontalAlignment, spacing: spacing?.rawValue, content: content)
             }
         }
     }

@@ -20,19 +20,19 @@ struct PokemonDetailView<
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 32) {
-                AdaptiveStack(spacing: 32) {
+            VStack(spacing: .large) {
+                AdaptiveStack(spacing: .large) {
                     OfficialArtworkImage(
                         url: viewModel.viewState.pokemon.sprites.officialArtwork
                     ).scaleEffect(0.8)
 
-                    VStack(alignment: .leading, spacing: 32) {
+                    VStack(alignment: .leading, spacing: .large) {
                         TypesView(
                             types: viewModel.viewState.pokemon.types,
                             axis: .horizontal
                         )
 
-                        HStack(spacing: 16) {
+                        HStack(spacing: .medium) {
                             HeightView(height: viewModel.viewState.pokemon.height)
                             WeightView(weight: viewModel.viewState.pokemon.weight)
                         }
@@ -41,7 +41,7 @@ struct PokemonDetailView<
                     }
                 }
 
-                AdaptiveStack(verticalAlignment: .top, spacing: 32) {
+                AdaptiveStack(verticalAlignment: .top, spacing: .large) {
                     BaseStasView(baseStats: viewModel.viewState.pokemon.baseStats)
                         .frame(maxWidth: .infinity)
 

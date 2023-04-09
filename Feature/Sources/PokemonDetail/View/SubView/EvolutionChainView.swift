@@ -17,7 +17,7 @@ struct EvolutionChainView<PokemonDetailRouter: PokemonDetailWireframe>: View {
     let pokemonDetailRouter: PokemonDetailRouter
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: .medium) {
             Text("Evolution Chain")
                 .font(.headline)
 
@@ -39,7 +39,7 @@ private extension EvolutionChainView {
         let pokemonDetailRouter: PokemonDetailRouter
 
         var body: some View {
-            VStack(spacing: 16) {
+            VStack(spacing: .medium) {
                 VStack {
                     if !chainLink.isOrigin {
                         Image(systemSymbol: .arrowtriangleDownFill)
@@ -62,7 +62,7 @@ private extension EvolutionChainView {
         }
 
         private func evolvesToView(_ evolvesTo: [EvolutionChain.ChainLink]) -> some View {
-            HStack(spacing: 8) {
+            HStack(spacing: .small) {
                 ForEach(chainLink.evolvesTo, id: \.pokemon.id) { chain in
                     ChainLinkView(
                         chainLink: chain,

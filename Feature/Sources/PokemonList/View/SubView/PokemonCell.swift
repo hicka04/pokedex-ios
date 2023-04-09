@@ -14,7 +14,7 @@ struct PokemonCell: View {
     let pokemon: Pokemon
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: .medium) {
             OfficialArtworkImage(url: pokemon.sprites.officialArtwork)
 
             VStack(alignment: .leading) {

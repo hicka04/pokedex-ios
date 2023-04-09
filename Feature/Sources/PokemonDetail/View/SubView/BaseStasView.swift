@@ -14,7 +14,7 @@ struct BaseStasView: View {
     let baseStats: Pokemon.BaseStats
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: .medium) {
             Text("Base Stats")
                 .font(.headline)
 
