@@ -26,7 +26,7 @@ struct AbilitiesView: View {
                 if let hidden = abilities.hidden {
                     AbilityView(ability: hidden, isHidden: true)
                 }
-            }.padding(.leading, 16)
+            }.padding(.leading, .medium)
         }
     }
 }

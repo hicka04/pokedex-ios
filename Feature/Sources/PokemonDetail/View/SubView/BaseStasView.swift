@@ -44,7 +44,7 @@ private extension BaseStasView {
                             Color(uiColor: Asset.BaseStats.value.color),
                             lineWidth: 4
                         )
-                }.padding(40)
+                }.padding(.xLarge)
             }
         }
     }

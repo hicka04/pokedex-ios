@@ -51,7 +51,7 @@ struct PokemonListView<
                             }.navigationViewStyle(.stack)
                         }
                 }
-            }.padding(.horizontal, 32)
+            }.padding(.horizontal, .large)
 
             if viewModel.viewState.loadState == .loading {
                 ProgressView()

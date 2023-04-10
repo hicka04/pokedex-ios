@@ -23,7 +23,7 @@ struct PokemonCell: View {
                 Text(pokemon.name)
             }
         }
-        .padding(16)
+        .padding(.medium)
         .contentShape(Rectangle())
     }
 }

@@ -23,7 +23,7 @@ struct HeightView: View {
             Spacer()
             Text(String(format: "%.1f m", height))
             Spacer()
-        }.padding(.horizontal, 4)
+        }.padding(.horizontal, .xSmall)
     }
 }
 

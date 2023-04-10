@@ -54,7 +54,7 @@ struct PokemonDetailView<
                     }.frame(maxWidth: .infinity)
                 }
             }
-            .padding(.horizontal, 32)
+            .padding(.horizontal, .large)
         }
         .navigationTitle("No.\(viewModel.viewState.pokemon.id.rawValue) \(viewModel.viewState.pokemon.name)")
         .task {
