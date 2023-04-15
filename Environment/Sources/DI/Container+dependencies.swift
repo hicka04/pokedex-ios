@@ -22,27 +22,23 @@ extension Container {
 }
 
 public extension Container {
-    var getPokemonListUseCase: AnyGetPokemonListUseCase {
+    var getPokemonListUseCase: any GetPokemonListUseCase {
         get { Self[GetPokemonListUseCaseKey.self] }
         set { Self[GetPokemonListUseCaseKey.self] = newValue }
     }
     private struct GetPokemonListUseCaseKey: InjectionKey {
-        static var currentValue: AnyGetPokemonListUseCase = .init(
-            GetPokemonListInteractor(
-                pokemonRepository: Container[\.pokemonRepository]
-            )
+        static var currentValue: any GetPokemonListUseCase = GetPokemonListInteractor(
+            pokemonRepository: Container[\.pokemonRepository]
         )
     }
 
-    var getEvolutionChainUseCase: AnyGetEvolutionChainUseCase {
+    var getEvolutionChainUseCase: any GetEvolutionChainUseCase {
         get { Self[GetEvolutionChainUseCaseKey.self] }
         set { Self[GetEvolutionChainUseCaseKey.self] = newValue}
     }
     private struct GetEvolutionChainUseCaseKey: InjectionKey {
-        static var currentValue: AnyGetEvolutionChainUseCase = .init(
-            GetEvolutionChainInteractor(
-                pokemonRepository: Container[\.pokemonRepository]
-            )
+        static var currentValue: any GetEvolutionChainUseCase = GetEvolutionChainInteractor(
+            pokemonRepository: Container[\.pokemonRepository]
         )
     }
 }

@@ -27,7 +27,7 @@ struct PokemonListViewState {
 final class PokemonListViewModelImpl: PokemonListViewModel {
     @Published private(set) var viewState: PokemonListViewState = .init()
 
-    @Injected(\.getPokemonListUseCase) private var getPokemonListInteractor: AnyGetPokemonListUseCase
+    @Injected(\.getPokemonListUseCase) private var getPokemonListInteractor: any GetPokemonListUseCase
 
     func onAppear() async {
         guard viewState.loadState == .blank else {

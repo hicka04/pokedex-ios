@@ -33,5 +33,3 @@ extension GetPokemonListUseCase {
         try await execute(0)
     }
 }
-
-public typealias AnyGetPokemonListUseCase = AnyUseCase<GetPokemonListOffset, PokemonListPage>

@@ -26,7 +26,7 @@ struct PokemonDetailViewState {
 final class PokemonDetailViewModelImpl: PokemonDetailViewModel {
     @Published private(set) var viewState: PokemonDetailViewState
 
-    @Injected(\.getEvolutionChainUseCase) private var getEvolutionChainInteractor: AnyGetEvolutionChainUseCase
+    @Injected(\.getEvolutionChainUseCase) private var getEvolutionChainInteractor: any GetEvolutionChainUseCase
 
     init(pokemon: Pokemon) {
         self.viewState = .init(pokemon: pokemon)
