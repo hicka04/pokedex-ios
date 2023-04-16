@@ -17,6 +17,8 @@ where Input == GetPokemonListOffset, Output == PokemonListPage {}
 
 public struct GetPokemonListInteractor {
     @Dependency(\.pokemonRepository) private var pokemonRepository: PokemonRepository
+
+    public init() {}
 }
 
 extension GetPokemonListInteractor: GetPokemonListUseCase {

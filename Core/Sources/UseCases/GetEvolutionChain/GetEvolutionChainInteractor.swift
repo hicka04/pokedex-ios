@@ -15,6 +15,8 @@ where Input == Pokemon.ID, Output == EvolutionChain {}
 
 public struct GetEvolutionChainInteractor {
     @Dependency(\.pokemonRepository) private var pokemonRepository: PokemonRepository
+
+    public init() {}
 }
 
 extension GetEvolutionChainInteractor: GetEvolutionChainUseCase {

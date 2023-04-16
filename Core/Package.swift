@@ -18,7 +18,10 @@ let package = Package(
         ),
         .library(
             name: "UseCase",
-            targets: ["UseCase"]
+            targets: [
+                "UseCase",
+                "UseCaseContainer"
+            ]
         )
     ],
     dependencies: [
@@ -52,10 +55,9 @@ let package = Package(
             path: "Sources/UseCases"
         ),
         .target(
-            name: "RepositoryContainer",
+            name: "UseCaseContainer",
             dependencies: [
-                "Repository",
-                "Infra",
+                "UseCase",
                 .product(name: "Dependencies", package: "swift-dependencies")
             ]
         ),
@@ -65,6 +67,14 @@ let package = Package(
                 "Entity"
             ],
             path: "Sources/Repositories"
+        ),
+        .target(
+            name: "RepositoryContainer",
+            dependencies: [
+                "Repository",
+                "Infra",
+                .product(name: "Dependencies", package: "swift-dependencies")
+            ]
         ),
         .testTarget(
             name: "DomainTests",
