@@ -7,9 +7,8 @@
 
 import SwiftUI
 import Entity
-import Core
+import PreviewData
 import DesignSystem
-import DI
 
 struct PokemonDetailView<
     ViewModel: PokemonDetailViewModel,

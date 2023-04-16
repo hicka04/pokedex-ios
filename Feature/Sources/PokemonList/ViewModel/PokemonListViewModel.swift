@@ -8,7 +8,7 @@
 import Foundation
 import Entity
 import UseCase
-import DI
+import UseCaseContainer
 
 @MainActor
 protocol PokemonListViewModel: ObservableObject {
@@ -27,7 +27,7 @@ struct PokemonListViewState {
 final class PokemonListViewModelImpl: PokemonListViewModel {
     @Published private(set) var viewState: PokemonListViewState = .init()
 
-    @Injected(\.getPokemonListUseCase) private var getPokemonListInteractor: any GetPokemonListUseCase
+    @Dependency(\.getPokemonListUseCase) private var getPokemonListInteractor: any GetPokemonListUseCase
 
     func onAppear() async {
         guard viewState.loadState == .blank else {

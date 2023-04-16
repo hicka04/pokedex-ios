@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Entity
-import Core
+import PreviewData
 import DesignSystem
 
 struct PokemonCell: View {

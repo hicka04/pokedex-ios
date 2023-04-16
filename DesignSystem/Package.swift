@@ -15,7 +15,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "Domain", path: "../Domain"),
         .package(name: "Core", path: "../Core"),
         .package(name: "Plugins", path: "../Plugins")
     ],
@@ -24,7 +23,7 @@ let package = Package(
             name: "DesignSystem",
             dependencies: [
                 "Foundations",
-                "Core"
+                .product(name: "Entity", package: "Core")
             ],
             resources: [
                 .process(".sourcery.yml")
@@ -36,7 +35,7 @@ let package = Package(
         .target(
             name: "Foundations",
             dependencies: [
-                .product(name: "Entity", package: "Domain"),
+                .product(name: "Entity", package: "Core")
             ],
             resources: [
                 .process("swiftgen.yml")

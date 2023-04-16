@@ -7,9 +7,8 @@
 
 import SwiftUI
 import Entity
-import Core
+import PreviewData
 import DesignSystem
-import DI
 import Routing
 
 struct EvolutionChainView<PokemonDetailRouter: PokemonDetailWireframe>: View {

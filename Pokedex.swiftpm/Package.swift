@@ -10,8 +10,6 @@ import AppleProductTypes
 let dependencies: [PackageDescription.Package.Dependency] = [
     .package(name: "Feature", path: "../Feature"),
     .package(name: "DesignSystem", path: "../DesignSystem"),
-    .package(name: "Domain", path: "../Domain"),
-    .package(name: "Infra", path: "../Infra"),
     .package(name: "Core", path: "../Core"),
     .package(name: "Environment", path: "../Environment"),
     .package(name: "Plugins", path: "../Plugins")
@@ -30,8 +28,8 @@ let package = Package(
             teamIdentifier: "8RYHZQ93KG",
             displayVersion: "1.0",
             bundleVersion: "1",
-            iconAssetName: "AppIcon",
-            accentColorAssetName: "AccentColor",
+            appIcon: .asset("AppIcon"),
+            accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
@@ -50,8 +48,8 @@ let package = Package(
             teamIdentifier: "8RYHZQ93KG",
             displayVersion: "1.0",
             bundleVersion: "1",
-            iconAssetName: "AppIcon",
-            accentColorAssetName: "AccentColor",
+            appIcon: .asset("AppIcon"),
+            accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
@@ -70,8 +68,8 @@ let package = Package(
             teamIdentifier: "8RYHZQ93KG",
             displayVersion: "1.0",
             bundleVersion: "1",
-            iconAssetName: "AppIcon",
-            accentColorAssetName: "AccentColor",
+            appIcon: .asset("AppIcon"),
+            accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [
                 .pad,
                 .phone

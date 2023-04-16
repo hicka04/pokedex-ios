@@ -8,7 +8,7 @@
 import Foundation
 import Entity
 import UseCase
-import DI
+import UseCaseContainer
 
 @MainActor
 protocol PokemonDetailViewModel: ObservableObject {
@@ -26,7 +26,7 @@ struct PokemonDetailViewState {
 final class PokemonDetailViewModelImpl: PokemonDetailViewModel {
     @Published private(set) var viewState: PokemonDetailViewState
 
-    @Injected(\.getEvolutionChainUseCase) private var getEvolutionChainInteractor: any GetEvolutionChainUseCase
+    @Dependency(\.getEvolutionChainUseCase) private var getEvolutionChainInteractor: any GetEvolutionChainUseCase
 
     init(pokemon: Pokemon) {
         self.viewState = .init(pokemon: pokemon)

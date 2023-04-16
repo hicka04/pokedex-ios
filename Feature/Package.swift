@@ -27,20 +27,20 @@ let package = Package(
         .target(
             name: "PokemonList",
             dependencies: [
-                .product(name: "DI", package: "Environment"),
+                .product(name: "UseCase", package: "Core"),
+                .product(name: "Entity", package: "Core"),
                 .product(name: "Routing", package: "Environment"),
                 "DesignSystem",
-                "Core",
                 "SFSafeSymbols"
             ]
         ),
         .target(
             name: "PokemonDetail",
             dependencies: [
-                .product(name: "DI", package: "Environment"),
+                .product(name: "UseCase", package: "Core"),
+                .product(name: "Entity", package: "Core"),
                 .product(name: "Routing", package: "Environment"),
                 "DesignSystem",
-                "Core",
                 "SFSafeSymbols",
             ]
         ),

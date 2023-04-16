@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 import Entity
-import Core
+import PreviewData
 
 struct HeightView: View {
     let height: Double

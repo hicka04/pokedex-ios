@@ -8,7 +8,7 @@
 import SwiftUI
 import Entity
 import DesignSystem
-import Core
+import PreviewData
 
 struct BaseStasView: View {
     let baseStats: Pokemon.BaseStats

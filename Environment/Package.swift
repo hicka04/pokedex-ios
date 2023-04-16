@@ -10,32 +10,18 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "DI",
-            targets: ["DI"]
-        ),
-        .library(
             name: "Routing",
             targets: ["Routing"]
         )
     ],
     dependencies: [
-        .package(name: "Domain", path: "../Domain"),
-        .package(name: "Infra", path: "../Infra")
+        .package(name: "Core", path: "../Core")
     ],
     targets: [
         .target(
-            name: "DI",
-            dependencies: [
-                .product(name: "Entity", package: "Domain"),
-                .product(name: "UseCase", package: "Domain"),
-                .product(name: "Repository", package: "Domain"),
-                "Infra"
-            ]
-        ),
-        .target(
             name: "Routing",
             dependencies: [
-                .product(name: "Entity", package: "Domain")
+                .product(name: "Entity", package: "Core")
             ]
         )
     ]

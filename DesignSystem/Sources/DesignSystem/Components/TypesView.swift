@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Entity
-import Core
+import PreviewData
 
 public struct TypesView: View {
     let types: Pokemon.Types

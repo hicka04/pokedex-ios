@@ -1,5 +1,5 @@
 sources:
-  - ../../../Domain/Sources/Entities/
+  - ../../../Core/Sources/Entities/
   - Components/TypesView.swift
 templates:
   - ../../../Templates/Pokemon.Type+preview.stencil

@@ -11,12 +11,6 @@
       location = "group:DesignSystem">
    </FileRef>
    <FileRef
-      location = "group:Domain">
-   </FileRef>
-   <FileRef
-      location = "group:Infra">
-   </FileRef>
-   <FileRef
       location = "group:Core">
    </FileRef>
    <FileRef
