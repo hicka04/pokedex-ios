@@ -8,16 +8,13 @@
 import Foundation
 import Entity
 import Repository
+import RepositoryContainer
 
 public protocol GetEvolutionChainUseCase: UseCase
 where Input == Pokemon.ID, Output == EvolutionChain {}
 
 public struct GetEvolutionChainInteractor {
-    private let pokemonRepository: PokemonRepository
-
-    public init(pokemonRepository: PokemonRepository) {
-        self.pokemonRepository = pokemonRepository
-    }
+    @Dependency(\.pokemonRepository) private var pokemonRepository: PokemonRepository
 }
 
 extension GetEvolutionChainInteractor: GetEvolutionChainUseCase {

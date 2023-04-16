@@ -23,6 +23,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Plugins", path: "../Plugins"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "0.4.1"),
         // Infra
         .package(url: "https://github.com/ishkawa/APIKit.git", from: "5.2.0"),
         .package(url: "https://github.com/AliSoftware/OHHTTPStubs.git", from: "9.1.0")
@@ -44,9 +45,19 @@ let package = Package(
             name: "UseCase",
             dependencies: [
                 "Entity",
-                "Repository"
+                "Repository",
+                "RepositoryContainer",
+                .product(name: "Dependencies", package: "swift-dependencies")
             ],
             path: "Sources/UseCases"
+        ),
+        .target(
+            name: "RepositoryContainer",
+            dependencies: [
+                "Repository",
+                "Infra",
+                .product(name: "Dependencies", package: "swift-dependencies")
+            ]
         ),
         .target(
             name: "Repository",

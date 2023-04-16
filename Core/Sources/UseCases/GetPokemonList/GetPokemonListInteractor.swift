@@ -8,6 +8,7 @@
 import Foundation
 import Entity
 import Repository
+import RepositoryContainer
 
 public typealias GetPokemonListOffset = Int
 
@@ -15,11 +16,7 @@ public protocol GetPokemonListUseCase: UseCase
 where Input == GetPokemonListOffset, Output == PokemonListPage {}
 
 public struct GetPokemonListInteractor {
-    private let pokemonRepository: PokemonRepository
-
-    public init(pokemonRepository: PokemonRepository) {
-        self.pokemonRepository = pokemonRepository
-    }
+    @Dependency(\.pokemonRepository) private var pokemonRepository: PokemonRepository
 }
 
 extension GetPokemonListInteractor: GetPokemonListUseCase {
