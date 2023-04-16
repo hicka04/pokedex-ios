@@ -11,7 +11,6 @@ let dependencies: [PackageDescription.Package.Dependency] = [
     .package(name: "Feature", path: "../Feature"),
     .package(name: "DesignSystem", path: "../DesignSystem"),
     .package(name: "Core", path: "../Core"),
-    .package(name: "Environment", path: "../Environment"),
     .package(name: "Plugins", path: "../Plugins")
 ]
 
@@ -87,7 +86,7 @@ let package = Package(
         .executableTarget(
             name: "AppModule",
             dependencies: [
-                .product(name: "Routing", package: "Environment"),
+                .product(name: "Routing", package: "Core"),
                 .product(name: "Features", package: "Feature")
             ],
             path: "App"
@@ -95,7 +94,7 @@ let package = Package(
         .executableTarget(
             name: "SandboxPokemonListModule",
             dependencies: [
-                .product(name: "Routing", package: "Environment"),
+                .product(name: "Routing", package: "Core"),
                 .product(name: "Features", package: "Feature")
             ],
             path: "Sandbox/PokemonList"
@@ -103,7 +102,7 @@ let package = Package(
         .executableTarget(
             name: "SandboxPokemonDetailModule",
             dependencies: [
-                .product(name: "Routing", package: "Environment"),
+                .product(name: "Routing", package: "Core"),
                 .product(name: "Features", package: "Feature")
             ],
             path: "Sandbox/PokemonDetail"

@@ -22,6 +22,10 @@ let package = Package(
                 "UseCase",
                 "UseCaseContainer"
             ]
+        ),
+        .library(
+            name: "Routing",
+            targets: ["Routing"]
         )
     ],
     dependencies: [
@@ -107,6 +111,13 @@ let package = Package(
             ],
             resources: [
                 .process("DataStores/Pokemon/Stubs")
+            ]
+        ),
+        // Routing
+        .target(
+            name: "Routing",
+            dependencies: [
+                "Entity"
             ]
         )
     ]

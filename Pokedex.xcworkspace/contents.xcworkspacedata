@@ -13,7 +13,4 @@
    <FileRef
       location = "group:Core">
    </FileRef>
-   <FileRef
-      location = "group:Environment">
-   </FileRef>
 </Workspace>

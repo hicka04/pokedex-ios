@@ -20,7 +20,6 @@ let package = Package(
     dependencies: [
         .package(name: "Core", path: "../Core"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
-        .package(name: "Environment", path: "../Environment"),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", from: "2.1.3")
     ],
     targets: [
@@ -29,7 +28,7 @@ let package = Package(
             dependencies: [
                 .product(name: "UseCase", package: "Core"),
                 .product(name: "Entity", package: "Core"),
-                .product(name: "Routing", package: "Environment"),
+                .product(name: "Routing", package: "Core"),
                 "DesignSystem",
                 "SFSafeSymbols"
             ]
@@ -39,7 +38,7 @@ let package = Package(
             dependencies: [
                 .product(name: "UseCase", package: "Core"),
                 .product(name: "Entity", package: "Core"),
-                .product(name: "Routing", package: "Environment"),
+                .product(name: "Routing", package: "Core"),
                 "DesignSystem",
                 "SFSafeSymbols",
             ]
