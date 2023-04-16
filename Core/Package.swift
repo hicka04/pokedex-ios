@@ -10,27 +10,82 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Core",
-            targets: ["Core"]
+            name: "Entity",
+            targets: [
+                "Entity",
+                "PreviewData"
+            ]
+        ),
+        .library(
+            name: "UseCase",
+            targets: ["UseCase"]
         )
     ],
     dependencies: [
-        .package(name: "Domain", path: "../Domain"),
-        .package(name: "Plugins", path: "../Plugins")
+        .package(name: "Plugins", path: "../Plugins"),
+        // Infra
+        .package(url: "https://github.com/ishkawa/APIKit.git", from: "5.2.0"),
+        .package(url: "https://github.com/AliSoftware/OHHTTPStubs.git", from: "9.1.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        // Entity
         .target(
-            name: "Core",
+            name: "Entity",
+            path: "Sources/Entities"
+        ),
+        .target(
+            name: "PreviewData",
             dependencies: [
-                .product(name: "Entity", package: "Domain")
+                "Entity"
+            ]
+        ),
+        // Domain
+        .target(
+            name: "UseCase",
+            dependencies: [
+                "Entity",
+                "Repository"
+            ],
+            path: "Sources/UseCases"
+        ),
+        .target(
+            name: "Repository",
+            dependencies: [
+                "Entity"
+            ],
+            path: "Sources/Repositories"
+        ),
+        .testTarget(
+            name: "DomainTests",
+            dependencies: [
+                "Entity",
+                "UseCase",
+                "Repository"
             ],
             resources: [
                 .process(".sourcery.yml")
             ],
             plugins: [
                 .plugin(name: "SourceryPlugin", package: "Plugins")
+            ]
+        ),
+        // Infra
+        .target(
+            name: "Infra",
+            dependencies: [
+                "Entity",
+                "Repository",
+                "APIKit"
+            ]
+        ),
+        .testTarget(
+            name: "InfraTests",
+            dependencies: [
+                "Infra",
+                .product(name: "OHHTTPStubsSwift", package: "OHHTTPStubs")
+            ],
+            resources: [
+                .process("DataStores/Pokemon/Stubs")
             ]
         )
     ]
