@@ -28,6 +28,7 @@ let package = Package(
             dependencies: [
                 .product(name: "UseCase", package: "Core"),
                 .product(name: "Entity", package: "Core"),
+                .product(name: "UI", package: "Core"),
                 .product(name: "Routing", package: "Core"),
                 "DesignSystem",
                 "SFSafeSymbols"
@@ -38,6 +39,7 @@ let package = Package(
             dependencies: [
                 .product(name: "UseCase", package: "Core"),
                 .product(name: "Entity", package: "Core"),
+                .product(name: "UI", package: "Core"),
                 .product(name: "Routing", package: "Core"),
                 "DesignSystem",
                 "SFSafeSymbols",

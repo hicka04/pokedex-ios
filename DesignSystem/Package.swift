@@ -15,29 +15,17 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "Core", path: "../Core"),
-        .package(name: "Plugins", path: "../Plugins"),
         .package(url: "https://github.com/SwiftGen/SwiftGenPlugin", from: "6.6.0")
     ],
     targets: [
         .target(
             name: "DesignSystem",
             dependencies: [
-                "Foundations",
-                .product(name: "Entity", package: "Core")
-            ],
-            resources: [
-                .process(".sourcery.yml")
-            ],
-            plugins: [
-                .plugin(name: "SourceryPlugin", package: "Plugins")
+                "Foundations"
             ]
         ),
         .target(
             name: "Foundations",
-            dependencies: [
-                .product(name: "Entity", package: "Core")
-            ],
             plugins: [
                 .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
             ]

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Entity
+import DesignSystem
 
 public extension Pokemon.`Type` {
     var color: Color {

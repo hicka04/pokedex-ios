@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Core",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         .library(
@@ -24,11 +24,16 @@ let package = Package(
             ]
         ),
         .library(
+            name: "UI",
+            targets: ["UI"]
+        ),
+        .library(
             name: "Routing",
             targets: ["Routing"]
         )
     ],
     dependencies: [
+        .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(name: "Plugins", path: "../Plugins"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "0.4.1"),
         // Infra
@@ -111,6 +116,21 @@ let package = Package(
             ],
             resources: [
                 .process("DataStores/Pokemon/Stubs")
+            ]
+        ),
+        // UI
+        .target(
+            name: "UI",
+            dependencies: [
+                "Entity",
+                "PreviewData",
+                "DesignSystem"
+            ],
+            resources: [
+                .process(".sourcery.yml")
+            ],
+            plugins: [
+                .plugin(name: "SourceryPlugin", package: "Plugins")
             ]
         ),
         // Routing
