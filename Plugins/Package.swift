@@ -6,8 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Plugins",
     products: [
-        .plugin(name: "SourceryPlugin", targets: ["SourceryPlugin"]),
-        .plugin(name: "SwiftGenPlugin", targets: ["SwiftGenPlugin"])
+        .plugin(name: "SourceryPlugin", targets: ["SourceryPlugin"])
     ],
     targets: [
         // Sourcery
@@ -19,16 +18,6 @@ let package = Package(
             name: "SourceryPlugin",
             capability: .buildTool(),
             dependencies: ["sourcery"]
-        ),
-        // SwiftGen
-        .binaryTarget(
-            name: "swiftgen",
-            path: "Artifacts/swiftgen.artifactbundle"
-        ),
-        .plugin(
-            name: "SwiftGenPlugin",
-            capability: .buildTool(),
-            dependencies: ["swiftgen"]
         )
     ]
 )

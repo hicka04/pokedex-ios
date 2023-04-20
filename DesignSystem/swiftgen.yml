@@ -1,0 +1,11 @@
+input_dir: Sources/Foundations/Resources
+output_dir: ${DERIVED_SOURCES_DIR}
+
+xcassets:
+  - inputs:
+      - .
+    outputs:
+      - templateName: swift5
+        output: Assets.generated.swift
+        params:
+          publicAccess: true

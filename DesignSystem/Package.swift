@@ -16,7 +16,8 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Core", path: "../Core"),
-        .package(name: "Plugins", path: "../Plugins")
+        .package(name: "Plugins", path: "../Plugins"),
+        .package(url: "https://github.com/SwiftGen/SwiftGenPlugin", from: "6.6.0")
     ],
     targets: [
         .target(
@@ -37,11 +38,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Entity", package: "Core")
             ],
-            resources: [
-                .process("swiftgen.yml")
-            ],
             plugins: [
-                .plugin(name: "SwiftGenPlugin", package: "Plugins")
+                .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
             ]
         )
     ]
