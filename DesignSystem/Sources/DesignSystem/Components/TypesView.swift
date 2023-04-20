@@ -50,25 +50,21 @@ private extension TypesView {
 
         var body: some View {
             HStack {
-                Image(uiImage: type.filledImage)
+                type.filledImage
                     .resizable()
                     .scaledToFit()
                 Spacer()
                 Text(type.rawValue)
                     .font(.caption)
                     .fontWeight(.medium)
-                    .foregroundColor(Color(uiColor: type.color))
+                    .foregroundColor(type.color)
                 Spacer()
             }
             .frame(height: height)
             .padding(.trailing, cornerRadius)
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .strokeBorder(
-                        Color(uiColor: type.color),
-                        lineWidth: 2,
-                        antialiased: true
-                    )
+                    .strokeBorder(type.color, lineWidth: 2, antialiased: true)
             }
         }
     }
