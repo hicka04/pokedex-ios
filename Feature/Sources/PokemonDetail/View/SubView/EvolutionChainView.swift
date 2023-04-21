@@ -62,7 +62,7 @@ private extension EvolutionChainView {
         }
 
         private func evolvesToView(_ evolvesTo: [EvolutionChain.ChainLink]) -> some View {
-            HStack(spacing: .small) {
+            HStack(alignment: .top, spacing: .small) {
                 ForEach(chainLink.evolvesTo, id: \.pokemon.id) { chain in
                     ChainLinkView(
                         chainLink: chain,
