@@ -34,6 +34,7 @@ let package = Package(
     dependencies: [
         .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(name: "Plugins", path: "../Plugins"),
+        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.51.0"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "0.4.1"),
         // Infra
         .package(url: "https://github.com/ishkawa/APIKit.git", from: "5.2.0"),
@@ -43,7 +44,10 @@ let package = Package(
         // Entity
         .target(
             name: "Entity",
-            path: "Sources/Entities"
+            path: "Sources/Entities",
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+            ]
         ),
         // Domain
         .target(

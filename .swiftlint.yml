@@ -1,0 +1,7 @@
+identifier_name:
+  excluded:
+    - hp
+    - id
+type_name:
+  excluded:
+    - ID
