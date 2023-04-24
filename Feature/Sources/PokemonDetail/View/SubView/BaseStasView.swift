@@ -84,24 +84,21 @@ private extension BaseStasView.RadarChart {
 
     struct AxisLabelsView: View {
         var body: some View {
-            AxisLabelView(category: .hp)
-            AxisLabelView(category: .attack)
-            AxisLabelView(category: .defense)
-            AxisLabelView(category: .specialAttack)
-            AxisLabelView(category: .specialDefense)
-            AxisLabelView(category: .speed)
+            axisLabel(category: .hp)
+            axisLabel(category: .attack)
+            axisLabel(category: .defense)
+            axisLabel(category: .specialAttack)
+            axisLabel(category: .specialDefense)
+            axisLabel(category: .speed)
         }
 
-        private struct AxisLabelView: View {
-            let category: Pokemon.BaseStats.Category
-
-            var body: some View {
-                GeometryReader { proxy in
-                    Text(category.label)
-                        .font(.caption2)
-                        .foregroundColor(Color(uiColor: Asset.BaseStats.label.color))
-                        .position(category.labelPosition(size: proxy.size))
-                }
+        @ViewBuilder
+        private func axisLabel(category: Pokemon.BaseStats.Category) -> some View {
+            GeometryReader { proxy in
+                Text(category.label)
+                    .font(.caption2)
+                    .foregroundColor(Color(uiColor: Asset.BaseStats.label.color))
+                    .position(category.labelPosition(size: proxy.size))
             }
         }
     }

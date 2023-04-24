@@ -20,7 +20,8 @@ let package = Package(
     dependencies: [
         .package(name: "Core", path: "../Core"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", from: "2.1.3")
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", from: "2.1.3"),
+        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.51.0")
     ],
     targets: [
         .target(
@@ -32,6 +33,9 @@ let package = Package(
                 .product(name: "Routing", package: "Core"),
                 "DesignSystem",
                 "SFSafeSymbols"
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         .target(
@@ -43,6 +47,9 @@ let package = Package(
                 .product(name: "Routing", package: "Core"),
                 "DesignSystem",
                 "SFSafeSymbols",
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         .testTarget(
@@ -50,6 +57,9 @@ let package = Package(
             dependencies: [
                 "PokemonList",
                 "PokemonDetail"
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         )
     ]

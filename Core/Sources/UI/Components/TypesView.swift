@@ -83,6 +83,7 @@ struct TypesView_Previews: PreviewProvider {
     }
 }
 
+// swiftlint:disable type_name
 // sourcery:inline:Pokemon.`Type`.TemplateName
 struct TypeView_normal_Preview: PreviewProvider {
     static var previews: some View {
@@ -193,3 +194,4 @@ struct TypeView_fairy_Preview: PreviewProvider {
     }
 }
 // sourcery:end
+// swiftlint:enable type_name

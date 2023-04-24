@@ -11,7 +11,10 @@ import Entity
 extension Pokemon.Sprites {
     public static var bulbasaur: Self {
         .init(
-            officialArtwork: .init(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")!
+            officialArtwork: .init(
+                // swiftlint:disable:next line_length
+                string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+            )!
         )
     }
 }
