@@ -14,7 +14,7 @@ public protocol GetEvolutionChainUseCase: UseCase
 where Input == Pokemon.ID, Output == EvolutionChain {}
 
 public struct GetEvolutionChainInteractor {
-    @Dependency(\.pokemonRepository) private var pokemonRepository: PokemonRepository
+    @Dependency(\.pokemonRepository) private var pokemonRepository
 
     public init() {}
 }

@@ -16,7 +16,7 @@ public protocol GetPokemonListUseCase: UseCase
 where Input == GetPokemonListOffset, Output == PokemonListPage {}
 
 public struct GetPokemonListInteractor {
-    @Dependency(\.pokemonRepository) private var pokemonRepository: PokemonRepository
+    @Dependency(\.pokemonRepository) private var pokemonRepository
 
     public init() {}
 }
