@@ -58,13 +58,19 @@ let package = Package(
                 "RepositoryContainer",
                 .product(name: "Dependencies", package: "swift-dependencies")
             ],
-            path: "Sources/UseCases"
+            path: "Sources/UseCases",
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+            ]
         ),
         .target(
             name: "UseCaseContainer",
             dependencies: [
                 "UseCase",
                 .product(name: "Dependencies", package: "swift-dependencies")
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         .target(
@@ -72,7 +78,10 @@ let package = Package(
             dependencies: [
                 "Entity"
             ],
-            path: "Sources/Repositories"
+            path: "Sources/Repositories",
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+            ]
         ),
         .target(
             name: "RepositoryContainer",
@@ -80,6 +89,9 @@ let package = Package(
                 "Repository",
                 "Infra",
                 .product(name: "Dependencies", package: "swift-dependencies")
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         .testTarget(
@@ -93,7 +105,8 @@ let package = Package(
                 .process(".sourcery.yml")
             ],
             plugins: [
-                .plugin(name: "SourceryPlugin", package: "Plugins")
+                .plugin(name: "SourceryPlugin", package: "Plugins"),
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         // Infra
@@ -103,6 +116,9 @@ let package = Package(
                 "Entity",
                 "Repository",
                 "APIKit"
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         .testTarget(
@@ -113,6 +129,9 @@ let package = Package(
             ],
             resources: [
                 .process("DataStores/Pokemon/Stubs")
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         // UI
@@ -126,7 +145,8 @@ let package = Package(
                 .process(".sourcery.yml")
             ],
             plugins: [
-                .plugin(name: "SourceryPlugin", package: "Plugins")
+                .plugin(name: "SourceryPlugin", package: "Plugins"),
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         ),
         // Routing
@@ -134,6 +154,9 @@ let package = Package(
             name: "Routing",
             dependencies: [
                 "Entity"
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
             ]
         )
     ]

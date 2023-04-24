@@ -9,7 +9,10 @@ import Foundation
 import APIKit
 
 extension Session {
-    func send<Request: APIKit.Request>(_ request: Request, callbackQueue: CallbackQueue? = nil) async throws -> Request.Response {
+    func send<Request: APIKit.Request>(
+        _ request: Request,
+        callbackQueue: CallbackQueue? = nil
+    ) async throws -> Request.Response {
         var sessionTask: SessionTask?
         let onCancel = { sessionTask?.cancel() }
         return try await withTaskCancellationHandler {

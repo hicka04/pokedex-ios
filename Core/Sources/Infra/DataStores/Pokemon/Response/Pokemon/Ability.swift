@@ -15,14 +15,14 @@ extension PokemonResponse {
         let isHidden: Bool
     }
 
-    typealias Abilities = Array<Ability>
+    typealias Abilities = [Ability]
 }
 
 extension PokemonResponse.Ability {
     typealias Name = NamedResponse
 }
 
-extension Array where Element == PokemonResponse.Ability {
+extension [PokemonResponse.Ability] {
     func translate() -> Pokemon.Abilities {
         let first = self.first { $0.slot == 1 }!.ability.translate()
         let second = self.first { $0.slot == 2 }?.ability.translate()

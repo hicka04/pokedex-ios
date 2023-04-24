@@ -52,9 +52,12 @@ extension PokemonDataStore: PokemonRepository {
 
     public func getEvolutionChain(id: EvolutionChain.ID) async throws -> EvolutionChain {
         let evolutionChainResponse = try await session.send(GetEvolutionChainRequest(evolutionChainId: id))
-        @Sendable func getPokemonRecursive(chain: EvolutionChainResponse.ChainLink, isOrigin: Bool) async throws -> EvolutionChain.ChainLink {
+        @Sendable func getPokemonRecursive(
+            chain: EvolutionChainResponse.ChainLink,
+            isOrigin: Bool
+        ) async throws -> EvolutionChain.ChainLink {
             async let pokemon = getPokemon(name: chain.species.name)
-            async let evolvesTo: [EvolutionChain.ChainLink] = withThrowingTaskGroup(of: EvolutionChain.ChainLink.self) { taskGroup in
+            async let evolvesTo = withThrowingTaskGroup(of: EvolutionChain.ChainLink.self) { taskGroup in
                 chain.evolvesTo.forEach { chain in
                     taskGroup.addTask {
                         try await getPokemonRecursive(chain: chain, isOrigin: false)

@@ -28,7 +28,7 @@ class PokemonDataStoreTests: XCTestCase {
 // MARK: - getPokemon
 extension PokemonDataStoreTests {
     func test_getPokemon_whenNetworkError_shouldThrowError() async {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { request in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
             HTTPStubsResponse(error: NSError(domain: "hoge", code: -1))
         }
 
@@ -36,7 +36,7 @@ extension PokemonDataStoreTests {
     }
 
     func test_getPokemon_whenReceiveErrorStatusCode_shouldThrowError() async {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { request in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
             HTTPStubsResponse(data: .init(), statusCode: .random(in: 400 ..< 600), headers: nil)
         }
 
@@ -44,7 +44,7 @@ extension PokemonDataStoreTests {
     }
 
     func test_getPokemon_whenReceiveInvalidJson_shouldThrowError() async {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { request in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
             HTTPStubsResponse(jsonObject: ["hoge": "fuga"], statusCode: 200, headers: nil)
         }
 
@@ -52,7 +52,7 @@ extension PokemonDataStoreTests {
     }
 
     func test_getPokemon_whenReceiveValidJson_shouldReturnPokemonList() async throws {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { request in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
             HTTPStubsResponse(
                 fileAtPath: OHPathForFileInBundle("bulbasaur.json", .module)!,
                 statusCode: 200,

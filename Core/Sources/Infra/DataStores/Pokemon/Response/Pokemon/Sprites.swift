@@ -24,6 +24,7 @@ extension PokemonResponse.Sprites {
     struct Other: Decodable {
         let officialArtwork: OfficialArtwork
 
+        // swiftlint:disable:next nesting
         enum CodingKeys: String, CodingKey {
             case officialArtwork = "official-artwork"
         }
