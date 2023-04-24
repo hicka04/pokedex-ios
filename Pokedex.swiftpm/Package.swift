@@ -9,9 +9,7 @@ import AppleProductTypes
 
 let dependencies: [PackageDescription.Package.Dependency] = [
     .package(name: "Feature", path: "../Feature"),
-    .package(name: "DesignSystem", path: "../DesignSystem"),
-    .package(name: "Core", path: "../Core"),
-    .package(name: "Plugins", path: "../Plugins")
+    .package(name: "Core", path: "../Core")
 ]
 
 let package = Package(
