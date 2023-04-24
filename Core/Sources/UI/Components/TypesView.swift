@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Entity
-import PreviewData
 import DesignSystem
 
 public struct TypesView: View {

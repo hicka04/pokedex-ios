@@ -8,7 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 import Entity
-import PreviewData
+import UI
 
 struct WeightView: View {
     let weight: Double

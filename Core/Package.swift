@@ -12,8 +12,7 @@ let package = Package(
         .library(
             name: "Entity",
             targets: [
-                "Entity",
-                "PreviewData"
+                "Entity"
             ]
         ),
         .library(
@@ -45,12 +44,6 @@ let package = Package(
         .target(
             name: "Entity",
             path: "Sources/Entities"
-        ),
-        .target(
-            name: "PreviewData",
-            dependencies: [
-                "Entity"
-            ]
         ),
         // Domain
         .target(
@@ -123,7 +116,6 @@ let package = Package(
             name: "UI",
             dependencies: [
                 "Entity",
-                "PreviewData",
                 "DesignSystem"
             ],
             resources: [

@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Entity
-import PreviewData
 
 public struct OfficialArtworkImage: View {
     let url: URL

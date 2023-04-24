@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Entity
-import PreviewData
+import UI
 import DesignSystem
 
 struct AbilitiesView: View {
