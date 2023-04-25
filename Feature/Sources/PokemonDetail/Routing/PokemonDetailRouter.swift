@@ -13,13 +13,10 @@ import SwiftUI
 public struct PokemonDetailRouter: PokemonDetailWireframe {
     public init() {}
 
-    public func assembleModules(_ dependency: Pokemon) -> AnyView {
-        .init(
-            PokemonDetailView(
-                viewModel: PokemonDetailViewModelImpl(
-                    pokemon: dependency
-                ),
-                evolutionChainRouter: EvolutionChainRouter(pokemonDetailRouter: self)
+    public func assembleModules(_ dependency: Pokemon) -> some View {
+        PokemonDetailView(
+            viewModel: PokemonDetailViewModelImpl(
+                pokemon: dependency
             )
         )
     }

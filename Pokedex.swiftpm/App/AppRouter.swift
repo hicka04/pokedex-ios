@@ -16,7 +16,9 @@ struct AppRouter: Wireframe {
         pokemonDetailRouter: PokemonDetailRouter()
     )
 
-    func assembleModules(_ dependency: Void) -> AnyView {
-        pokemonListRouter.assembleModules()
+    func assembleModules(_ dependency: Void) -> some View {
+        NavigationStack {
+            pokemonListRouter.assembleModules()
+        }
     }
 }

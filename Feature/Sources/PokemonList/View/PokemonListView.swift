@@ -39,16 +39,12 @@ struct PokemonListView<
                 )
             ) {
                 ForEach(viewModel.viewState.pokemonList) { pokemon in
-                    PokemonCell(pokemon: pokemon)
-                        .task {
-                            await viewModel.onAppearCell(pokemon: pokemon)
-                        }.onTapGesture {
-                            tappedPokemon = pokemon
-                        }.sheet(item: $tappedPokemon) { pokemon in
-                            NavigationView {
-                                pokemonDetailViewRouter.assembleModules(pokemon)
-                            }.navigationViewStyle(.stack)
-                        }
+                    NavigationLink(value: pokemon) {
+                        PokemonCell(pokemon: pokemon)
+                            .task {
+                                await viewModel.onAppearCell(pokemon: pokemon)
+                            }
+                    }
                 }
             }.padding(.horizontal, .large)
 
@@ -57,6 +53,10 @@ struct PokemonListView<
             }
         }.task {
             await viewModel.onAppear()
+        }
+        .navigationTitle("Pokedex")
+        .navigationDestination(for: Pokemon.self) { pokemon in
+            pokemonDetailViewRouter.assembleModules(pokemon)
         }
     }
 }

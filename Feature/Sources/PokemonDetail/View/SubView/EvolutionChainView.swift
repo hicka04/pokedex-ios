@@ -11,9 +11,8 @@ import UI
 import DesignSystem
 import Routing
 
-struct EvolutionChainView<PokemonDetailRouter: PokemonDetailWireframe>: View {
+struct EvolutionChainView: View {
     let evolutionChain: EvolutionChain
-    let pokemonDetailRouter: PokemonDetailRouter
 
     var body: some View {
         VStack(alignment: .leading, spacing: .medium) {
@@ -23,8 +22,7 @@ struct EvolutionChainView<PokemonDetailRouter: PokemonDetailWireframe>: View {
             HStack {
                 Spacer()
                 ChainLinkView(
-                    chainLink: evolutionChain.chain,
-                    pokemonDetailRouter: pokemonDetailRouter
+                    chainLink: evolutionChain.chain
                 )
                 Spacer()
             }
@@ -35,7 +33,6 @@ struct EvolutionChainView<PokemonDetailRouter: PokemonDetailWireframe>: View {
 private extension EvolutionChainView {
     struct ChainLinkView: View {
         let chainLink: EvolutionChain.ChainLink
-        let pokemonDetailRouter: PokemonDetailRouter
 
         var body: some View {
             VStack(spacing: .medium) {
@@ -44,10 +41,11 @@ private extension EvolutionChainView {
                         Image(systemSymbol: .arrowtriangleDownFill)
                             .foregroundColor(.gray)
                     }
-                    PokemonView(
-                        pokemon: chainLink.pokemon,
-                        pokemonDetailRouter: pokemonDetailRouter
-                    )
+                    NavigationLink(value: chainLink.pokemon) {
+                        PokemonView(
+                            pokemon: chainLink.pokemon
+                        )
+                    }
                 }
 
                 if chainLink.evolvesTo.count > 1 {
@@ -64,8 +62,7 @@ private extension EvolutionChainView {
             HStack(alignment: .top, spacing: .small) {
                 ForEach(chainLink.evolvesTo, id: \.pokemon.id) { chain in
                     ChainLinkView(
-                        chainLink: chain,
-                        pokemonDetailRouter: pokemonDetailRouter
+                        chainLink: chain
                     )
                 }
             }
@@ -76,7 +73,6 @@ private extension EvolutionChainView {
 private extension EvolutionChainView.ChainLinkView {
     struct PokemonView: View {
         let pokemon: Pokemon
-        let pokemonDetailRouter: PokemonDetailRouter
         @State private var isPresented: Bool = false
 
         var body: some View {
@@ -91,12 +87,6 @@ private extension EvolutionChainView.ChainLinkView {
                 }
 
                 TypesView(types: pokemon.types, axis: .vertical)
-            }.onTapGesture {
-                isPresented = true
-            }.sheet(isPresented: $isPresented) {
-                NavigationView {
-                    pokemonDetailRouter.assembleModules(pokemon)
-                }.navigationViewStyle(.stack)
             }
         }
     }
@@ -105,14 +95,7 @@ private extension EvolutionChainView.ChainLinkView {
 struct EvolutionChainView_Previews: PreviewProvider {
     static var previews: some View {
         EvolutionChainView(
-            evolutionChain: .bulbasaur,
-            pokemonDetailRouter: MockPokemonDetailRouter()
+            evolutionChain: .bulbasaur
         ).previewLayout(.sizeThatFits)
-    }
-
-    private struct MockPokemonDetailRouter: PokemonDetailWireframe {
-        func assembleModules(_ dependency: Pokemon) -> AnyView {
-            .init(Text(dependency.name))
-        }
     }
 }

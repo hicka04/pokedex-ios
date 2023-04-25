@@ -15,12 +15,10 @@ public struct PokemonListRouter<PokemonDetailRouter: PokemonDetailWireframe>: Po
     public init(pokemonDetailRouter: PokemonDetailRouter) {
         self.pokemonDetailRouter = pokemonDetailRouter
     }
-    public func assembleModules(_ dependency: ()) -> AnyView {
-        .init(
-            PokemonListView(
-                viewModel: PokemonListViewModelImpl(),
-                pokemonDetailViewRouter: pokemonDetailRouter
-            )
+    public func assembleModules(_ dependency: ()) -> some View {
+        PokemonListView(
+            viewModel: PokemonListViewModelImpl(),
+            pokemonDetailViewRouter: pokemonDetailRouter
         )
     }
 }

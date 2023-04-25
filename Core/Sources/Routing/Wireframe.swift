@@ -11,11 +11,12 @@ import SwiftUI
 @MainActor
 public protocol Wireframe {
     associatedtype Dependency
-    func assembleModules(_ dependency: Dependency) -> AnyView
+    associatedtype View: SwiftUI.View
+    func assembleModules(_ dependency: Dependency) -> View
 }
 
 public extension Wireframe where Dependency == Void {
-    func assembleModules() -> AnyView {
+    func assembleModules() -> View {
         self.assembleModules(())
     }
 }
