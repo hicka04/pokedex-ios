@@ -8,7 +8,7 @@
 import Foundation
 
 extension Pokemon {
-    public struct Sprites: Equatable, Sendable {
+    public struct Sprites: Hashable, Sendable {
         public let officialArtwork: URL
 
         public init(officialArtwork: URL) {

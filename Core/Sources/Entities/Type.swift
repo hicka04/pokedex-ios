@@ -8,7 +8,7 @@
 import Foundation
 
 extension Pokemon {
-    public struct Types: Equatable, Sendable {
+    public struct Types: Hashable, Sendable {
         public let first: Pokemon.`Type`
         public let second: Pokemon.`Type`?
 

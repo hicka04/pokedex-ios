@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Pokemon: Equatable, Identifiable, Sendable {
+public struct Pokemon: Hashable, Identifiable, Sendable {
     public let id: ID
     public let name: String
     public let height: Double

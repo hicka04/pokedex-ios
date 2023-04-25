@@ -8,7 +8,7 @@
 import Foundation
 
 extension Pokemon {
-    public struct BaseStats: Equatable, Sendable {
+    public struct BaseStats: Hashable, Sendable {
         public let hp: Int
         public let attack: Int
         public let defense: Int

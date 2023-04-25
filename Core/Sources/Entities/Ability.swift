@@ -8,7 +8,7 @@
 import Foundation
 
 extension Pokemon {
-    public struct Abilities: Equatable, Sendable {
+    public struct Abilities: Hashable, Sendable {
         public let first: Ability
         public let second: Ability?
         public let hidden: Ability?
@@ -22,7 +22,7 @@ extension Pokemon {
 }
 
 extension Pokemon.Abilities {
-    public struct Ability: Equatable, Sendable {
+    public struct Ability: Hashable, Sendable {
         public let name: String
 
         public init(name: String) {
