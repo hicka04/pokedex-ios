@@ -16,7 +16,7 @@ struct AbilitiesView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .medium) {
             Text("Abilities")
-                .font(.headline)
+                .font(.title2)
 
             VStack(alignment: .leading, spacing: .medium) {
                 AbilityView(ability: abilities.first, isHidden: false)

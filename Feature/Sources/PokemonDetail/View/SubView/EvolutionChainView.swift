@@ -17,7 +17,7 @@ struct EvolutionChainView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .medium) {
             Text("Evolution Chain")
-                .font(.headline)
+                .font(.title2)
 
             HStack {
                 Spacer()

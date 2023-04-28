@@ -16,7 +16,7 @@ struct BaseStasView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .medium) {
             Text("Base Stats")
-                .font(.headline)
+                .font(.title2)
 
             GeometryReader { proxy in
                 RadarChart(baseStats: baseStats)
