@@ -16,15 +16,15 @@ struct AppRouter: Wireframe {
         pokemonDetailRouter: MockPokemonDetailRouter()
     )
 
-    func assembleModules(_ dependency: Void) -> AnyView {
+    func assembleModules(_ dependency: Void) -> some View {
         pokemonListRouter.assembleModules()
     }
 }
 
 extension AppRouter {
     struct MockPokemonDetailRouter: PokemonDetailWireframe {
-        func assembleModules(_ dependency: Pokemon) -> AnyView {
-            .init(Text("hoge"))
+        func assembleModules(_ dependency: Pokemon) -> some SwiftUI.View {
+            Text(dependency.name)
         }
     }
 }

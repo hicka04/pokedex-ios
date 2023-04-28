@@ -13,7 +13,7 @@ import SwiftUI
 struct AppRouter: Wireframe {
     let pokemonDetailRouter = PokemonDetailRouter()
 
-    func assembleModules(_ dependency: Void) -> AnyView {
+    func assembleModules(_ dependency: Void) -> some View {
         pokemonDetailRouter.assembleModules(.bulbasaur)
     }
 }
