@@ -58,15 +58,11 @@ struct PokemonDetailView<
                 VStack {
                     BaseStasView(baseStats: viewModel.viewState.pokemon.baseStats)
                     Spacer()
-                }.frame(maxWidth: .infinity)
+                }
 
-                Group {
-                    if let evolutionChain = viewModel.viewState.evolutionChain {
-                        EvolutionChainView(evolutionChain: evolutionChain)
-                    } else {
-                        Spacer()
-                    }
-                }.frame(maxWidth: .infinity)
+                if let evolutionChain = viewModel.viewState.evolutionChain {
+                    EvolutionChainView(evolutionChain: evolutionChain)
+                }
             }.padding(.horizontal, .large)
         }
         .navigationTitle("No.\(viewModel.viewState.pokemon.id.rawValue) \(viewModel.viewState.pokemon.name)")
