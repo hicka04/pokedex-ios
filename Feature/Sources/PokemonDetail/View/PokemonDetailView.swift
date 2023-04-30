@@ -16,27 +16,27 @@ struct PokemonDetailView<
     @StateObject var viewModel: ViewModel
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-
-    var body: some View {
-        let colomnCount: Int = {
+    var columns: [GridItem] {
+        let columnCount: Int = {
             switch horizontalSizeClass {
             case .regular: return 2
             default: return 1
             }
         }()
 
-        return ScrollView {
-            LazyVGrid(
-                columns: .init(
-                    repeating: .init(
-                        .flexible(minimum: 80),
-                        spacing: .large,
-                        alignment: .top
-                    ),
-                    count: colomnCount
-                ),
-                spacing: .large
-            ) {
+        return .init(
+            repeating: .init(
+                .flexible(minimum: 80),
+                spacing: .large,
+                alignment: .center
+            ),
+            count: columnCount
+        )
+    }
+
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: .large) {
                 OfficialArtworkImage(
                     url: viewModel.viewState.pokemon.sprites.officialArtwork
                 ).scaleEffect(0.8)
@@ -55,8 +55,10 @@ struct PokemonDetailView<
                     AbilitiesView(abilities: viewModel.viewState.pokemon.abilities)
                 }
 
-                BaseStasView(baseStats: viewModel.viewState.pokemon.baseStats)
-                    .frame(maxWidth: .infinity)
+                VStack {
+                    BaseStasView(baseStats: viewModel.viewState.pokemon.baseStats)
+                    Spacer()
+                }.frame(maxWidth: .infinity)
 
                 Group {
                     if let evolutionChain = viewModel.viewState.evolutionChain {

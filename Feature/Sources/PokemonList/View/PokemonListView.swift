@@ -19,25 +19,27 @@ struct PokemonListView<
 
     @State private var tappedPokemon: Pokemon?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-
-    var body: some View {
-        let colomnCount: Int = {
+    var columns: [GridItem] {
+        let columnCount: Int = {
             switch horizontalSizeClass {
             case .regular: return 3
             default: return 2
             }
         }()
 
-        return ScrollView {
-            LazyVGrid(
-                columns: .init(
-                    repeating: .init(
-                        .flexible(minimum: 80),
-                        alignment: .bottom
-                    ),
-                    count: colomnCount
-                )
-            ) {
+        return .init(
+            repeating: .init(
+                .flexible(minimum: 80),
+                spacing: .large,
+                alignment: .top
+            ),
+            count: columnCount
+        )
+    }
+
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: columns) {
                 ForEach(viewModel.viewState.pokemonList) { pokemon in
                     NavigationLink(value: pokemon) {
                         PokemonCell(pokemon: pokemon)
