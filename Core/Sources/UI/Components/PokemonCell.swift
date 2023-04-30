@@ -7,13 +7,16 @@
 
 import SwiftUI
 import Entity
-import UI
 import DesignSystem
 
-struct PokemonCell: View {
+public struct PokemonCell: View {
     let pokemon: Pokemon
 
-    var body: some View {
+    public init(pokemon: Pokemon) {
+        self.pokemon = pokemon
+    }
+
+    public var body: some View {
         VStack(spacing: .medium) {
             OfficialArtworkImage(url: pokemon.sprites.officialArtwork)
 
@@ -22,9 +25,9 @@ struct PokemonCell: View {
                     .font(.caption)
                 Text(pokemon.name)
             }
-        }
-        .padding(.medium)
-        .contentShape(Rectangle())
+
+            TypesView(types: pokemon.types, axis: .vertical)
+        }.padding(.medium)
     }
 }
 

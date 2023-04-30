@@ -42,9 +42,8 @@ private extension EvolutionChainView {
                             .foregroundColor(.gray)
                     }
                     NavigationLink(value: chainLink.pokemon) {
-                        PokemonView(
-                            pokemon: chainLink.pokemon
-                        )
+                        PokemonCell(pokemon: chainLink.pokemon)
+                            .frame(width: 200)
                     }
                 }
 
@@ -65,28 +64,6 @@ private extension EvolutionChainView {
                         chainLink: chain
                     )
                 }
-            }
-        }
-    }
-}
-
-private extension EvolutionChainView.ChainLinkView {
-    struct PokemonView: View {
-        let pokemon: Pokemon
-        @State private var isPresented: Bool = false
-
-        var body: some View {
-            VStack {
-                OfficialArtworkImage(url: pokemon.sprites.officialArtwork)
-                    .frame(width: 160, height: 160)
-
-                VStack(alignment: .leading) {
-                    Text("No.\(pokemon.id.rawValue)")
-                        .font(.caption)
-                    Text(pokemon.name)
-                }
-
-                TypesView(types: pokemon.types, axis: .vertical)
             }
         }
     }

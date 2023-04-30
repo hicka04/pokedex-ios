@@ -31,12 +31,11 @@ public struct TypesView: View {
         }
     }
 
+    @ViewBuilder
     private func content() -> some View {
-        Group {
-            TypeView(type: types.first)
-            if let secondType = types.second {
-                TypeView(type: secondType)
-            }
+        TypeView(type: types.first)
+        if let secondType = types.second {
+            TypeView(type: secondType)
         }
     }
 }
@@ -53,18 +52,17 @@ private extension TypesView {
                 type.filledImage
                     .resizable()
                     .scaledToFit()
-                Spacer()
                 Text(type.rawValue)
                     .font(.caption)
                     .fontWeight(.medium)
                     .foregroundColor(type.color)
-                Spacer()
+                    .frame(maxWidth: .infinity)
             }
             .frame(height: height)
             .padding(.trailing, cornerRadius)
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .strokeBorder(type.color, lineWidth: 2, antialiased: true)
+                    .strokeBorder(type.color, lineWidth: 2)
             }
         }
     }

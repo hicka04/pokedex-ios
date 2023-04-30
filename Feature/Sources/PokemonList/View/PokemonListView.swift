@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Entity
+import UI
 import Routing
 
 @MainActor
