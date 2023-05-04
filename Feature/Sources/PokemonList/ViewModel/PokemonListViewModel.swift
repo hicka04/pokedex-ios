@@ -27,7 +27,8 @@ struct PokemonListViewState {
 final class PokemonListViewModelImpl: PokemonListViewModel {
     @Published private(set) var viewState: PokemonListViewState = .init()
 
-    @Dependency(\.getPokemonListUseCase) private var getPokemonListInteractor
+    @Dependency(\.getPokemonListStreamUseCase) private var getPokemonListStreamInteractor
+    private var pokemonListStream: AsyncThrowingStream<[Pokemon], Error>?
 
     func onAppear() async {
         guard viewState.loadState == .blank else {
@@ -35,14 +36,8 @@ final class PokemonListViewModelImpl: PokemonListViewModel {
         }
 
         do {
-            viewState.loadState = .loading
-            let page = try await getPokemonListInteractor.execute(0)
-            viewState.pokemonList.append(contentsOf: page.items)
-            if let nextOffset = page.nextOffset {
-                viewState.loadState = .partial(progress: nextOffset)
-            } else {
-                viewState.loadState = .ideal
-            }
+            pokemonListStream = try await getPokemonListStreamInteractor.execute()
+            await loadPokemonList()
         } catch {
             viewState.loadState = .failure(error)
         }
@@ -50,21 +45,24 @@ final class PokemonListViewModelImpl: PokemonListViewModel {
 
     func onAppearCell(pokemon: Pokemon) async {
         guard
-            viewState.pokemonList.last == pokemon,
-            let nextOffset = viewState.loadState.progress
+            viewState.pokemonList.last == pokemon
         else {
             return
         }
 
+        await loadPokemonList()
+    }
+
+    private func loadPokemonList() async {
         do {
             viewState.loadState = .loading
-            let page = try await getPokemonListInteractor.execute(nextOffset)
-            viewState.pokemonList.append(contentsOf: page.items)
-            if let nextOffset = page.nextOffset {
-                viewState.loadState = .partial(progress: nextOffset)
-            } else {
+            var iterator = pokemonListStream?.makeAsyncIterator()
+            guard let pokemonList = try await iterator?.next() else {
                 viewState.loadState = .ideal
+                return
             }
+            viewState.pokemonList.append(contentsOf: pokemonList)
+            viewState.loadState = .partial
         } catch {
             viewState.loadState = .failure(error)
         }

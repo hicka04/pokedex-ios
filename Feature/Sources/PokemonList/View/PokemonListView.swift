@@ -49,7 +49,7 @@ struct PokemonListView_Previews: PreviewProvider {
         NavigationView {
             PokemonListView(
                 viewModel: MockPokemonListViewModel(
-                    viewState: .init(loadState: .partial(progress: 1), pokemonList: [.bulbasaur])
+                    viewState: .init(loadState: .partial, pokemonList: [.bulbasaur])
                 ),
                 pokemonDetailViewRouter: MockPokemonDetailRouter()
             )

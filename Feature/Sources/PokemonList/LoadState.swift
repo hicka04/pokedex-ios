@@ -12,11 +12,8 @@ enum LoadState: Equatable {
         switch (lhs, rhs) {
         case (.blank, .blank),
             (.loading, .loading),
-            (.ideal, .ideal):
-            return true
-
-        case let (.partial(lhsProgress), .partial(rhsProgress))
-            where lhsProgress == rhsProgress:
+            (.ideal, .ideal),
+            (.partial, .partial):
             return true
 
         case let (.failure(lhsError), .failure(rhsError))
@@ -30,14 +27,7 @@ enum LoadState: Equatable {
 
     case blank
     case loading
-    case partial(progress: Int)
+    case partial
     case ideal
     case failure(Error)
-
-    var progress: Int? {
-        switch self {
-        case let .partial(progress): return progress
-        default: return nil
-        }
-    }
 }
