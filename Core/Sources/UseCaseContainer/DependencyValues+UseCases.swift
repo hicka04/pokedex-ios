@@ -10,14 +10,6 @@ import Foundation
 import UseCase
 
 public extension DependencyValues {
-    var getPokemonListUseCase: any GetPokemonListUseCase {
-        get { self[GetPokemonListUseCaseKey.self] }
-        set { self[GetPokemonListUseCaseKey.self] = newValue }
-    }
-    private enum GetPokemonListUseCaseKey: DependencyKey {
-        static let liveValue: any GetPokemonListUseCase = GetPokemonListInteractor()
-    }
-
     var getPokemonListStreamUseCase: any GetPokemonListStreamUseCase {
         get { self[GetPokemonListStreamUseCaseKey.self] }
         set { self[GetPokemonListStreamUseCaseKey.self] = newValue }
