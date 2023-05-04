@@ -10,21 +10,13 @@ import Entity
 import UseCase
 import UseCaseContainer
 
-@MainActor
-protocol PokemonListViewModel: ObservableObject {
-    var viewState: PokemonListViewState { get }
-
-    func onAppear() async
-    func onAppearCell(pokemon: Pokemon) async
-}
-
 struct PokemonListViewState {
     var loadState: LoadState = .blank
     var pokemonList: [Pokemon] = []
 }
 
 @MainActor
-final class PokemonListViewModelImpl: PokemonListViewModel {
+final class PokemonListViewModel: ObservableObject {
     @Published private(set) var viewState: PokemonListViewState = .init()
 
     @Dependency(\.getPokemonListStreamUseCase) private var getPokemonListStream

@@ -17,7 +17,7 @@ public struct PokemonListRouter<PokemonDetailRouter: PokemonDetailWireframe>: Po
     }
     public func assembleModules(_ dependency: ()) -> some View {
         PokemonListView(
-            viewModel: PokemonListViewModelImpl(),
+            viewModel: .init(),
             pokemonDetailViewRouter: pokemonDetailRouter
         )
     }

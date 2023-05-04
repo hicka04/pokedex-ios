@@ -10,20 +10,13 @@ import Entity
 import UseCase
 import UseCaseContainer
 
-@MainActor
-protocol PokemonDetailViewModel: ObservableObject {
-    var viewState: PokemonDetailViewState { get }
-
-    func onAppear() async
-}
-
 struct PokemonDetailViewState {
     let pokemon: Pokemon
     var evolutionChain: EvolutionChain?
 }
 
 @MainActor
-final class PokemonDetailViewModelImpl: PokemonDetailViewModel {
+final class PokemonDetailViewModel: ObservableObject {
     @Published private(set) var viewState: PokemonDetailViewState
 
     @Dependency(\.getEvolutionChainUseCase) private var getEvolutionChain

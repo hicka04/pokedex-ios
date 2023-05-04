@@ -21,6 +21,7 @@ let package = Package(
         .package(name: "Core", path: "../Core"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", from: "2.1.3"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "0.4.1"),
         .package(url: "https://github.com/realm/SwiftLint.git", from: "0.51.0")
     ],
     targets: [
@@ -32,7 +33,8 @@ let package = Package(
                 .product(name: "UI", package: "Core"),
                 .product(name: "Routing", package: "Core"),
                 "DesignSystem",
-                "SFSafeSymbols"
+                "SFSafeSymbols",
+                .product(name: "Dependencies", package: "swift-dependencies")
             ],
             plugins: [
                 .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
@@ -47,6 +49,7 @@ let package = Package(
                 .product(name: "Routing", package: "Core"),
                 "DesignSystem",
                 "SFSafeSymbols",
+                .product(name: "Dependencies", package: "swift-dependencies")
             ],
             plugins: [
                 .plugin(name: "SwiftLintPlugin", package: "SwiftLint")

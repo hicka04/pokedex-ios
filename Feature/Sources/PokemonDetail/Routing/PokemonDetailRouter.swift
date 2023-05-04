@@ -15,7 +15,7 @@ public struct PokemonDetailRouter: PokemonDetailWireframe {
 
     public func assembleModules(_ dependency: Pokemon) -> some View {
         PokemonDetailView(
-            viewModel: PokemonDetailViewModelImpl(
+            viewModel: .init(
                 pokemon: dependency
             )
         )

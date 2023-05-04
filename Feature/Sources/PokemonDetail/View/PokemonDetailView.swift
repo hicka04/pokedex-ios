@@ -10,10 +10,8 @@ import Entity
 import UI
 import DesignSystem
 
-struct PokemonDetailView<
-    ViewModel: PokemonDetailViewModel
->: View {
-    @StateObject var viewModel: ViewModel
+struct PokemonDetailView: View {
+    @StateObject var viewModel: PokemonDetailViewModel
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var columns: [GridItem] {
@@ -72,29 +70,25 @@ struct PokemonDetailView<
     }
 }
 
+import Dependencies
+import UseCase
+
 struct PokemonDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
+    static var previews: some SwiftUI.View {
+        NavigationStack {
             PokemonDetailView(
-                viewModel: MockPokemonDetailViewModel(
-                    pokemon: .bulbasaur,
-                    evolutionChain: .bulbasaur
-                )
+                viewModel: withDependencies {
+                    $0.getEvolutionChainUseCase = MockGetEvolutionChainInteractor()
+                } operation: {
+                    .init(pokemon: .bulbasaur)
+                }
             )
         }
-        .navigationViewStyle(.stack)
     }
 
-    private final class MockPokemonDetailViewModel: PokemonDetailViewModel {
-        let viewState: PokemonDetailViewState
-
-        init(pokemon: Pokemon, evolutionChain: EvolutionChain?) {
-            viewState = .init(
-                pokemon: pokemon,
-                evolutionChain: evolutionChain
-            )
+    private struct MockGetEvolutionChainInteractor: GetEvolutionChainUseCase {
+        func callAsFunction(pokemonId: Pokemon.ID) async throws -> EvolutionChain {
+            .bulbasaur
         }
-
-        func onAppear() async {}
     }
 }

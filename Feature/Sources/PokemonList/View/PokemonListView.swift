@@ -12,10 +12,9 @@ import Routing
 
 @MainActor
 struct PokemonListView<
-    ViewModel: PokemonListViewModel,
     PokemonDetailRouter: PokemonDetailWireframe
 >: View {
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel: PokemonListViewModel
     let pokemonDetailViewRouter: PokemonDetailRouter
 
     var body: some View {
@@ -44,32 +43,34 @@ struct PokemonListView<
     }
 }
 
+import Dependencies
+import UseCase
+
 struct PokemonListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
+    static var previews: some SwiftUI.View {
+        NavigationStack {
             PokemonListView(
-                viewModel: MockPokemonListViewModel(
-                    viewState: .init(loadState: .partial, pokemonList: [.bulbasaur])
-                ),
+                viewModel: withDependencies {
+                    $0.getPokemonListStreamUseCase = MockGetPokemonListStreamInteractor()
+                } operation: {
+                    .init()
+                },
                 pokemonDetailViewRouter: MockPokemonDetailRouter()
             )
         }
     }
 
-    private final class MockPokemonListViewModel: PokemonListViewModel {
-        let viewState: PokemonListViewState
-
-        init(viewState: PokemonListViewState) {
-            self.viewState = viewState
+    private struct MockGetPokemonListStreamInteractor: GetPokemonListStreamUseCase {
+        func callAsFunction() -> AsyncThrowingStream<[Entity.Pokemon], Error> {
+            .init {
+                [.bulbasaur]
+            }
         }
-
-        func onAppear() async {}
-        func onAppearCell(pokemon: Pokemon) async {}
     }
 
     private struct MockPokemonDetailRouter: PokemonDetailWireframe {
-        func assembleModules(_ dependency: Pokemon) -> AnyView {
-            .init(Text(dependency.name.rawValue))
+        func assembleModules(_ dependency: Pokemon) -> some SwiftUI.View {
+            Text(dependency.name.rawValue)
         }
     }
 }
