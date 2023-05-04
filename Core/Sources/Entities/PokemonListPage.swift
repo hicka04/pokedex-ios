@@ -9,10 +9,10 @@ import Foundation
 
 public struct PokemonListPage {
     public let nextOffset: Int?
-    public let items: [Pokemon]
+    public let names: [Pokemon.Name]
 
-    public init(nextOffset: Int?, items: [Pokemon]) {
+    public init(nextOffset: Int?, names: [Pokemon.Name]) {
         self.nextOffset = nextOffset
-        self.items = items
+        self.names = names
     }
 }

@@ -18,6 +18,14 @@ public extension DependencyValues {
         static let liveValue: any GetPokemonListUseCase = GetPokemonListInteractor()
     }
 
+    var getPokemonListStreamUseCase: any GetPokemonListStreamUseCase {
+        get { self[GetPokemonListStreamUseCaseKey.self] }
+        set { self[GetPokemonListStreamUseCaseKey.self] = newValue }
+    }
+    private enum GetPokemonListStreamUseCaseKey: DependencyKey {
+        static let liveValue: any GetPokemonListStreamUseCase = GetPokemonListStreamInteractor()
+    }
+
     var getEvolutionChainUseCase: any GetEvolutionChainUseCase {
         get { self[GetEvolutionChainUseCaseKey.self] }
         set { self[GetEvolutionChainUseCaseKey.self] = newValue }

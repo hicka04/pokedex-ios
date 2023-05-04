@@ -29,3 +29,12 @@ extension PokemonListResponse {
         return offset
     }
 }
+
+extension PokemonListResponse: TranslatableToEntity {
+    func translate() throws -> PokemonListPage {
+        .init(
+            nextOffset: nextOffset,
+            names: results.map { .init(rawValue: $0.name) }
+        )
+    }
+}
