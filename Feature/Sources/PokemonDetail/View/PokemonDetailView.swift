@@ -65,7 +65,7 @@ struct PokemonDetailView<
                 }
             }.padding(.horizontal, .large)
         }
-        .navigationTitle("No.\(viewModel.viewState.pokemon.id.rawValue) \(viewModel.viewState.pokemon.name)")
+        .navigationTitle("No.\(viewModel.viewState.pokemon.id.rawValue) \(viewModel.viewState.pokemon.name.rawValue)")
         .task {
             await viewModel.onAppear()
         }

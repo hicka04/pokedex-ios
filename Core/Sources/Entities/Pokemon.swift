@@ -9,7 +9,7 @@ import Foundation
 
 public struct Pokemon: Hashable, Identifiable, Sendable {
     public let id: ID
-    public let name: String
+    public let name: Name
     public let height: Double
     public let weight: Double
     public let types: Types
@@ -19,7 +19,7 @@ public struct Pokemon: Hashable, Identifiable, Sendable {
 
     public init(
         id: ID,
-        name: String,
+        name: Name,
         height: Double,
         weight: Double,
         types: Types,
@@ -44,6 +44,18 @@ public extension Pokemon {
 
         public init(rawValue: Int) {
             self.rawValue = rawValue
+        }
+    }
+
+    struct Name: RawRepresentable, ExpressibleByStringLiteral, Hashable, Sendable {
+        public let rawValue: String
+
+        public init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+
+        public init(stringLiteral value: String) {
+            self.rawValue = value
         }
     }
 }

@@ -23,7 +23,7 @@ public struct PokemonCell: View {
             VStack(alignment: .leading) {
                 Text("No.\(pokemon.id.rawValue)")
                     .font(.caption)
-                Text(pokemon.name)
+                Text(pokemon.name.rawValue)
             }
 
             TypesView(types: pokemon.types, axis: .vertical)

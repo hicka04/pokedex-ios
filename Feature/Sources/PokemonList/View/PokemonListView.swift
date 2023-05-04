@@ -69,7 +69,7 @@ struct PokemonListView_Previews: PreviewProvider {
 
     private struct MockPokemonDetailRouter: PokemonDetailWireframe {
         func assembleModules(_ dependency: Pokemon) -> AnyView {
-            .init(Text(dependency.name))
+            .init(Text(dependency.name.rawValue))
         }
     }
 }
