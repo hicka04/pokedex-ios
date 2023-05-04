@@ -47,8 +47,12 @@ final class PokemonListViewModelImpl: PokemonListViewModel {
     }
 
     private func loadPokemonList() async {
+        guard viewState.loadState != .ideal else {
+            return
+        }
+
+        viewState.loadState = .loading
         do {
-            viewState.loadState = .loading
             var iterator = pokemonListStream.makeAsyncIterator()
             guard let pokemonList = try await iterator.next() else {
                 viewState.loadState = .ideal
