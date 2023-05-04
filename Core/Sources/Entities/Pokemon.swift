@@ -39,11 +39,15 @@ public struct Pokemon: Hashable, Identifiable, Sendable {
 }
 
 public extension Pokemon {
-    struct ID: RawRepresentable, Hashable, Sendable {
+    struct ID: RawRepresentable, ExpressibleByIntegerLiteral, Hashable, Sendable {
         public let rawValue: Int
 
         public init(rawValue: Int) {
             self.rawValue = rawValue
+        }
+
+        public init(integerLiteral value: Int) {
+            self.rawValue = value
         }
     }
 

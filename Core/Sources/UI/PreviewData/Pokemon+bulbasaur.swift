@@ -11,7 +11,7 @@ import Entity
 extension Pokemon {
     public static var bulbasaur: Self {
         .init(
-            id: .init(rawValue: 1),
+            id: 1,
             name: "bulbasaur",
             height: 0.7,
             weight: 6.9,

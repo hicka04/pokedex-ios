@@ -20,7 +20,7 @@ struct PokemonResponse: Decodable, TranslatableToEntity {
 
     func translate() -> Pokemon {
         .init(
-            id: .init(rawValue: id),
+            id: id,
             name: name,
             height: Double(height) / 10,
             weight: Double(weight) / 10,
