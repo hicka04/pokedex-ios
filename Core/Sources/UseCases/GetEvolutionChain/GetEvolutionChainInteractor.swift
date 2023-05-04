@@ -10,8 +10,9 @@ import Entity
 import Repository
 import RepositoryContainer
 
-public protocol GetEvolutionChainUseCase: UseCase
-where Input == Pokemon.ID, Output == EvolutionChain {}
+public protocol GetEvolutionChainUseCase {
+    func callAsFunction(pokemonId: Pokemon.ID) async throws -> EvolutionChain
+}
 
 public struct GetEvolutionChainInteractor {
     @Dependency(\.pokemonRepository) private var pokemonRepository
@@ -20,8 +21,8 @@ public struct GetEvolutionChainInteractor {
 }
 
 extension GetEvolutionChainInteractor: GetEvolutionChainUseCase {
-    public func execute(_ input: Input) async throws -> Output {
-        let species = try await pokemonRepository.getPokemonSpecies(pokemonId: input)
+    public func callAsFunction(pokemonId: Pokemon.ID) async throws -> EvolutionChain {
+        let species = try await pokemonRepository.getPokemonSpecies(pokemonId: pokemonId)
         return try await pokemonRepository.getEvolutionChain(id: species.evolutionChainId)
     }
 }

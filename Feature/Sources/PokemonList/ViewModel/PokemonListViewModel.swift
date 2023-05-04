@@ -27,26 +27,19 @@ struct PokemonListViewState {
 final class PokemonListViewModelImpl: PokemonListViewModel {
     @Published private(set) var viewState: PokemonListViewState = .init()
 
-    @Dependency(\.getPokemonListStreamUseCase) private var getPokemonListStreamInteractor
-    private var pokemonListStream: AsyncThrowingStream<[Pokemon], Error>?
+    @Dependency(\.getPokemonListStreamUseCase) private var getPokemonListStream
+    private lazy var pokemonListStream = getPokemonListStream()
 
     func onAppear() async {
         guard viewState.loadState == .blank else {
             return
         }
 
-        do {
-            pokemonListStream = try await getPokemonListStreamInteractor.execute()
-            await loadPokemonList()
-        } catch {
-            viewState.loadState = .failure(error)
-        }
+        await loadPokemonList()
     }
 
     func onAppearCell(pokemon: Pokemon) async {
-        guard
-            viewState.pokemonList.last == pokemon
-        else {
+        guard viewState.pokemonList.last == pokemon else {
             return
         }
 
@@ -56,8 +49,8 @@ final class PokemonListViewModelImpl: PokemonListViewModel {
     private func loadPokemonList() async {
         do {
             viewState.loadState = .loading
-            var iterator = pokemonListStream?.makeAsyncIterator()
-            guard let pokemonList = try await iterator?.next() else {
+            var iterator = pokemonListStream.makeAsyncIterator()
+            guard let pokemonList = try await iterator.next() else {
                 viewState.loadState = .ideal
                 return
             }

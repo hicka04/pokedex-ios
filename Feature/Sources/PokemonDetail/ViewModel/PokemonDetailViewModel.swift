@@ -26,7 +26,7 @@ struct PokemonDetailViewState {
 final class PokemonDetailViewModelImpl: PokemonDetailViewModel {
     @Published private(set) var viewState: PokemonDetailViewState
 
-    @Dependency(\.getEvolutionChainUseCase) private var getEvolutionChainInteractor
+    @Dependency(\.getEvolutionChainUseCase) private var getEvolutionChain
 
     init(pokemon: Pokemon) {
         self.viewState = .init(pokemon: pokemon)
@@ -34,7 +34,7 @@ final class PokemonDetailViewModelImpl: PokemonDetailViewModel {
 
     func onAppear() async {
         do {
-            viewState.evolutionChain = try await getEvolutionChainInteractor.execute(viewState.pokemon.id)
+            viewState.evolutionChain = try await getEvolutionChain(pokemonId: viewState.pokemon.id)
         } catch {
             print(error)
         }
