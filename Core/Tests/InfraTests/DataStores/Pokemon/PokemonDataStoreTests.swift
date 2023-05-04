@@ -9,11 +9,12 @@ import XCTest
 @testable import Infra
 import OHHTTPStubsSwift
 import OHHTTPStubs
+import Entity
 
 @MainActor
 class PokemonDataStoreTests: XCTestCase {
     var dataStore: PokemonDataStore!
-    let pokemonName = "bulbasaur"
+    let pokemonName = Pokemon.Name(rawValue: "bulbasaur")
 
     @MainActor
     override func setUp() async throws {
@@ -28,7 +29,7 @@ class PokemonDataStoreTests: XCTestCase {
 // MARK: - getPokemon
 extension PokemonDataStoreTests {
     func test_getPokemon_whenNetworkError_shouldThrowError() async {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName.rawValue)")) { _ in
             HTTPStubsResponse(error: NSError(domain: "hoge", code: -1))
         }
 
@@ -36,7 +37,7 @@ extension PokemonDataStoreTests {
     }
 
     func test_getPokemon_whenReceiveErrorStatusCode_shouldThrowError() async {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName.rawValue)")) { _ in
             HTTPStubsResponse(data: .init(), statusCode: .random(in: 400 ..< 600), headers: nil)
         }
 
@@ -44,7 +45,7 @@ extension PokemonDataStoreTests {
     }
 
     func test_getPokemon_whenReceiveInvalidJson_shouldThrowError() async {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName.rawValue)")) { _ in
             HTTPStubsResponse(jsonObject: ["hoge": "fuga"], statusCode: 200, headers: nil)
         }
 
@@ -52,7 +53,7 @@ extension PokemonDataStoreTests {
     }
 
     func test_getPokemon_whenReceiveValidJson_shouldReturnPokemonList() async throws {
-        stub(condition: isPath("/api/v2/pokemon/\(pokemonName)")) { _ in
+        stub(condition: isPath("/api/v2/pokemon/\(pokemonName.rawValue)")) { _ in
             HTTPStubsResponse(
                 fileAtPath: OHPathForFileInBundle("bulbasaur.json", .module)!,
                 statusCode: 200,

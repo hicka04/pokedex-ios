@@ -42,7 +42,7 @@ extension PokemonDataStore: PokemonRepository {
         return PokemonListPage(nextOffset: response.nextOffset, items: pokemonList)
     }
 
-    public func getPokemon(name: String) async throws -> Pokemon {
+    public func getPokemon(name: Pokemon.Name) async throws -> Pokemon {
         try await session.send(GetPokemonRequest(name: name)).translate()
     }
 
@@ -56,7 +56,7 @@ extension PokemonDataStore: PokemonRepository {
             chain: EvolutionChainResponse.ChainLink,
             isOrigin: Bool
         ) async throws -> EvolutionChain.ChainLink {
-            async let pokemon = getPokemon(name: chain.species.name)
+            async let pokemon = getPokemon(name: .init(rawValue: chain.species.name))
             async let evolvesTo = withThrowingTaskGroup(of: EvolutionChain.ChainLink.self) { taskGroup in
                 chain.evolvesTo.forEach { chain in
                     taskGroup.addTask {

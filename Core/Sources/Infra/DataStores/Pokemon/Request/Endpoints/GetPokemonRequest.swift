@@ -13,8 +13,8 @@ struct GetPokemonRequest: PokemonRequest {
     typealias Response = PokemonResponse
 
     var path: String {
-        "pokemon/\(name)"
+        "pokemon/\(name.rawValue)"
     }
     let method: HTTPMethod = .get
-    let name: String
+    let name: Pokemon.Name
 }
