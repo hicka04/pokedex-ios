@@ -13,9 +13,7 @@ public protocol GetPokemonListStreamUseCase {
     func callAsFunction() -> AsyncThrowingStream<[Pokemon], Error>
 }
 
-public class GetPokemonListStreamInteractor {
-    private var offset: Int? = 0
-
+public struct GetPokemonListStreamInteractor {
     @Dependency(\.pokemonRepository) private var pokemonRepository
 
     public init() {}
@@ -23,19 +21,16 @@ public class GetPokemonListStreamInteractor {
 
 extension GetPokemonListStreamInteractor: GetPokemonListStreamUseCase {
     public func callAsFunction() -> AsyncThrowingStream<[Pokemon], Error> {
-        AsyncThrowingStream { [weak self] in
-            guard
-                let self,
-                let offset = self.offset
-            else {
-                return nil
-            }
+        var nextOffset: Int? = 0
 
-            let pokemonNameList = try await self.pokemonRepository.getPokemonList(offset: offset)
+        return .init { [pokemonRepository] in
+            guard let offset = nextOffset else { return nil }
+
+            let pokemonNameList = try await pokemonRepository.getPokemonList(offset: offset)
             let pokemonList = try await withThrowingTaskGroup(of: Pokemon.self) { taskGroup in
                 pokemonNameList.names.forEach { name in
                     taskGroup.addTask {
-                        try await self.pokemonRepository.getPokemon(name: name)
+                        try await pokemonRepository.getPokemon(name: name)
                     }
                 }
 
@@ -44,7 +39,9 @@ extension GetPokemonListStreamInteractor: GetPokemonListStreamUseCase {
                         pokemonList.append(result)
                     }.sorted { $0.id.rawValue < $1.id.rawValue }
             }
-            self.offset = pokemonNameList.nextOffset
+
+            nextOffset = pokemonNameList.nextOffset
+
             return pokemonList
         }
     }
