@@ -10,7 +10,7 @@ import APIKit
 import Entity
 import Repository
 
-public struct PokemonDataStore: Sendable {
+public struct PokemonDataStore {
     private let session: Session
 
     init(session: Session) {
@@ -26,19 +26,19 @@ public struct PokemonDataStore: Sendable {
 
 extension PokemonDataStore: PokemonRepository {
     public func getPokemonList(offset: Int) async throws -> PokemonListPage {
-        try await session.send(GetPokemonListRequest(offset: offset)).translate()
+        try await session.response(for: GetPokemonListRequest(offset: offset)).translate()
     }
 
     public func getPokemon(name: Pokemon.Name) async throws -> Pokemon {
-        try await session.send(GetPokemonRequest(name: name)).translate()
+        try await session.response(for: GetPokemonRequest(name: name)).translate()
     }
 
     public func getPokemonSpecies(pokemonId: Pokemon.ID) async throws -> Entity.PokemonSpecies {
-        try await session.send(GetPokemonSpeciesRequest(pokemonId: pokemonId)).translate()
+        try await session.response(for: GetPokemonSpeciesRequest(pokemonId: pokemonId)).translate()
     }
 
     public func getEvolutionChain(id: EvolutionChain.ID) async throws -> EvolutionChain {
-        let evolutionChainResponse = try await session.send(GetEvolutionChainRequest(evolutionChainId: id))
+        let evolutionChainResponse = try await session.response(for: GetEvolutionChainRequest(evolutionChainId: id))
         @Sendable func getPokemonRecursive(
             chain: EvolutionChainResponse.ChainLink,
             isOrigin: Bool
