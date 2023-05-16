@@ -13,7 +13,9 @@ struct PokemonListSandboxApp: App {
 
     var body: some Scene {
         WindowGroup {
-            appRouter.assembleModules()
+            NavigationStack {
+                appRouter.assembleModules()
+            }
         }
     }
 }

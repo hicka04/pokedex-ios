@@ -24,7 +24,7 @@ struct AppRouter: Wireframe {
 extension AppRouter {
     struct MockPokemonDetailRouter: PokemonDetailWireframe {
         func assembleModules(_ dependency: Pokemon) -> some SwiftUI.View {
-            Text(dependency.name)
+            Text(dependency.name.rawValue)
         }
     }
 }
